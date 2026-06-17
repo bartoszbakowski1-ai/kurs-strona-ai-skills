@@ -12,7 +12,7 @@ W srodku sa:
 W folderze swojego projektu strony powiedz Claude Code:
 
 ```plain text
-Pobierz skille tego kursu z repozytorium https://github.com/bartoszbakowski1-ai/kurs-strona-ai-skills i zainstaluj je w moim projekcie: skopiuj zawartosc folderu 40-skills/ do .claude/skills/, a komendę ze ścieżki 40-skills/strona/COMMAND.md do .claude/commands/strona.md. Zrób to bezpiecznie, nie nadpisuj niczego poza folderem .claude/. Na koniec wypisz, jakie skille są teraz dostępne.
+Pobierz skille i szablony tego kursu z repozytorium https://github.com/bartoszbakowski1-ai/kurs-strona-ai-skills i zainstaluj je w moim projekcie: skopiuj zawartosc folderu 40-skills/ do .claude/skills/, komendę ze ścieżki 40-skills/strona/COMMAND.md do .claude/commands/strona.md, a folder 30-szablony-md/ do .claude/materialy/30-szablony-md/. Zrób to bezpiecznie, nie nadpisuj niczego poza folderem .claude/. Na koniec wypisz, jakie skille są teraz dostępne i gdzie są szablony.
 ```
 
 Claude Code powinien utworzyc:
@@ -30,6 +30,8 @@ Claude Code powinien utworzyc:
     strona/
   commands/
     strona.md
+  materialy/
+    30-szablony-md/
 ```
 
 ## Co robia skille
@@ -45,7 +47,7 @@ Claude Code powinien utworzyc:
 
 ## Szablony Markdown
 
-`30-szablony-md/` jest materialem pomocniczym. Glowne flow kursu prowadza skille, ale szablony pokazuja, jak wygladaja pliki `.md`, ktore powstana w projekcie.
+`30-szablony-md/` jest materialem pomocniczym. Glowne flow kursu prowadza skille, ale szablony pokazuja, jak wygladaja pliki `.md`, ktore powstana w projekcie. Przy instalacji trafiaja do `.claude/materialy/30-szablony-md/`.
 
 Sa dwie warstwy:
 

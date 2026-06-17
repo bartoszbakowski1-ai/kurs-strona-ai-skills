@@ -11,7 +11,7 @@ git clone https://github.com/bartoszbakowski1-ai/kurs-strona-ai-skills.git /tmp/
 ## 2. Utworz foldery Claude
 
 ```bash
-mkdir -p .claude/skills .claude/commands
+mkdir -p .claude/skills .claude/commands .claude/materialy
 ```
 
 ## 3. Skopiuj skille
@@ -26,7 +26,15 @@ cp -R /tmp/kurs-strona-ai-skills/40-skills/* .claude/skills/
 cp /tmp/kurs-strona-ai-skills/40-skills/strona/COMMAND.md .claude/commands/strona.md
 ```
 
-## 5. Sprawdz wynik
+## 5. Skopiuj szablony Markdown
+
+```bash
+cp -R /tmp/kurs-strona-ai-skills/30-szablony-md .claude/materialy/30-szablony-md
+```
+
+Szablony sa materialem pomocniczym. Nie wypelniaj ich w `.claude/materialy/`. Wlasciwe pliki `kontekst/` i `karty/` powstana pozniej w glownym folderze projektu, kiedy uruchomisz skille.
+
+## 6. Sprawdz wynik
 
 ```bash
 find .claude -maxdepth 3 -type f | sort
@@ -43,9 +51,10 @@ Powinienes/powinnas widziec m.in.:
 .claude/skills/zbuduj-strone/SKILL.md
 .claude/skills/sprawdz-kod/SKILL.md
 .claude/skills/sanity/SKILL.md
+.claude/materialy/30-szablony-md/README.md
 ```
 
-## 6. Pierwszy krok w kursie
+## 7. Pierwszy krok w kursie
 
 W Claude Code powiedz:
 
