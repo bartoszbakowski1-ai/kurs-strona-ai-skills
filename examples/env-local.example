@@ -1,0 +1,4 @@
+RESEND_API_KEY=re_tutaj_wklejasz_klucz
+KONTAKT_TO=twoj-adres@example.com
+KONTAKT_FROM=onboarding@resend.dev
+NEXT_PUBLIC_SITE_URL=https://twojadomena.pl
