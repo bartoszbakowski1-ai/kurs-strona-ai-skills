@@ -6,7 +6,7 @@ KIT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 mkdir -p "$TARGET_DIR/.claude/skills" "$TARGET_DIR/.claude/commands" "$TARGET_DIR/.claude/materialy"
 
-for skill in bezpieczenstwo design karty kontekst obrazy sanity sprawdz-kod zbuduj-strone; do
+for skill in bezpieczenstwo design karty kontekst lp obrazy oferta sanity sprawdz-kod zbuduj-strone; do
   rm -rf "$TARGET_DIR/.claude/skills/$skill"
   cp -R "$KIT_DIR/40-skills/$skill" "$TARGET_DIR/.claude/skills/$skill"
 done

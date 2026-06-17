@@ -40,3 +40,12 @@ Zatrzymaj go spokojnie i sprawdz fundament:
 - minimum 3 realne media albo plan ich zdobycia.
 
 Jesli fundamentu brakuje, uruchom odpowiedni skill.
+
+## Gdy uczestnik ma juz fundament strony
+
+Wtedy mozesz uzyc skilli rozszerzajacych system:
+
+- `lp` - jeden landing page pod jeden cel: webinar, kampania, lead magnet, konsultacja albo sprzedaz,
+- `oferta` - spersonalizowana strona oferty na podstawie rozmowy, briefu albo notatek klienta.
+
+Nie uruchamiaj ich jako pierwszego kroku kursu. Najpierw kontekst, karty i podstawowa strona.

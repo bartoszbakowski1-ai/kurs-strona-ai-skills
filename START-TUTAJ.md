@@ -64,3 +64,19 @@ Uruchom skill kontekst.
 ```
 
 Nie przeskakuj od razu do budowania strony. Najpierw Claude Code musi poznac Twoj kontekst i stworzyc 3 karty strony.
+
+## Co po zbudowaniu pierwszej strony
+
+Gdy masz juz fundament strony, paczka daje Ci tez skille do kolejnych zastosowan:
+
+```plain text
+Uruchom skill lp.
+```
+
+Do stworzenia jednego landing page pod webinar, kampanie, lead magnet, konsultacje albo sprzedaz.
+
+```plain text
+Uruchom skill oferta.
+```
+
+Do stworzenia spersonalizowanej strony oferty na podstawie rozmowy, briefu albo notatek klienta.

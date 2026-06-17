@@ -54,7 +54,9 @@ Po instalacji w folderze Twojej strony powinno byc:
     design/
     karty/
     kontekst/
+    lp/
     obrazy/
+    oferta/
     sanity/
     sprawdz-kod/
     zbuduj-strone/
@@ -82,6 +84,16 @@ Gdy dojdziesz do M1, uruchom:
 Uruchom skill kontekst.
 ```
 
+Gdy masz juz kontekst, karty i pierwsza strone, mozesz prosic Claude Code o kolejne elementy systemu:
+
+```plain text
+Uruchom skill lp. Zrob landing page pod jeden cel: zapis na webinar, lead magnet albo sprzedaz.
+```
+
+```plain text
+Uruchom skill oferta. Zrob spersonalizowana strone oferty na podstawie rozmowy z klientem.
+```
+
 ## Skille w paczce
 
 - `kontekst` - tworzy Twoj osobisty i zawodowy kontekst do pracy z AI,
@@ -89,6 +101,8 @@ Uruchom skill kontekst.
 - `design` - zamienia karte wizualna w system designu i pilnuje anti-ai-look,
 - `obrazy` - pomaga dodac realne zdjecia i assety,
 - `zbuduj-strone` - buduje strone sekcja po sekcji,
+- `lp` - buduje konwertujacy landing page pod jeden cel, np. webinar, lead magnet albo sprzedaz,
+- `oferta` - tworzy spersonalizowana strone oferty z rozmowy, briefu albo notatek klienta,
 - `sprawdz-kod` - sprawdza build, mobile, jakosc, anti-ai-look i bezpieczenstwo,
 - `bezpieczenstwo` - robi lekki audyt sekretow, API, formularza i deploya,
 - `sanity` - opcjonalnie podpina panel edycji tresci,
