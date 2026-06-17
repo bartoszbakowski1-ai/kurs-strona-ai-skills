@@ -42,14 +42,15 @@ Dozwolone fonty dla kursu:
 - Naglowki: Sora, Space Grotesk, Manrope, Plus Jakarta Sans, Bricolage Grotesque
 - Tekst: Inter albo Manrope
 
-## Zdjęcia (realne, NIE stock/AI)
+## Zdjęcia i media (realne, NIE plastikowe AI)
 
-Wypisz 3-5 prawdziwych zdjec, ktore masz albo mozesz zrobic.
+Wypisz minimum 3 prawdziwe zdjecia/media, ktore masz albo mozesz zrobic. Dla dluzszej strony celuj w 5-7, bo same ikony i karty bardzo szybko wygladaja jak AI.
 
 - Portret:
 - Zdjecie z pracy:
 - Zdjecie procesu / notatek / produktu:
 - Zdjecie z klientem / warsztatu:
+- Krotkie video / nagranie / screen produktu:
 - Inne:
 
 Hero:
@@ -76,7 +77,7 @@ Te zasady zostaja w karcie. Claude Code ma ich pilnowac przy budowie i sprawdzan
 - wlasny font pairing, nie Inter na wszystko
 - asymetria i oddech, zero "wszystko text-center mx-auto"
 - rozne karty, zero gridu identycznych kart z tym samym hover
-- minimum 3 realne zdjecia, zero emoji jako ikon
+- minimum 3 realne zdjecia/media, docelowo 5-7 na dluzszej stronie, zero emoji jako ikon
 - ikony tylko ze spojnego zestawu lucide-react
 - copy z konkretami i liczbami, zero pustych buzzwordow
 - polskie znaki z ogonkami, zero dlugich myslnikow

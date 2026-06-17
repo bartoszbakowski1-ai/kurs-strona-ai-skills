@@ -69,7 +69,7 @@ Nastepne:
 - [ ] Sekcja: FAQ (accordion)
 - [ ] Formularz -> Resend (klucz w .env.local, NIE w git)
 - [ ] Sekcja: stopka
-- [ ] M5 sprawdz-kod (build + anti-ai-look), potem M6 deploy
+   - [ ] M5 sprawdz-kod (build + anti-ai-look + bezpieczeństwo), potem M6 deploy
 
 ## Decyzje (z kart)
 - Kolory: #0b0b0d tlo, #d4a017 akcent (z Karty Wizualnej)
@@ -81,6 +81,10 @@ Nastepne:
 ## Klucze
 - RESEND_API_KEY = w .env.local (NIE w git). W Vercel ta sama nazwa zmiennej.
 - Adres docelowy maila z formularza: [mail uczestnika]
+
+## Bezpieczenstwo
+- [ ] sprawdz-kod przed pushem: build + anti-ai-look + sekrety/API
+- [ ] po deployu: rate limit `/api/contact` w Vercel WAF, jesli plan to umozliwia
 
 ## Jak wznowic
 Napisz w Claude Code: /strona wznow
@@ -168,7 +172,7 @@ Powiedz: "Formularz dziala lokalnie i bedzie dzialal na zywo po deployu. Klucz s
 
 ### Krok 5 - zamkniecie budowy
 1. Gdy wszystkie sekcje z Karty Architektury Tresci sa zrobione i zacommitowane - powiedz po ludzku, ze szkielet tresci jest gotowy.
-2. Skieruj do nastepnego kroku: "Teraz skill `sprawdz-kod` - sprawdzi, czy strona zbuduje sie bez bledow i przeleci checkliste wygladu, zanim wyslemy ja w swiat." Nie pushuj, nie deployuj - to nie ten skill.
+2. Skieruj do nastepnego kroku: "Teraz skill `sprawdz-kod` - sprawdzi, czy strona zbuduje sie bez bledow, przeleci checkliste wygladu i podstawowe bezpieczenstwo, zanim wyslemy ja w swiat." Nie pushuj, nie deployuj - to nie ten skill.
 3. Upewnij sie, ze `PROGRESS.md` odzwierciedla stan: wszystkie sekcje odhaczone, nastepny krok = `sprawdz-kod` -> M6 deploy.
 
 ## Anti-ai-look (egzekwuj przy KAZDEJ sekcji)
@@ -192,7 +196,7 @@ NAKAZ:
 - jeden akcent brandowy z tokenow, nie tecza
 - asymetria i oddech: choc jedna sekcja off-center, uklad 7/5 lub 8/4, sekcje `py-24`+
 - karty zroznicowane (rozny rozmiar/tresc, hover tylko tam gdzie klikalne, lam grid: pierwsza karta `col-span-2`)
-- min. 3 prawdziwe zdjecia na stronie (realne foto uczestnika/pracy, nie stock, nie AI-ilustracja); gdzie brak - poproś o realne foto, wstaw placeholder tymczasowo
+- min. 3 prawdziwe zdjecia/media na stronie jako bramka (realne foto uczestnika/pracy, nie plastikowa AI-ilustracja), docelowo 5-7 na dluzszej stronie; gdzie brak - poproś o realne foto, wstaw placeholder tymczasowo
 - konkretne liczby/nazwy/daty w copy (z kontekstu uczestnika)
 - wszystkie kolory przez zmienne CSS z `globals.css`, zero hardkodow w komponentach
 

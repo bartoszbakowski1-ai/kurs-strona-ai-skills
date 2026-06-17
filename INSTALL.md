@@ -50,6 +50,7 @@ Powinienes/powinnas widziec m.in.:
 .claude/skills/obrazy/SKILL.md
 .claude/skills/zbuduj-strone/SKILL.md
 .claude/skills/sprawdz-kod/SKILL.md
+.claude/skills/bezpieczenstwo/SKILL.md
 .claude/skills/sanity/SKILL.md
 .claude/materialy/30-szablony-md/README.md
 ```

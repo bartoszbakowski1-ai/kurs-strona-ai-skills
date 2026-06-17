@@ -11,7 +11,7 @@ Tu masz: (1) skad uczestnik bierze klucz Resend, (2) zaleznosc do instalacji, (3
 Powiedz mniej wiecej tak (po jednym kroku, czekaj az zrobi):
 1. "Wejdz na resend.com i zaloz darmowe konto (mozna przez Google/GitHub). Darmowy plan to 100 maili dziennie - na formularz kontaktowy z naddatkiem."
 2. "Po zalogowaniu w menu po lewej kliknij **API Keys**, potem **Create API Key**. Nazwa dowolna, np. `moja-strona`, uprawnienia zostaw domyslne (Full access / Sending)."
-3. "Skopiuj klucz - zaczyna sie od `re_...`. Pokaze sie TYLKO RAZ, wiec skopiuj od razu. Wklej mi go tutaj albo wklej samodzielnie do pliku `.env.local` (za chwile go utworze)."
+3. "Skopiuj klucz - zaczyna sie od `re_...`. Pokaze sie TYLKO RAZ, wiec skopiuj od razu. Najbezpieczniej wklej go samodzielnie do pliku `.env.local` (za chwile go utworze). Jesli wkleisz go tutaj, wpisze go do `.env.local` i dopilnuje, zeby nie trafil do gita."
 
 Adres nadawcy (`from`) - wytlumacz laikowi prosto:
 - Na start `from` = `onboarding@resend.dev`. To adres testowy Resend - dziala BEZ wlasnej domeny, ale TYLKO do testow: na darmowym koncie bez zweryfikowanej domeny maile moga dojsc wylacznie na adres wlasciciela konta Resend (ten, ktorym uczestnik zakladal konto). To wystarczy, zeby zobaczyc, ze formularz dziala.
@@ -55,7 +55,7 @@ grep -qx ".env.local" .gitignore && echo "OK .env.local jest w .gitignore" || ec
 
 ## 4. API route - src/app/api/contact/route.ts
 
-Utworz plik `src/app/api/contact/route.ts` z dokladnie taka trescia (to dziala out-of-the-box):
+Utworz plik `src/app/api/contact/route.ts` z dokladnie taka trescia. Ma serwerowa walidacje, limity dlugosci, honeypot antyspamowy i generyczne bledy:
 
 ```ts
 import { NextResponse } from "next/server";
@@ -63,21 +63,97 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-export async function POST(request: Request) {
-  try {
-    const { imie, email, wiadomosc } = await request.json();
+const MAX_NAME_LENGTH = 80;
+const MAX_EMAIL_LENGTH = 120;
+const MAX_MESSAGE_LENGTH = 2000;
+const MAX_REQUEST_BYTES = 10_000;
 
-    // Walidacja - proste, ale wystarczajace
+type ContactPayload = {
+  imie?: unknown;
+  email?: unknown;
+  wiadomosc?: unknown;
+  firma?: unknown;
+  startedAt?: unknown;
+};
+
+function readText(value: unknown, maxLength: number) {
+  if (typeof value !== "string") {
+    return "";
+  }
+
+  return value.trim().replace(/\s+/g, " ").slice(0, maxLength);
+}
+
+function readMessage(value: unknown) {
+  if (typeof value !== "string") {
+    return "";
+  }
+
+  return value.trim().slice(0, MAX_MESSAGE_LENGTH);
+}
+
+function isEmail(value: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+export async function POST(request: Request) {
+  const contentType = request.headers.get("content-type") || "";
+  if (!contentType.includes("application/json")) {
+    return NextResponse.json(
+      { error: "Nieprawidlowy format formularza." },
+      { status: 415 }
+    );
+  }
+
+  const contentLength = Number(request.headers.get("content-length") || "0");
+  if (contentLength > MAX_REQUEST_BYTES) {
+    return NextResponse.json(
+      { error: "Wiadomosc jest za dluga." },
+      { status: 413 }
+    );
+  }
+
+  try {
+    const body = (await request.json()) as ContactPayload;
+
+    const honeypot = readText(body.firma, 120);
+    if (honeypot) {
+      return NextResponse.json({ ok: true });
+    }
+
+    const submitTime =
+      typeof body.startedAt === "number" ? Date.now() - body.startedAt : null;
+    if (submitTime !== null && submitTime >= 0 && submitTime < 2500) {
+      return NextResponse.json({ ok: true });
+    }
+
+    const imie = readText(body.imie, MAX_NAME_LENGTH).replace(/[\r\n]/g, " ");
+    const email = readText(body.email, MAX_EMAIL_LENGTH).toLowerCase();
+    const wiadomosc = readMessage(body.wiadomosc);
+
     if (!imie || !email || !wiadomosc) {
       return NextResponse.json(
         { error: "Uzupelnij imie, e-mail i wiadomosc." },
         { status: 400 }
       );
     }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    if (!isEmail(email)) {
       return NextResponse.json(
         { error: "Podaj poprawny adres e-mail." },
         { status: 400 }
+      );
+    }
+    if (wiadomosc.length < 10) {
+      return NextResponse.json(
+        { error: "Napisz prosze kilka slow wiecej." },
+        { status: 400 }
+      );
+    }
+    if (!process.env.RESEND_API_KEY || !process.env.KONTAKT_TO) {
+      console.error("Contact route missing env configuration");
+      return NextResponse.json(
+        { error: "Formularz nie jest jeszcze skonfigurowany." },
+        { status: 500 }
       );
     }
 
@@ -90,7 +166,10 @@ export async function POST(request: Request) {
     });
 
     if (error) {
-      console.error("Resend error:", error);
+      console.error(
+        "Resend send failed:",
+        error instanceof Error ? error.message : "unknown error"
+      );
       return NextResponse.json(
         { error: "Nie udalo sie wyslac wiadomosci. Sprobuj ponownie." },
         { status: 502 }
@@ -98,8 +177,18 @@ export async function POST(request: Request) {
     }
 
     return NextResponse.json({ ok: true });
-  } catch (err) {
-    console.error("Contact route error:", err);
+  } catch (error) {
+    if (error instanceof SyntaxError) {
+      return NextResponse.json(
+        { error: "Nieprawidlowy format formularza." },
+        { status: 400 }
+      );
+    }
+
+    console.error(
+      "Contact route failed:",
+      error instanceof Error ? error.message : "unknown error"
+    );
     return NextResponse.json(
       { error: "Cos poszlo nie tak po stronie serwera." },
       { status: 500 }
@@ -108,7 +197,7 @@ export async function POST(request: Request) {
 }
 ```
 
-Uwaga: `replyTo` ustawia adres nadawcy z formularza, wiec uczestnik moze odpowiedziec na maila wprost do osoby, ktora go napisala.
+Uwaga: `replyTo` ustawia adres nadawcy z formularza, wiec uczestnik moze odpowiedziec na maila wprost do osoby, ktora go napisala. Honeypot `firma` i `startedAt` nie sa idealnym antyspamem, ale mocno ograniczaja najprostsze boty. Po deployu w M6 dodamy jeszcze rate limit dla `/api/contact` w Vercel WAF, jesli bedzie dostepny na planie uczestnika.
 
 ---
 
@@ -128,6 +217,7 @@ type Stan = "bezczynny" | "wysylanie" | "ok" | "blad";
 export function Kontakt() {
   const [stan, setStan] = useState<Stan>("bezczynny");
   const [blad, setBlad] = useState("");
+  const [startedAt] = useState(() => Date.now());
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -140,6 +230,8 @@ export function Kontakt() {
       email: (form.elements.namedItem("email") as HTMLInputElement).value,
       wiadomosc: (form.elements.namedItem("wiadomosc") as HTMLTextAreaElement)
         .value,
+      firma: (form.elements.namedItem("firma") as HTMLInputElement).value,
+      startedAt,
     };
 
     try {
@@ -175,15 +267,29 @@ export function Kontakt() {
         </div>
 
         <form onSubmit={onSubmit} className="flex flex-col gap-4">
-          <Input name="imie" placeholder="Imie" required />
-          <Input name="email" type="email" placeholder="Twoj e-mail" required />
+          <Input name="imie" placeholder="Imie" required maxLength={80} />
+          <Input
+            name="email"
+            type="email"
+            placeholder="Twoj e-mail"
+            required
+            maxLength={120}
+          />
           <textarea
             name="wiadomosc"
             required
             rows={5}
+            minLength={10}
+            maxLength={2000}
             placeholder="W czym moge pomoc?"
             className="rounded-[var(--radius)] border border-[var(--border)] bg-transparent px-4 py-3 text-[var(--foreground)] outline-none focus:border-[var(--accent)]"
           />
+          <div className="hidden" aria-hidden="true">
+            <label>
+              Firma
+              <input name="firma" tabIndex={-1} autoComplete="off" />
+            </label>
+          </div>
           <Button type="submit" disabled={stan === "wysylanie"}>
             {stan === "wysylanie" ? "Wysylam..." : "Wyslij wiadomosc"}
           </Button>
@@ -220,7 +326,7 @@ import { Kontakt } from "@/components/sections/Kontakt";
 
 Powiedz uczestnikowi: "Formularz dziala juz lokalnie. Zeby dzialal na zywo, w M6 przy deployu na Vercel wkleimy ten sam klucz w panelu Vercel pod ta sama nazwa - `RESEND_API_KEY` (oraz `KONTAKT_TO` i `KONTAKT_FROM`). Plik `.env.local` zostaje na Twoim komputerze, nie idzie do gita - i o to chodzi."
 
-Zanotuj w `PROGRESS.md` w sekcji "Klucze": zmienne `RESEND_API_KEY`, `KONTAKT_TO`, `KONTAKT_FROM` sa w `.env.local` (NIE w git), w Vercel trzeba wpisac te same nazwy.
+Zanotuj w `PROGRESS.md` w sekcji "Klucze": zmienne `RESEND_API_KEY`, `KONTAKT_TO`, `KONTAKT_FROM` sa w `.env.local` (NIE w git), w Vercel trzeba wpisac te same nazwy. W sekcji "Bezpieczenstwo" dopisz: po deployu ustawic rate limit dla `/api/contact` w Vercel WAF, jesli plan to umozliwia.
 
 ---
 

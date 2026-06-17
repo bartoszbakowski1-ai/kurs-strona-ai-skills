@@ -26,6 +26,7 @@ Claude Code powinien utworzyc:
     obrazy/
     zbuduj-strone/
     sprawdz-kod/
+    bezpieczenstwo/
     sanity/
     strona/
   commands/
@@ -41,7 +42,8 @@ Claude Code powinien utworzyc:
 - `design` - zamienia karte wizualna na design tokens i kierunek wygladu
 - `obrazy` - pomaga przygotowac prawdziwe zdjecia i assety
 - `zbuduj-strone` - buduje strone sekcja po sekcji
-- `sprawdz-kod` - sprawdza build, jakosc i reguly anti-ai-look
+- `sprawdz-kod` - sprawdza build, jakosc, reguly anti-ai-look i podstawowe bezpieczenstwo
+- `bezpieczenstwo` - lekki audyt przed publikacja: sekrety, API, formularz, naglowki i zaleznosci
 - `sanity` - opcjonalny panel edycji tresci
 - `/strona` - komenda-dyrygent do statusu, wznowienia i rozwoju strony
 

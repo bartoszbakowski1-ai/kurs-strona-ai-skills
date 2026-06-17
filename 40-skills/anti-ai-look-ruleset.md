@@ -24,7 +24,7 @@ Legenda: [BARTEK] = obserwacja Bartka, [POTW] = potwierdzona researchem, [+] = r
 
 8. **Inter / Geist wszedzie, zero pairingu** [POTW] - jeden domyslny font (Inter body+heading) bez display-fontu na naglowki. Geist to tez tell ("one config line" - ale wszyscy go zmieniaja na Geist, wiec Geist tez juz krzyczy AI). Diagnoza: brak osobnego font-family na headingi.
 
-9. **Malo zdjec, malo przestrzeni** [BARTEK][POTW] - strona bez prawdziwych fotografii (ludzi/produktu), zamiast tego ikony Lucide, blobs, ilustracje "za gladkie, plastikowe". Bartek: trzeba wiecej zdjec i wiecej oddechu. Diagnoza: policz `<img>` z realnym foto (nie ikona/svg) - jak 0-1 na dlugiej stronie = AI.
+9. **Malo zdjec, malo przestrzeni** [BARTEK][POTW] - strona bez prawdziwych fotografii (ludzi/produktu), zamiast tego ikony Lucide, blobs, ilustracje "za gladkie, plastikowe". Bartek: trzeba wiecej zdjec i wiecej oddechu. Diagnoza: policz realne media (foto/video, nie ikona/svg) - 0-2 = blokada, 3-4 = minimum, 5-7 = docelowa jakosc dla dluzszej strony.
 
 10. **Stockowe ikony Lucide tak samo wszedzie** [POTW][+] - kazda sekcja ma ikonke Lucide w kolku/kwadracie, ten sam styl, ten sam akcent. Plus emoji jako ikony. Diagnoza: powtarzalny wrapper `rounded-lg bg-X/10 p-3` z ikona Lucide.
 
@@ -85,7 +85,7 @@ Duplikaty/wzmocnienia: #1+#15 (CAPS labels), #2+#3 (typografia naglowkow razem t
 - Asymetria i oddech: choc jedna sekcja off-center, kontent czasem 7/5 albo 8/4 kolumny zamiast 50/50. Hojny whitespace (sekcje `py-24`+).
 - Roznicuj karty: rozne rozmiary (jedna szeroka + dwie wezsze), rozny content, rozny hover albo hover tylko tam gdzie klikalne. Lam grid: pierwsza karta `col-span-2`.
 - Rytm pionowy: rozne wysokosci sekcji, naprzemiennie obraz-lewo/tekst-prawo i odwrotnie.
-- Wstaw min. 3-5 prawdziwych zdjec (realne foto Bartka/produktu/pracy, NIE stock, NIE AI-illustration). Hero z prawdziwym zdjeciem lub video tla.
+- Wstaw min. 3 prawdziwe zdjecia jako bramke wejscia, a docelowo 5-7 realnych mediow na dluzszej stronie (foto/video Bartka/produktu/pracy, NIE plastikowa AI-illustration). Hero z prawdziwym zdjeciem lub video tla.
 
 **Kolor i obrazy**
 - Paleta z Karty Wizualnej (Bartek: tlo #0b0b0d, zloto #D4A017). Jeden akcent brandowy, NIE teczowy gradient. Jak gradient, to subtelny ton-w-ton albo off-brand stop, nie violet→blue.
@@ -121,7 +121,7 @@ Skill przebiega po wygenerowanym kodzie/stronie i odpowiada TAK/NIE. Kazde "TAK"
 **Kolor i obrazy**
 - [ ] Czy jest gradient violet/purple→blue/indigo (lub cyan→violet, pink→orange)? (TAK = fix)
 - [ ] Czy jest gradient text (`bg-clip-text text-transparent`) na headingu? (TAK = fix)
-- [ ] Czy na stronie sa min. 3 prawdziwe zdjecia (nie ikona/svg/AI-illustration)? (NIE = fix)
+- [ ] Czy na stronie sa min. 3 prawdziwe zdjecia/media, a na dluzszej stronie docelowo 5-7 (nie ikona/svg/AI-illustration)? (0-2 = fix blokujacy, 3-4 = minimum, 5+ = dobrze)
 - [ ] Czy kazda sekcja ma ikone Lucide w kolku jako jedyny wizual? (TAK = fix)
 - [ ] Czy uzyto emoji jako ikon UI? (TAK = fix)
 - [ ] Czy paleta zgodna z Karta Wizualna (jeden akcent, nie tecza)? (NIE = fix)

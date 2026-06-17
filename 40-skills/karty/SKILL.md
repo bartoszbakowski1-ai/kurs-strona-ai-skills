@@ -71,7 +71,7 @@ Wywiad etapami:
 2. **Kolory marki** - zapytaj, czy uczestnik MA już kolory (z logo, z Instagrama, z wizytówek). Jeśli tak - poproś o wartości (mogą być nazwą koloru albo kodem HEX, np. "ciemna zieleń, około #14532d"). Jeśli NIE ma - na bazie nastroju zaproponuj jedną gotową paletę: tło, kolor tekstu, JEDEN kolor akcentu (do przycisków i wyróżnień). Zasada anti-ai-look: jeden akcent brandowy, NIE tęczowy gradient, NIE fiolet/niebieski w stylu generycznego AI.
 3. **Jasno czy ciemno** - czy strona ma jasne tło czy ciemne. Domyślnie rekomenduj jasne, chyba że nastrój i marka mówią inaczej (dark hero z neonem to tell AI - unikamy go jako domyślnego).
 4. **Charakter typografii** - zapytaj o charakter nagłówków: bardziej elegancki/redakcyjny czy nowoczesny/bezpośredni. NIE pytaj o konkretne nazwy fontów - to TY dobierasz parę. Zapisz w karcie konkretną parę z next/font/google WYŁĄCZNIE z dozwolonej listy z pełnym latin-ext (polskie ogonki działają): nagłówki Sora / Space Grotesk / Manrope / Plus Jakarta Sans / Bricolage Grotesque, body Inter lub Manrope. Przykłady doboru: elegancki/redakcyjny -> nagłówki Plus Jakarta Sans + body Inter; nowoczesny/bezpośredni -> nagłówki Sora lub Space Grotesk + body Inter; ciepły -> nagłówki Bricolage Grotesque + body Inter. NIGDY nie wpisuj fontu spoza tej listy (np. Fraunces, Playfair nie mają pełnego latin-ext). Zawsze 2 fonty, nigdy jeden na wszystko.
-5. **Zdjęcia** - to kluczowe dla anti-ai-look. Zapytaj wprost, jakie PRAWDZIWE zdjęcia uczestnik ma lub może zrobić: portret/twarz, zdjęcia z pracy/warsztatów, zdjęcia produktu. Ustal minimum 3-5 realnych zdjęć. Zaznacz w karcie, że stocki AI i generyczne ilustracje są zakazane - tymczasowo placeholder, docelowo realne foto (tym zajmie się skill `obrazy`).
+5. **Zdjęcia i media** - to kluczowe dla anti-ai-look. Zapytaj wprost, jakie PRAWDZIWE zdjęcia lub media uczestnik ma albo może zrobić: portret/twarz, zdjęcia z pracy/warsztatów, zdjęcia produktu, screeny, krótkie video. Ustal minimum 3 realne zdjęcia/media jako bramkę, a dla dłuższej strony cel 5-7. Zaznacz w karcie, że plastikowe AI-ilustracje są zakazane - tymczasowo placeholder, docelowo realne foto/media (tym zajmie się skill `obrazy`).
 6. **Referencje** - poproś o 2-3 konkretne strony, które się uczestnikowi podobają (linki). Jeśli nie ma - zaproponuj kierunek słowny, ale dopytaj o konkret ("podaj choć jedną stronę, która Ci się podoba, obojętnie z jakiej branży"). Zapisz CO konkretnie się podoba w każdej referencji (układ, kolory, zdjęcia, typografia), nie samą nazwę.
 
 Zapisz `karty/karta-wizualna.md`. Użyj DOKŁADNIE tej struktury, bo z niej powstają design tokens:
@@ -93,8 +93,8 @@ Zapisz `karty/karta-wizualna.md`. Użyj DOKŁADNIE tej struktury, bo z niej pows
 - Tekst (body): Inter [lub Manrope]
 - Liczby/ceny: tabular (monospace dla tekstury)
 
-## Zdjęcia (realne, NIE stock/AI)
-- [lista 3-5 konkretnych zdjęć, które uczestnik ma/zrobi]
+## Zdjęcia i media (realne, NIE plastikowe AI)
+- [lista minimum 3 konkretnych zdjęć/mediów, docelowo 5-7 na dłuższej stronie]
 - Hero: [jakie zdjęcie tu idzie]
 
 ## Referencje (2-3)
@@ -107,7 +107,7 @@ Zapisz `karty/karta-wizualna.md`. Użyj DOKŁADNIE tej struktury, bo z niej pows
 - własny font pairing (powyżej, tylko z dozwolonej listy latin-ext), nie Inter na wszystko
 - asymetria i oddech (sekcje py-24+), zero "wszystko text-center mx-auto"
 - różne karty (rozmiar/treść/hover), zero gridu identycznych kart z tym samym hover
-- min. 3 realne zdjęcia, zero emoji jako ikon, ikony tylko spójny zestaw lucide-react
+- min. 3 realne zdjęcia/media, docelowo 5-7 na dłuższej stronie, zero emoji jako ikon, ikony tylko spójny zestaw lucide-react
 - copy z konkretami i liczbami (z kontekstu), zero buzzwordów (Elevate/Unlock/Seamless...)
 - polskie znaki z ogonkami, zero em-dash
 ```

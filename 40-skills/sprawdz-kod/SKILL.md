@@ -1,13 +1,13 @@
 ---
 name: sprawdz-kod
-description: Uruchom PRZED każdym wysłaniem strony na GitHub i Vercel (przed push, przed deployem), albo gdy uczestnik mówi "sprawdź kod", "czy mogę pushować", "czy to się zbuduje", "review strony". Czyści cache i uruchamia lokalny build, naprawia 8 najczęstszych błędów Next.js i przelatuje checklistę anti-AI-look. Brama jakości: nie pushujemy, dopóki build nie przejdzie i checklista nie jest czysta. Wywołaj też po większej zmianie w sekcji strony albo gdy "Build Failed" pojawił się na Vercel.
+description: Uruchom PRZED każdym wysłaniem strony na GitHub i Vercel (przed push, przed deployem), albo gdy uczestnik mówi "sprawdź kod", "czy mogę pushować", "czy to się zbuduje", "review strony", "czy strona jest bezpieczna". Czyści cache i uruchamia lokalny build, naprawia 8 najczęstszych błędów Next.js, przelatuje checklistę anti-AI-look i robi lekką bramę bezpieczeństwa: sekrety/API/formularz/nagłówki/zależności. Brama jakości: nie pushujemy, dopóki build nie przejdzie, wygląd nie jest czysty i nie ma czerwonych flag bezpieczeństwa. Wywołaj też po większej zmianie w sekcji strony albo gdy "Build Failed" pojawił się na Vercel.
 ---
 
 # Skill: sprawdz-kod
 
 Jesteś inżynierem QA, który sprawdza kod strony wygenerowany w tym projekcie ZANIM trafi na GitHub i Vercel. Prowadzisz NIETECHNICZNEGO uczestnika (trener, coach, ekspert). On odpala skill i ogląda - to TY robisz robotę i tłumaczysz wynik po ludzku.
 
-To jest WYKONAWCA (M5). Najpierw lokalny build, potem auto-fix błędów, potem checklista anti-AI-look. Dopiero gdy wszystko zielone - dajesz zielone światło na push.
+To jest WYKONAWCA (M5). Najpierw lokalny build, potem auto-fix błędów, potem checklista anti-AI-look, potem lekka brama bezpieczeństwa. Dopiero gdy wszystko zielone - dajesz zielone światło na push.
 
 ## ROBI / NIE ROBI
 
@@ -15,7 +15,9 @@ ROBI:
 - czyści cache i uruchamia lokalny build (`rm -rf .next && npm run build`)
 - naprawia 8 najczęstszych błędów Next.js, które wywalają build
 - przelatuje checklistę anti-AI-look po wygenerowanym kodzie i poprawia flagi
-- sprawdza, czy klucz API nie wyciekł do gita
+- sprawdza, czy klucze API i sekrety nie wyciekły do gita, `public/` ani `NEXT_PUBLIC_*`
+- sprawdza, czy formularz/API route ma walidację, limity, honeypot i generyczne błędy
+- sprawdza ryzykowne wzorce frontendu, podstawowe nagłówki bezpieczeństwa i podatne zależności
 - daje jasny werdykt: "możesz pushować" albo "jeszcze nie, naprawiam X"
 
 NIE ROBI:
@@ -56,7 +58,7 @@ rm -rf .next && npm run build
 ```
 
 2. Przeczytaj wynik:
-   - Build PRZESZEDŁ (kończy się czymś w stylu "Compiled successfully" / "Generating static pages") - powiedz: "Build przeszedł, kod się składa. Idę dalej do sprawdzania wyglądu." Przejdź do Kroku 3.
+   - Build PRZESZEDŁ (kończy się czymś w stylu "Compiled successfully" / "Generating static pages") - powiedz: "Build przeszedł, kod się składa. Idę dalej do wyglądu i bezpieczeństwa." Przejdź do Kroku 3.
    - Build ZFAILOWAŁ (jest czerwony tekst, "Failed to compile", "Type error", "Error:") - przejdź do Kroku 2 i napraw.
 
 ### Krok 2 - napraw błędy buildu (8 najczęstszych)
@@ -98,7 +100,7 @@ Przelećcie pliki strony (komponenty sekcji, `globals.css`, treść). Każde "TA
 **Kolor i obrazy**
 - [ ] Gradient violet/purple do blue/indigo (lub cyan do violet, pink do orange)? (TAK = fix: zamień na jeden akcent z Karty Wizualnej)
 - [ ] Gradient text (`bg-clip-text text-transparent`) na nagłówku? (TAK = fix: zwykły kolor z tokenów)
-- [ ] Min. 3 prawdziwe zdjęcia (nie ikona/svg/AI-ilustracja)? (NIE = fix: zgłoś uczestnikowi, że tu wstawiamy realne foto)
+- [ ] Min. 3 prawdziwe zdjęcia/media, a na dłuższej stronie docelowo 5-7 (nie ikona/svg/AI-ilustracja)? (0-2 = fix blokujący, 3-4 = minimum, 5+ = dobrze)
 - [ ] Każda sekcja ma ikonę Lucide w kółku jako jedyny wizual? (TAK = fix: ogranicz, dodaj zdjęcia)
 - [ ] Emoji jako ikony UI? (TAK = fix: zamień na Lucide albo usuń)
 - [ ] Paleta zgodna z Kartą Wizualną, jeden akcent nie tęcza? (NIE = fix: ujednolić do tokenów z `globals.css`)
@@ -113,33 +115,79 @@ Przelećcie pliki strony (komponenty sekcji, `globals.css`, treść). Każde "TA
 
 GUARDRAIL na copy: poprawki techniczne (tracking, gradient, layout) robisz sam. Zmiany w TREŚCI (słowa, liczby, hasła) tylko za zgodą uczestnika - to jego marka i jego głos. Pokaż propozycję, poproś o "ok".
 
-### Krok 4 - sprawdź, czy klucz nie wyciekł
-Klucz API (Resend) NIGDY nie może trafić do gita.
+### Krok 4 - brama bezpieczeństwa (brama nr 3)
+Nie robimy pentestu korporacyjnego. Robimy kursowy safety check: czy przed pushem nie ma typowych dziur w stronie Next.js.
 
-1. Uruchom:
+Jeśli trafisz na złożony problem albo uczestnik pyta wprost "czy ktoś może się włamać", uruchom też skill `bezpieczenstwo` - ma głębszą procedurę. W tym skillu wykonujesz obowiązkowo skrót poniżej.
 
-```bash
-git ls-files | grep -E "\.env" || echo "OK zaden plik .env nie jest w gicie"
-grep -R "re_" .gitignore >/dev/null 2>&1; grep -qx ".env.local" .gitignore && echo "OK .env.local jest w .gitignore" || echo "UWAGA dopisuje .env.local do .gitignore"
-```
+#### 4A - sekrety i `.env`
+Klucze API (Resend, Stripe, GitHub, Supabase service role, database URL) NIGDY nie mogą trafić do gita, `public/` ani `NEXT_PUBLIC_*`.
 
-2. Jeśli `.env.local` NIE jest w `.gitignore` - dopisz go:
+Uruchom:
 
 ```bash
-echo ".env.local" >> .gitignore
+git ls-files | grep -E '(^|/)\.env|\.pem$|\.key$|\.p12$|\.pfx$|service-account.*\.json|secret.*\.json' || echo "OK sekrety nie sa sledzone przez git"
+grep -qx ".env.local" .gitignore && echo "OK .env.local jest w .gitignore" || echo ".env.local" >> .gitignore
+test -d public && find public -type f \( -name ".env*" -o -name "*.pem" -o -name "*.key" -o -name "*.p12" -o -name "*.pfx" -o -name "*service*account*.json" -o -name "*secret*.json" \) -print || echo "OK brak podejrzanych plikow w public"
+rg -n --hidden -I --glob '!.git/**' --glob '!.claude/**' --glob '!node_modules/**' --glob '!.next/**' --glob '!.env*' --glob '!package-lock.json' --glob '!pnpm-lock.yaml' --glob '!yarn.lock' "(re_[A-Za-z0-9_-]{20,}|sk-[A-Za-z0-9_-]{20,}|ghp_[A-Za-z0-9_]{20,}|github_pat_[A-Za-z0-9_]{20,}|AKIA[0-9A-Z]{16}|xox[baprs]-[A-Za-z0-9-]{10,}|-----BEGIN (RSA |OPENSSH |EC |DSA |)?PRIVATE KEY-----|DATABASE_URL=.*://|RESEND_API_KEY=|STRIPE_SECRET_KEY=|SUPABASE_SERVICE_ROLE_KEY=)" .
+rg -n --hidden -I --glob '!.git/**' --glob '!.claude/**' --glob '!node_modules/**' --glob '!.next/**' --glob '!.env*' "NEXT_PUBLIC_.*(SECRET|TOKEN|KEY|PASSWORD|PRIVATE|RESEND|STRIPE|SERVICE_ROLE|DATABASE)" .
+find . -maxdepth 1 -name ".env*" -type f -print0 | xargs -0 grep -nE "^NEXT_PUBLIC_.*(SECRET|TOKEN|KEY|PASSWORD|PRIVATE|RESEND|STRIPE|SERVICE_ROLE|DATABASE)" 2>/dev/null | sed 's/=.*/=<ukryte>/'
 ```
 
-3. Jeśli plik `.env.local` JUŻ trafił do gita (pokazał się w `git ls-files`) - to poważne. Powiedz uczestnikowi wprost: "Twój klucz mógł trafić do historii. Usuwam go ze śledzenia i po deployu wymienimy klucz w panelu Resend, żeby było bezpiecznie." Wykonaj:
+Interpretacja:
+- `.env.local` w `git ls-files` = czerwone. Wykonaj `git rm --cached .env.local`, powiedz uczestnikowi, że klucz mógł trafić do historii i trzeba go wymienić w panelu usługi.
+- Cokolwiek tajnego w `public/` = czerwone. Pliki z `public/` są dostępne z internetu.
+- `NEXT_PUBLIC_*` z sekretem = czerwone. W Next.js takie zmienne idą do bundle przeglądarki.
+- Placeholder w dokumentacji typu `RESEND_API_KEY=re_tu_wklej_klucz` nie jest wyciekiem. Prawdziwy klucz `re_...` w kodzie jest.
+
+#### 4B - formularz i API route
+Uruchom:
 
 ```bash
-git rm --cached .env.local
+find src/app -path "*/api/*/route.ts" -o -path "*/api/*/route.tsx" 2>/dev/null
+rg -n "export async function (POST|PUT|PATCH|DELETE)|request\.json|NextResponse\.json|resend|emails\.send" src/app src/components 2>/dev/null
 ```
 
-I dopisz do notatki dla uczestnika: po deployu wygeneruj nowy klucz w Resend (stary uznaj za spalony).
+Dla każdego formularza/API sprawdź:
+- Walidacja jest po stronie serwera, nie tylko `required` w HTML.
+- Są limity długości: imię ok. 80 znaków, email ok. 120, wiadomość ok. 2000.
+- Zły JSON / zły `Content-Type` nie wysypuje endpointu.
+- Jest honeypot albo inny lekki antyspam.
+- Błędy dla użytkownika są generyczne, bez szczegółów Resend/serwera.
+- Logi nie wypisują kluczy ani całej wiadomości użytkownika.
+
+Jeśli formularz jest stary, popraw według aktualnego `40-skills/zbuduj-strone/formularz.md`. Jeśli route nie ma walidacji serwerowej - nie pushujemy.
+
+#### 4C - ryzykowne wzorce frontendu
+Uruchom:
+
+```bash
+rg -n "dangerouslySetInnerHTML|innerHTML|outerHTML|insertAdjacentHTML|eval\(|new Function|document\.write|target=\"_blank\"|window\.location|localStorage|sessionStorage" src
+```
+
+Interpretacja:
+- `dangerouslySetInnerHTML`, `innerHTML`, `eval`, `new Function`, `document.write` z danymi od użytkownika/CMS = czerwone.
+- `target="_blank"` musi mieć `rel="noopener noreferrer"`.
+- `localStorage` i `sessionStorage` nie są miejscem na sekrety. Preferencje UI tak, tokeny nie.
+
+#### 4D - nagłówki i zależności
+Uruchom:
+
+```bash
+ls next.config.* 2>/dev/null
+rg -n "headers\\(|X-Content-Type-Options|Referrer-Policy|X-Frame-Options|Permissions-Policy|Content-Security-Policy" next.config.* src 2>/dev/null
+npm audit --audit-level=high
+```
+
+Minimalne nagłówki dla prostej strony: `X-Content-Type-Options: nosniff`, `Referrer-Policy: strict-origin-when-cross-origin`, `X-Frame-Options: DENY`, `Permissions-Policy: camera=(), microphone=(), geolocation=()`. Jeśli ich nie ma, dodaj w `next.config` przez `async headers()`.
+
+CSP jest ważne, ale nie dodawaj go w ciemno. Content Security Policy potrafi zablokować fonty, obrazy, skrypty analityczne albo Next.js, jeśli jest ustawione za ostro. Zanotuj CSP jako krok po deployu, jeśli strona ma analitykę/CMS.
+
+`npm audit` z HIGH/CRITICAL w zależności runtime = napraw przed pushem. Jeśli wynik dotyczy wyłącznie dev-toolingu i nie ma prostego fixa, opisz ryzyko po ludzku i zapisz w `PROGRESS.md`.
 
 ### Krok 5 - werdykt i zapis stanu
-1. Jeśli build zielony I checklista czysta (max 1 flaga) I klucz bezpieczny - powiedz jasno:
-   "Gotowe. Strona się buduje, wygląda dobrze i klucz jest bezpieczny. Możesz pushować na GitHub - to uruchomi deploy na Vercel."
+1. Jeśli build zielony I checklista czysta (max 1 flaga) I brama bezpieczeństwa nie ma czerwonych flag - powiedz jasno:
+   "Gotowe. Strona się buduje, wygląda dobrze i nie widzę typowych wycieków ani dziur przed publikacją. Możesz pushować na GitHub - to uruchomi deploy na Vercel."
    Podaj gotową komendę commita (token-economy: checkpoint po review):
 
 ```bash
@@ -147,7 +195,7 @@ git add -A && git commit -m "review: build zielony + anti-ai-look czysty"
 ```
 
 2. Jeśli zostały flagi, których uczestnik nie chce naprawiać teraz - zapisz je do `PROGRESS.md` w sekcji "Do poprawy", żeby nic nie zginęło, i powiedz, że można wrócić.
-3. Zaktualizuj `PROGRESS.md` jedną linią w stanie: `[x] sprawdz-kod: build OK, anti-ai-look OK (data)`. Jeśli `PROGRESS.md` nie istnieje - nie twórz go tu, to rola skilla `zbuduj-strone`.
+3. Zaktualizuj `PROGRESS.md` jedną linią w stanie: `[x] sprawdz-kod: build OK, anti-ai-look OK, bezpieczeństwo OK (data)`. Jeśli `PROGRESS.md` nie istnieje - nie twórz go tu, to rola skilla `zbuduj-strone`.
 
 ## Gdy coś pójdzie nie tak (uniwersalny fallback)
 
@@ -162,7 +210,7 @@ Gdy "Build Failed" pojawił się dopiero na Vercel, a lokalnie było zielono: po
 
 ## Ważne
 
-- Kolejność jest święta: najpierw build (Krok 1-2), potem wygląd (Krok 3), potem bezpieczeństwo klucza (Krok 4). Nie przeskakuj.
+- Kolejność jest święta: najpierw build (Krok 1-2), potem wygląd (Krok 3), potem bezpieczeństwo (Krok 4). Nie przeskakuj.
 - Nie pushujemy, dopóki build nie jest zielony. To twarda brama.
 - Naprawiaj minimalnie i tłumacz po ludzku. Uczestnik ma wyjść z poczucia "kontroluję to", nie "magia się dzieje".
 - Lekki tryb: czytaj zmienione pliki + wynik builda, nie całe drzewo repo. Oszczędzasz limit tokenów uczestnika.

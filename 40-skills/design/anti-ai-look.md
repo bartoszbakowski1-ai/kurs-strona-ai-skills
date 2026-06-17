@@ -42,7 +42,7 @@ Layout:
 - Asymetria i oddech: min. jedna sekcja off-center, kolumny czasem 7/5 albo 8/4 zamiast 50/50. Sekcje `py-24`+.
 - Roznicuj karty: rozne rozmiary (jedna szeroka + dwie wezsze), rozny content, hover tylko tam gdzie klikalne. Lam grid (`col-span-2` na pierwszej).
 - Rytm pionowy: naprzemiennie obraz-lewo/tekst-prawo i odwrotnie.
-- Min. 3-5 prawdziwych zdjec (realne foto uczestnika/pracy, NIE stock, NIE AI-illustration).
+- Min. 3 prawdziwe zdjecia/media jako bramka, docelowo 5-7 na dluzszej stronie (realne foto uczestnika/pracy, NIE plastikowa AI-illustration).
 - Zero pustych komorek w gridach: liczba elementow wypelnia siatke (2 kol = parzysta, 3 kol = wielokrotnosc 3).
 
 Kolor i obrazy:
@@ -62,7 +62,7 @@ Strona przechodzi, jesli na te pytania odpowiedz brzmi dobrze:
 2. Brak eyebrow capslockiem nad naglowkami? (ma byc TAK)
 3. Brak fioletowo-niebieskich gradientow i gradient-text na H? (ma byc TAK)
 4. Karty sa zroznicowane, nie 3 identyczne z tym samym hover? (ma byc TAK)
-5. Sa min. 3 prawdziwe zdjecia, nie same ikony? (ma byc TAK)
+5. Sa min. 3 prawdziwe zdjecia/media, a nie same ikony? Przy dluzszej stronie cel to 5-7. (ma byc TAK)
 6. Wszystkie kolory ida ze zmiennych CSS, zero hardkodu? (ma byc TAK)
 7. Copy ma min. jedna konkretna liczbe/nazwe i zero em-dash? (ma byc TAK)
 8. Layout ma oddech i odrobine asymetrii, nie wszystko wycentrowane? (ma byc TAK)

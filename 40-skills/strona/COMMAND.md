@@ -1,6 +1,6 @@
 ---
 name: strona
-description: Komenda-dyrygent całego kursu "Stwórz stronę z AI". Uruchom, gdy uczestnik wpisze /strona (z trybem lub bez). Tryby - /strona wznow (czyta PROGRESS.md i kontynuuje budowę po przerwie lub po wyczerpaniu limitu tokenów), /strona status (pokazuje postęp i co dalej), /strona nowa-podstrona (dodaje spójną podstronę używając kart designu i kontekstu). Samo /strona bez trybu - rozpoznaj stan projektu i podpowiedz najbliższy krok. Komenda NIE buduje sama od zera - kieruje uczestnika do właściwego skilla (kontekst, karty, design, obrazy, zbuduj-strone, sprawdz-kod, sanity) zamiast wolnej rozmowy.
+description: Komenda-dyrygent całego kursu "Stwórz stronę z AI". Uruchom, gdy uczestnik wpisze /strona (z trybem lub bez). Tryby - /strona wznow (czyta PROGRESS.md i kontynuuje budowę po przerwie lub po wyczerpaniu limitu tokenów), /strona status (pokazuje postęp i co dalej), /strona nowa-podstrona (dodaje spójną podstronę używając kart designu i kontekstu). Samo /strona bez trybu - rozpoznaj stan projektu i podpowiedz najbliższy krok. Komenda NIE buduje sama od zera - kieruje uczestnika do właściwego skilla (kontekst, karty, design, obrazy, zbuduj-strone, sprawdz-kod, bezpieczenstwo, sanity) zamiast wolnej rozmowy.
 ---
 
 # Komenda: /strona
@@ -35,7 +35,8 @@ Naczelna zasada: UNIWERSALNOŚĆ (u każdego ma wyjść tak samo) i BEZPIECZEŃS
 | `design` | design tokens z Karty Wizualnej + reguły anti-ai-look | M4 |
 | `obrazy` | dobór i generowanie zdjęć na stronę | M4 |
 | `zbuduj-strone` | budowa sekcja po sekcji, batching, `PROGRESS.md`, formularz | M5 |
-| `sprawdz-kod` | review kodu + checklista anti-ai-look + lokalny build | M5 |
+| `sprawdz-kod` | lokalny build + anti-ai-look + brama bezpieczeństwa | M5 |
+| `bezpieczenstwo` | głębszy audyt: sekrety, API/formularz, nagłówki, zależności | M5/M6 |
 | lekcja deploy | GitHub + Vercel + domena (jednorazowo, nie skill) | M6 |
 | `sanity` | opcjonalny panel treści, 1 kolekcja, PO deployu | M7 |
 
@@ -73,7 +74,7 @@ Cel: bez "od początku". Uczestnik wraca po przerwie albo po odnowieniu limitu (
 3. Streść uczestnikowi w 2-3 zdaniach: "Skończyliśmy na X (z `PROGRESS.md`). Następne w kolejce jest Y. Decyzje z Twoich kart (kolory, fonty, oferta) mam zapisane, nie pytam o nie ponownie."
 4. Wznów właściwy skill od miejsca "W trakcie / Następne" z `PROGRESS.md`:
    - jeśli następna pozycja to sekcja strony lub formularz -> uruchom logikę skilla `zbuduj-strone` (jedna sekcja = jeden batch, patrz token-economy niżej).
-   - jeśli następne to review -> `sprawdz-kod`.
+   - jeśli następne to review -> `sprawdz-kod` (w środku ma też bramę bezpieczeństwa).
    - jeśli następne to deploy -> przeprowadź przez lekcję deploy M6.
    - jeśli następne to Sanity -> `sanity`.
 5. Po ukończeniu kolejnej sekcji: commit + nadpisz `PROGRESS.md` (patrz token-economy). Zapytaj, czy jedziemy dalej, czy robimy przerwę. Przypomnij: "Limit to normalne. Gdy się skończy, wracasz i piszesz `/strona wznow` - nic nie tracisz."
@@ -110,7 +111,7 @@ Cel: dodać nową podstronę (np. `/o-mnie`, `/oferta`, `/blog`), spójną z res
    - istniejące komponenty w `src/` -> używaj tych samych zmiennych CSS i bloków, nie wymyślaj nowych klas.
 4. Zbuduj podstronę sekcja po sekcji (jak w token-economy), używając WYŁĄCZNIE zmiennych z `globals.css` i istniejących bloków. Egzekwuj anti-ai-look (sekcja na końcu tego pliku).
 5. Dodaj odnośnik do nawigacji (navigation-menu / sheet), żeby podstrona była osiągalna.
-6. Po skończeniu: uruchom logikę `sprawdz-kod` (lokalny build + checklista anti-ai-look), potem commit + aktualizacja `PROGRESS.md`:
+6. Po skończeniu: uruchom logikę `sprawdz-kod` (lokalny build + checklista anti-ai-look + brama bezpieczeństwa), potem commit + aktualizacja `PROGRESS.md`:
    ```bash
    git add -A && git commit -m "podstrona: <slug>"
    ```
@@ -164,12 +165,17 @@ Uczestnik ma plan ~20 USD - limit jest realny (okno ~5h). Dlatego:
    Następne:
    - [ ] <sekcja>
    - [ ] Formularz -> Resend (klucz w .env.local, NIE w git)
+   - [ ] sprawdz-kod -> build + anti-ai-look + bezpieczeństwo
    - [ ] Deploy na Vercel + domena
 
    ## Decyzje (z kart)
    - Kolory: <tlo> / <akcent>
    - Fonty: naglowki <X>, body Inter
    - Oferta glowna: <tytul uczestnika>
+
+   ## Bezpieczeństwo
+   - [ ] przed pushem: brak sekretów w git/public/NEXT_PUBLIC
+   - [ ] po deployu: rate limit `/api/contact`, jeśli formularz jest aktywny
 
    ## Jak wznowic
    Napisz w Claude Code: /strona wznow
@@ -182,12 +188,12 @@ Uczestnik ma plan ~20 USD - limit jest realny (okno ~5h). Dlatego:
 ## Anti-ai-look (egzekwuj w nowa-podstrona i przy każdej budowie)
 Pełny ruleset: `40-skills/anti-ai-look-ruleset.md`. Twarde minimum, którego pilnujesz:
 - ZAKAZ: `tracking-tight`/`tracking-tighter` na nagłówkach, eyebrow CAPSLOCKIEM nad nagłówkiem, fioletowo-niebieskie gradienty, gradient text na nagłówku, em-dash, 3 identyczne karty z tym samym hover, wszystko `text-center mx-auto`, emoji jako ikony UI, buzzwordy (Elevate/Unlock/Supercharge/all-in-one/seamless).
-- NAKAZ: `text-balance` na nagłówkach i `text-pretty` na akapitach, sensowny `max-w-[ch]`, własny font pairing z Karty Wizualnej, jeden akcent brandowy (nie tęcza), asymetria i oddech (sekcje `py-24`+), min. 3 prawdziwe zdjęcia, konkretne liczby/nazwy/daty w copy, polskie znaki bez długich myślników.
+- NAKAZ: `text-balance` na nagłówkach i `text-pretty` na akapitach, sensowny `max-w-[ch]`, własny font pairing z Karty Wizualnej, jeden akcent brandowy (nie tęcza), asymetria i oddech (sekcje `py-24`+), min. 3 prawdziwe zdjęcia/media i docelowo 5-7 na dłuższej stronie, konkretne liczby/nazwy/daty w copy, polskie znaki bez długich myślników.
 - Wszystkie kolory przez zmienne CSS z `globals.css` (z Karty Wizualnej), zero hardkodowanych kolorów w komponentach.
 
 ## Zakres komendy (ROBI / NIE ROBI)
 - ROBI: rozpoznaje stan projektu, wznawia po limicie, pokazuje status, dodaje spójne podstrony, kieruje do właściwego skilla, pilnuje commitów i `PROGRESS.md`, egzekwuje anti-ai-look i guardraile.
-- NIE ROBI: nie prowadzi wywiadu o kontekście (to `kontekst`), nie tworzy kart od zera (to `karty`), nie generuje tokenów designu od zera (to `design`), nie robi pełnego review (to `sprawdz-kod`), nie podpina Sanity (to `sanity`). Komenda dyryguje - nie zastępuje skilli.
+- NIE ROBI: nie prowadzi wywiadu o kontekście (to `kontekst`), nie tworzy kart od zera (to `karty`), nie generuje tokenów designu od zera (to `design`), nie robi pełnego review ani audytu bezpieczeństwa (to `sprawdz-kod` i `bezpieczenstwo`), nie podpina Sanity (to `sanity`). Komenda dyryguje - nie zastępuje skilli.
 
 ## Gdy coś nie gra
 - Nie ma projektu, kart albo kontekstu w miejscu, gdzie powinny być -> powiedz wprost, czego brakuje, i skieruj do właściwego skilla. Nie improwizuj zamiennika.

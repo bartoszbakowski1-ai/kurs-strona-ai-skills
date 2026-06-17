@@ -33,7 +33,7 @@ Im wyżej, tym lepiej. Zawsze proponuj najpierw górę listy.
 ```bash
 mkdir -p public/images
 ```
-4. Przeczytaj `kontekst/profil.md` (kto to jest, branża) i `karty/karta-wizualna.md` jeśli istnieją - stąd weźmiesz nastrój i minimalną liczbę zdjęć. Jeśli kart nie ma, kieruj się rulesetem: min. 3-5 realnych zdjęć na stronę.
+4. Przeczytaj `kontekst/profil.md` (kto to jest, branża) i `karty/karta-wizualna.md` jeśli istnieją - stąd weźmiesz nastrój i minimalną liczbę zdjęć. Jeśli kart nie ma, kieruj się rulesetem: min. 3 realne zdjęcia/media jako bramka, docelowo 5-7 na dłuższej stronie.
 
 ### Krok 1 - mapa miejsc na zdjęcia
 1. Przejrzyj komponenty sekcji w `src/` i zrób listę miejsc, które wołają o zdjęcie. Domyślnie:
@@ -41,7 +41,7 @@ mkdir -p public/images
    - **O mnie / autor** - zdjęcie portretowe uczestnika.
    - **Oferta / proces** - 1-2 zdjęcia z pracy, warsztatu, efektu.
    - **Opinie** - zdjęcia klientów (za zgodą) albo neutralne, prawdziwe portrety z banku.
-2. Pokaż uczestnikowi tę listę prostym językiem ("strona prosi o zdjęcia w X miejscach"). Zaznacz, że minimum to 3 prawdziwe zdjęcia - poniżej tego strona wygląda jak AI.
+2. Pokaż uczestnikowi tę listę prostym językiem ("strona prosi o zdjęcia w X miejscach"). Zaznacz, że 3 prawdziwe zdjęcia to minimum, a 5-7 realnych mediów daje dużo bardziej ludzki efekt na dłuższej stronie.
 3. Idź miejsce po miejscu. Dla każdego najpierw pytaj o zdjęcie uczestnika (źródło 1), dopiero potem proponuj bank (źródło 2).
 
 ### Krok 2 - zdjęcia uczestnika (źródło 1, preferowane)
@@ -123,7 +123,7 @@ npm run dev
 ```
 Powiedz uczestnikowi, żeby otworzył `http://localhost:3000` i sprawdził, czy zdjęcia się pokazują i nie są rozciągnięte. Zatrzymanie podglądu: Ctrl+C w terminalu.
 2. Mini-checklista anti-AI-look (przeleć szybko, to brama jakości):
-   - Czy na stronie są min. 3 prawdziwe zdjęcia (nie ikona, nie svg, nie plastikowa ilustracja)? Jeśli nie - dorzuć.
+   - Czy na stronie są min. 3 prawdziwe zdjęcia/media (nie ikona, nie svg, nie plastikowa ilustracja), a na dłuższej stronie celujemy w 5-7? Jeśli nie - dorzuć.
    - Czy zdjęcia mają oddech wokół siebie (whitespace), a nie są wciśnięte? Jeśli ciasno - to robota dla `zbuduj-strone`, zanotuj.
    - Czy nie ma fioletowo-niebieskich gradientów ani emoji jako grafiki głównej?
    - Czy każde zdjęcie ma sensowny polski `alt`?
