@@ -7,7 +7,7 @@ W tym kursie budujesz cala strone-system: strone glowna plus podstrony (oferta, 
 W srodku sa:
 
 - `START-TUTAJ.md` - najprostsza sciezka po zakupie,
-- `kurs/` - moduly M0-M8 jako pliki Markdown,
+- `kurs/` - moduly M0-M9 jako pliki Markdown,
 - `40-skills/` - skille do Claude Code,
 - `30-szablony-md/` - szablony kontekstu i 3 kart strony,
 - `prompty/` - prompty startowe i ratunkowe,
@@ -52,6 +52,7 @@ Po instalacji w folderze Twojej strony powinno byc:
 ```plain text
 .claude/
   skills/
+    analityka/
     bezpieczenstwo/
     design/
     karty/
@@ -107,6 +108,7 @@ Uruchom skill oferta. Zrob spersonalizowana strone oferty na podstawie rozmowy z
 - `oferta` - tworzy spersonalizowana strone oferty z rozmowy, briefu albo notatek klienta,
 - `sprawdz-kod` - sprawdza build, mobile, jakosc, anti-ai-look i bezpieczenstwo,
 - `bezpieczenstwo` - robi lekki audyt sekretow, API, formularza i deploya,
+- `analityka` - po publikacji wpina prosty pomiar: Vercel Analytics, GA4 przez GTM, Search Console, sitemap i pixel,
 - `sanity` - opcjonalnie podpina panel edycji tresci,
 - `/strona` - komenda-dyrygent do statusu, wznowienia i rozwoju strony.
 

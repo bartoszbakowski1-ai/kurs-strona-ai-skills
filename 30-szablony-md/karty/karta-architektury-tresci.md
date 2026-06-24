@@ -23,7 +23,7 @@ Ktore podstrony sa w menu i w jakiej kolejnosci. Menu i stopka sa wspolne dla ca
 
 ## Treść dynamiczna w CMS (od startu)
 
-Ktore kolekcje chcesz edytowac sam(a) w przegladarce, bez kodu. To czesc architektury systemu, a nie dodatek na pozniej (M7 tylko podlacza panel).
+Ktore kolekcje chcesz edytowac sam(a) w przegladarce, bez kodu. To czesc architektury systemu, a nie dodatek na pozniej (M8 tylko podlacza panel).
 
 - Blog / wpisy:
 - Realizacje / case studies:

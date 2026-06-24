@@ -1,6 +1,6 @@
 ---
 name: sanity
-description: Uruchom DOPIERO po publikacji strony (po deployu na Vercel, moduł M7), gdy uczestnik chce sam edytować treść bez wracania do Claude Code - na przykład dodawać wpisy na blogu albo opinie klientów. Podpina Sanity w minimalnym zakresie: panel (Studio) + jedna kolekcja treści. Wywołaj, gdy użytkownik mówi "podepnij Sanity", "chcę sam edytować treść", "dodaj panel do bloga/opinii", "uruchom skill sanity". NIE uruchamiaj na statycznej stronie, która nie ma treści do edycji ani przed deployem.
+description: Uruchom DOPIERO po publikacji strony (po deployu na Vercel, moduł M8), gdy uczestnik chce sam edytować treść bez wracania do Claude Code - na przykład dodawać wpisy na blogu albo opinie klientów. Podpina Sanity w minimalnym zakresie: panel (Studio) + jedna kolekcja treści. Wywołaj, gdy użytkownik mówi "podepnij Sanity", "chcę sam edytować treść", "dodaj panel do bloga/opinii", "uruchom skill sanity". NIE uruchamiaj na statycznej stronie, która nie ma treści do edycji ani przed deployem.
 ---
 
 # Skill: sanity
@@ -224,7 +224,7 @@ WAŻNE (rozjazd struktury): NIE zakładaj na sztywno, gdzie leży `sanity.config
 3. Po deployu niech wejdzie na `swojadomena.pl/studio`, doda treść i sprawdzi ją na żywej stronie. Od teraz edytuje sam, bez Claude Code.
 
 ### Krok 8 - zapis stanu i zamknięcie
-1. Zaktualizuj `PROGRESS.md`: odhacz "M7 Sanity podpięty", zapisz którą kolekcję wybrano i że Studio jest pod `/studio`. Dopisz w sekcji decyzji: env w Vercel ustawione TAK/NIE.
+1. Zaktualizuj `PROGRESS.md`: odhacz "M8 Sanity podpięty", zapisz którą kolekcję wybrano i że Studio jest pod `/studio`. Dopisz w sekcji decyzji: env w Vercel ustawione TAK/NIE.
 2. Podsumuj 1-2 zdaniami: masz panel pod `/studio`, edytujesz treść w przeglądarce, zmiany pojawiają się na stronie bez ruszania kodu.
 3. Powiedz, co dalej: jeśli kiedyś zechcesz drugą kolekcję (np. dołożyć opinie do bloga) - odpal ten skill jeszcze raz, wykryje istniejące Sanity i dołoży tylko nową kolekcję. Codzienne zmiany treści robisz już sam w `/studio`.
 

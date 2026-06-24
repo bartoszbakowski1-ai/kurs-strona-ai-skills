@@ -16,6 +16,7 @@ Naczelna zasada: UNIWERSALNOŚĆ (u każdego ma wyjść tak samo) i BEZPIECZEŃS
 - Fonty: `next/font/google`, 2 fonty (1 nagłówkowy + Inter na body).
 - Formularz: Resend + API route `app/api/contact/route.ts`, klucz w `.env.local` (w `.gitignore`, NIGDY commitowany). NIE n8n, NIE Formspree.
 - Hosting: Vercel, auto-deploy z `main`. GitHub, repo prywatne, 1 per strona. Commit = checkpoint.
+- Analityka (M7, po deployu): Vercel Analytics + GA4 przez GTM + Search Console + sitemap/robots + canonical. JEDEN inline `next/script` (GTM); GA4 i Pixel jako tagi w GTM. CAPI/RODO pelne = pakiet rozszerzony, nie tu.
 - Sanity: opcjonalny, minimalny, PO deployu, 1 kolekcja.
 
 ## Zasady prowadzenia (trzymaj się bezwzględnie)
@@ -38,7 +39,8 @@ Naczelna zasada: UNIWERSALNOŚĆ (u każdego ma wyjść tak samo) i BEZPIECZEŃS
 | `sprawdz-kod` | lokalny build + anti-ai-look + brama bezpieczeństwa | M5 |
 | `bezpieczenstwo` | głębszy audyt: sekrety, API/formularz, nagłówki, zależności | M5/M6 |
 | lekcja deploy | GitHub + Vercel + domena (jednorazowo, nie skill) | M6 |
-| `sanity` | opcjonalny panel treści, 1 kolekcja, PO deployu | M7 |
+| `analityka` | po publikacji: Vercel Analytics, GA4 przez GTM, Search Console, sitemap, pixel | M7 |
+| `sanity` | opcjonalny panel treści, 1 kolekcja, PO deployu | M8 |
 
 `PROGRESS.md` w katalogu projektu = jedyne źródło prawdy o postępie. Ty go czytasz i aktualizujesz, uczestnik nie musi.
 
@@ -95,7 +97,7 @@ Cel: szybki obraz postępu, bez działania.
 
 ---
 
-### Sekcja C - /strona nowa-podstrona (rozbudowa, M8)
+### Sekcja C - /strona nowa-podstrona (rozbudowa, M9)
 Cel: dodać nową podstronę (np. `/o-mnie`, `/oferta`, `/blog`), spójną z resztą strony - bo znasz już design i kontekst.
 
 1. Warunek wejścia: musi istnieć działający projekt (`package.json`), `karty/` (zwłaszcza Karta Wizualna) i najlepiej `PROGRESS.md`. Jeśli czegoś brak - powiedz wprost, czego, i skieruj do właściwego skilla (np. "najpierw `karty`, żeby mieć kierunek wizualny"). Nie buduj podstrony bez Karty Wizualnej - wyszłaby niespójna.

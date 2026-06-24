@@ -18,7 +18,7 @@ ROBI:
 - tworzy routing podstron Next.js (App Router: `src/app/<podstrona>/page.tsx`) i wspolna nawigacje + stopke laczaca system
 - po KAZDEJ sekcji albo podstronie: commit (git) + nadpisanie `PROGRESS.md`
 - dodaje shadcn/ui TYLKO z listy: button, card, input, accordion, navigation-menu, sheet
-- przygotowuje strukture pod tresc dynamiczna z mapy (blog, realizacje, opinie): podstrony i szablony wpisow, ze statyczna trescia na start - samo podlaczenie CMS robi skill `sanity` (M7)
+- przygotowuje strukture pod tresc dynamiczna z mapy (blog, realizacje, opinie): podstrony i szablony wpisow, ze statyczna trescia na start - samo podlaczenie CMS robi skill `sanity` (M8)
 - buduje dzialajacy formularz kontaktowy przez Resend + API route (szczegoly w pliku `formularz.md` obok)
 - egzekwuje reguly anti-ai-look przy kazdej sekcji
 - wznawia budowe po limicie tokenow na podstawie `PROGRESS.md`
@@ -29,7 +29,7 @@ NIE ROBI:
 - nie generuje zdjec (to skill `obrazy`, M4) - tylko wstawia te, ktore sa, albo prosi o realne foto
 - nie robi pelnego review/buildu na koniec (to skill `sprawdz-kod`)
 - nie pushuje na GitHub, nie deployuje, nie rusza domeny (to lekcja M6)
-- nie podpina silnika Sanity (to skill `sanity`, M7) - ale buduje podstrony i szablony, ktore Sanity pozniej zasili
+- nie podpina silnika Sanity (to skill `sanity`, M8) - ale buduje podstrony i szablony, ktore Sanity pozniej zasili
 - NIE uzywa n8n ani Formspree - formularz to wylacznie Resend + API route
 
 ## Zasady prowadzenia (trzymaj sie bezwzglednie)

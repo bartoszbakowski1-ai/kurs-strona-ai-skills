@@ -23,7 +23,7 @@ mkdir -p .claude/skills .claude/commands .claude/materialy
 ## 3. Skopiuj skille
 
 ```bash
-for skill in bezpieczenstwo design karty kontekst lp obrazy oferta sanity sprawdz-kod zbuduj-strone; do
+for skill in analityka bezpieczenstwo design karty kontekst lp obrazy oferta sanity sprawdz-kod zbuduj-strone; do
   rm -rf ".claude/skills/$skill"
   cp -R "/tmp/kurs-strona-ai-skills/40-skills/$skill" ".claude/skills/$skill"
 done
@@ -66,6 +66,7 @@ Powinienes/powinnas widziec m.in.:
 .claude/skills/sprawdz-kod/SKILL.md
 .claude/skills/bezpieczenstwo/SKILL.md
 .claude/skills/sanity/SKILL.md
+.claude/skills/analityka/SKILL.md
 ```
 
 ## 7. Pierwszy krok

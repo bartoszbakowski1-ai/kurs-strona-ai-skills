@@ -16,7 +16,7 @@ NIE ROBI: nie pyta o klienta/ofertę od zera (to masz w kontekście z M1), nie p
 - DECYDUJ sam wszystko, co techniczne (struktura plików, format kart, nazwy sekcji w kodzie, jak wizual przełoży się na design tokens). PYTAJ tylko o treść biznesową i markę (cel, oferta, teksty, kolory marki, nastrój, referencje).
 - Nigdy nie pytaj o wybór techniczny ("ile kolumn", "jaki font z Google Fonts", "jaki radius"). Ty to ustalasz na podstawie odpowiedzi o marce i nastroju.
 - Pytaj ETAPAMI: maksymalnie 2-3 pytania naraz, potem czekaj na odpowiedź. Po każdej odpowiedzi krótko potwierdź (1 zdanie) i jedź dalej.
-- Jeśli ktoś odpowie "nie wiem", zaproponuj 2-3 konkretne opcje do wyboru. Nigdy nie zostawiaj uczestnika z pustą kartką.
+- Jeśli ktoś odpowie "nie wiem", zaproponuj 2-3 konkretne opcje do wyboru. Nigdy nie zostawiaj uczestnika z pustą kartką. Przy pytaniach o cel, ofertę, pozycjonowanie, nagłówki/CTA albo obiekcje możesz też wskazać gotowy prompt z `.claude/materialy/prompty/research-perplexity.md` (sekcje: Oferta i pozycjonowanie, Nagłówki i CTA, Dowody i obiekcje) - uczestnik dopracowuje odpowiedź w Perplexity i wraca z konkretem.
 - Opieraj się na PRAWDZIWYCH przykładach (realni klienci, realne liczby z kontekstu), nie na ogólnikach.
 - Zwracaj się w formach męskich i żeńskich tam, gdzie to naturalne (gotowy/gotowa, zrobiłeś/zrobiłaś, wybrałeś/wybrałaś).
 - Polskie znaki z ogonkami zawsze. Nigdy długich myślników (em-dash), tylko krótki "-". Pisz po ludzku, zero korpo.
@@ -56,7 +56,7 @@ Cel: zaprojektować MAPĘ całej strony-systemu - jakie podstrony powstają, jak
    - **Kontakt** (podstrona) - formularz, domknięcie.
    Dobierz zestaw podstron do celu i realnej treści uczestnika - jeśli nie ma jeszcze materiału na blog, zaplanuj podstronę jako kolejny etap, ale ujmij ją w mapie systemu od startu. Nie wszystkie podstrony muszą powstać w pierwszym etapie budowy, ale CAŁA mapa jest zaprojektowana teraz.
 2. **Nawigacja i hierarchia podstron**: ustal menu główne (które podstrony w nawigacji), co jest najważniejsze, gdzie w lejku pada główne CTA na każdej podstronie. Zaplanuj wspólne elementy systemu: nawigację i stopkę, które są na każdej podstronie.
-3. **Treść dynamiczna (CMS od startu, nie "może później")**: zaznacz, które kolekcje żyją w CMS i będą edytowane bez kodu - typowo blog/wiedza, realizacje/case studies, opinie. To NIE jest dodatek z M7 - to część architektury systemu projektowana teraz (M7 tylko podłącza panel). Reszta treści jest statyczna.
+3. **Treść dynamiczna (CMS od startu, nie "może później")**: zaznacz, które kolekcje żyją w CMS i będą edytowane bez kodu - typowo blog/wiedza, realizacje/case studies, opinie. To NIE jest dodatek z M8 - to część architektury systemu projektowana teraz (M8 tylko podłącza panel). Reszta treści jest statyczna.
 4. **Sekcje per podstrona**: dla każdej podstrony rozpisz sekcje w kolejności (każda z rolą i kluczową treścią). Treść bierz z kontekstu i z karty strategicznej, dopytuj tylko o luki. Anti-ai-look: nie zostawiaj na home dokładnie hero->3 ficzery->opinie->CTA bez własnej sekcji.
 5. **Etapowanie budowy**: oznacz, co budujemy w pierwszym etapie (rdzeń systemu: strona główna + kontakt + 1-2 kluczowe podstrony), a co dokładamy w kolejnych etapach. To plan dla skilla zbuduj-strone, żeby system powstawał w kawałkach (token-economy), a nie cały naraz.
 
