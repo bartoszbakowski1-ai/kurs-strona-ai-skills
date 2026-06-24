@@ -1,21 +1,24 @@
 ---
 name: zbuduj-strone
-description: Uruchom w module M5, gdy istnieje juz projekt Next.js (jest package.json) oraz karty z M3 (karty/karta-strategiczna.md, karty/karta-architektury-tresci.md, karty/karta-wizualna.md) i ustawione design tokens po skillu design. To serce kursu - buduje strone SEKCJA PO SEKCJI z 3 kart, jedna sekcja = jeden batch + commit + zapis stanu do PROGRESS.md (token-economy, plan 20 USD). W srodku ma formularz kontaktowy przez Resend (API route app/api/contact/route.ts, klucz w .env.local). Wywolaj, gdy uczestnik mowi "zbuduj strone", "buduj sekcje", "dodaj hero/oferte/opinie/FAQ/formularz/stopke", albo gdy /strona kieruje do budowy. Po wyczerpaniu limitu tokenow wznawiasz przez /strona wznow (czyta PROGRESS.md).
+description: Uruchom w module M5, gdy istnieje juz projekt Next.js (jest package.json) oraz karty z M3 (karty/karta-strategiczna.md, karty/karta-architektury-tresci.md, karty/karta-wizualna.md) i ustawione design tokens po skillu design. To serce kursu - buduje cala strone-system z 3 kart: strone glowna PLUS podstrony z mapy systemu (oferta, o mnie, blog/wiedza, realizacje, kontakt), etapami. Rdzen najpierw (strona glowna + kontakt + 1-2 kluczowe podstrony), reszta podstron w kolejnych etapach. Jedna sekcja albo jedna podstrona = jeden batch + commit + zapis stanu do PROGRESS.md (token-economy, plan 20 USD). W srodku ma formularz kontaktowy przez Resend (API route app/api/contact/route.ts, klucz w .env.local). Wywolaj, gdy uczestnik mowi "zbuduj strone", "buduj sekcje", "dodaj podstrone/hero/oferte/opinie/FAQ/formularz/stopke", albo gdy /strona kieruje do budowy. Po wyczerpaniu limitu tokenow wznawiasz przez /strona wznow (czyta PROGRESS.md).
 ---
 
 # Skill: zbuduj-strone (wykonawca, serce M5)
 
-Jestes wykonawca. Budujesz strone z 3 kart, sekcja po sekcji, i pilnujesz token-economy. Uczestnik jest NIETECHNICZNY (trener, coach, ekspert, pisze prompty w czacie, ale nie programuje). Ty robisz cala robote techniczna i tlumaczysz po ludzku, co sie dzieje. Decydujesz o WSZYSTKIM, co techniczne. Pytasz uczestnika TYLKO o tresc biznesowa (teksty, oferta, liczby, zdjecia) i tylko gdy karty tego nie maja.
+Jestes wykonawca. Budujesz cala strone-system z 3 kart: strone glowna i podstrony z mapy systemu (Karta Architektury), etapami - sekcja po sekcji i podstrona po podstronie. Pilnujesz token-economy. Uczestnik jest NIETECHNICZNY (trener, coach, ekspert, pisze prompty w czacie, ale nie programuje). Ty robisz cala robote techniczna i tlumaczysz po ludzku, co sie dzieje. Decydujesz o WSZYSTKIM, co techniczne. Pytasz uczestnika TYLKO o tresc biznesowa (teksty, oferta, liczby, zdjecia) i tylko gdy karty tego nie maja.
 
-Cel nadrzedny: strona ma sie skladac z malych, sprawdzonych blokow, dzialac naprawde (lacznie z formularzem, ktory wysyla maila), wygladac dobrze i NIE jak generyczny output AI - a calosc musi dac sie zbudowac w kawalkach na planie 20 USD, z odzyskiwaniem stanu po przerwie.
+Cel nadrzedny: powstaje system z wielu podstron (nie pojedynczy landing), zlozony z malych, sprawdzonych blokow, dzialajacy naprawde (lacznie z formularzem, ktory wysyla maila), wygladajacy dobrze i NIE jak generyczny output AI - a calosc musi dac sie zbudowac w kawalkach na planie 20 USD, etapami (najpierw rdzen systemu, potem kolejne podstrony), z odzyskiwaniem stanu po przerwie.
 
 ## ROBI / NIE ROBI (zakres)
 
 ROBI:
 - czyta `kontekst/*.md` (profil, persona) oraz 3 karty z M3 (strategiczna, architektury tresci, wizualna)
-- buduje strone SEKCJA PO SEKCJI (jeden batch naraz): szkielet -> hero -> oferta -> dowody/opinie -> FAQ -> formularz -> stopka (kolejnosc i zestaw sekcji bierze z Karty Architektury Tresci)
-- po KAZDEJ sekcji: commit (git) + nadpisanie `PROGRESS.md`
+- buduje strone-system ETAPAMI wedlug mapy z Karty Architektury: rdzen najpierw (strona glowna + kontakt + 1-2 kluczowe podstrony), potem kolejne podstrony
+- w obrebie jednej podstrony buduje SEKCJA PO SEKCJI (jeden batch naraz): szkielet -> hero -> oferta -> dowody/opinie -> FAQ -> formularz -> stopka (kolejnosc i zestaw sekcji bierze z Karty Architektury Tresci)
+- tworzy routing podstron Next.js (App Router: `src/app/<podstrona>/page.tsx`) i wspolna nawigacje + stopke laczaca system
+- po KAZDEJ sekcji albo podstronie: commit (git) + nadpisanie `PROGRESS.md`
 - dodaje shadcn/ui TYLKO z listy: button, card, input, accordion, navigation-menu, sheet
+- przygotowuje strukture pod tresc dynamiczna z mapy (blog, realizacje, opinie): podstrony i szablony wpisow, ze statyczna trescia na start - samo podlaczenie CMS robi skill `sanity` (M7)
 - buduje dzialajacy formularz kontaktowy przez Resend + API route (szczegoly w pliku `formularz.md` obok)
 - egzekwuje reguly anti-ai-look przy kazdej sekcji
 - wznawia budowe po limicie tokenow na podstawie `PROGRESS.md`
@@ -26,7 +29,7 @@ NIE ROBI:
 - nie generuje zdjec (to skill `obrazy`, M4) - tylko wstawia te, ktore sa, albo prosi o realne foto
 - nie robi pelnego review/buildu na koniec (to skill `sprawdz-kod`)
 - nie pushuje na GitHub, nie deployuje, nie rusza domeny (to lekcja M6)
-- nie podpina Sanity (to skill `sanity`, M7)
+- nie podpina silnika Sanity (to skill `sanity`, M7) - ale buduje podstrony i szablony, ktore Sanity pozniej zasili
 - NIE uzywa n8n ani Formspree - formularz to wylacznie Resend + API route
 
 ## Zasady prowadzenia (trzymaj sie bezwzglednie)
@@ -110,13 +113,13 @@ git add -A && git commit -m "checkpoint przed budowa"
 ```
 
 ### Krok 1 - wczytaj fundament (raz na sesje)
-1. Przeczytaj raz, na poczatku: `kontekst/profil.md`, `kontekst/persona.md` (jezyk klienta, fakty, liczby), `karty/karta-strategiczna.md` (cel strony + JEDNA glowna akcja/CTA + oferta), `karty/karta-architektury-tresci.md` (jakie sekcje i w jakiej kolejnosci), `karty/design-decyzje.md` (tokeny + reguly anti-ai-look skondensowane przez skill `design`).
-2. Wypisz uczestnikowi krotko, po ludzku, co odczytales: glowne CTA, oferta, lista sekcji w kolejnosci. To plan budowy. Niczego jeszcze nie buduj.
-3. Jesli `PROGRESS.md` nie istnieje - utworz go z szablonu (wyzej), z lista sekcji z Karty Architektury Tresci jako "Nastepne". Jesli istnieje - przeczytaj go i ustal, gdzie skonczyliscie (tryb wznowienia).
+1. Przeczytaj raz, na poczatku: `kontekst/profil.md`, `kontekst/persona.md` (jezyk klienta, fakty, liczby), `karty/karta-strategiczna.md` (cel systemu + lejek + oferta), `karty/karta-architektury-tresci.md` (MAPA systemu: jakie podstrony, nawigacja, sekcje per podstrona, co dynamiczne, etapy budowy), `karty/design-decyzje.md` (tokeny + reguly anti-ai-look skondensowane przez skill `design`).
+2. Wypisz uczestnikowi krotko, po ludzku, co odczytales: mapa podstron, ktore sa w rdzeniu (etap 1), glowne CTA i lejek, lista sekcji strony glownej. To plan budowy systemu. Niczego jeszcze nie buduj.
+3. Jesli `PROGRESS.md` nie istnieje - utworz go z szablonu (wyzej), z mapa podstron i lista sekcji rdzenia jako "Nastepne". Jesli istnieje - przeczytaj go i ustal, gdzie skonczyliscie (tryb wznowienia).
 
-### Krok 2 - szkielet strony (pierwszy batch)
-Szkielet to fundament, na ktory wpadaja sekcje. Buduj go jako osobny batch.
-1. Utworz prosty layout strony glownej: kontener tresci max ~1100px, nawigacja na gorze (navigation-menu z shadcn na desktopie, sheet jako menu mobilne), pusta stopka na razie, sloty pod kolejne sekcje. Strona glowna to `src/app/page.tsx`.
+### Krok 2 - szkielet systemu (pierwszy batch)
+Szkielet to wspolna rama calego systemu: layout, nawigacja laczaca podstrony i stopka. Buduj go jako osobny batch.
+1. Utworz wspolny layout w `src/app/layout.tsx`: kontener tresci max ~1100px, nawigacja na gorze (navigation-menu z shadcn na desktopie, sheet jako menu mobilne) z linkami do podstron z mapy (Karta Architektury), stopka wspolna dla calego systemu. Strona glowna to `src/app/page.tsx`. Dla kazdej podstrony z etapu 1 zaloz pusty routing (`src/app/<podstrona>/page.tsx`) ze slotem na sekcje, zeby nawigacja od razu dzialala (linki nie prowadza w pustke).
 2. Dodaj komponenty shadcn, ktorych uzyjesz - TYLKO z dozwolonej listy. shadcn jest juz zainicjowany (zrobil to skill `design` w Kroku 3 komenda `npx shadcn@latest init -d --yes`), wiec `add` nie zapyta o init i nie wejdzie w tryb interaktywny. Komenda (uruchom raz, dobierz potrzebne z listy):
 
 ```bash
@@ -133,10 +136,10 @@ Jesli mimo to `add` poprosi o inicjalizacje (np. ktos pominal skill `design`) - 
 git add -A && git commit -m "szkielet: layout + nawigacja + stopka"
 ```
 
-Powiedz po ludzku: "Mamy rame strony - menu, kontener tresci, miejsce na sekcje. Teraz wlewamy do niej sekcje, jedna po drugiej."
+Powiedz po ludzku: "Mamy rame calego systemu - menu laczace podstrony, kontener tresci, stopke. Teraz wlewamy sekcje, jedna po drugiej, zaczynajac od strony glownej."
 
-### Krok 3 - buduj sekcje po jednej (petla token-economy)
-Dla KAZDEJ sekcji z Karty Architektury Tresci, w jej kolejnosci, powtarzaj ten sam cykl. Domyslna kolejnosc, jesli karta nie mowi inaczej: **hero -> oferta -> dowody/opinie -> FAQ -> formularz -> stopka.**
+### Krok 3 - buduj sekcje i podstrony po jednej (petla token-economy)
+Budujesz system etapami z mapy (Karta Architektury). Zaczynasz od rdzenia (etap 1: strona glowna, potem kontakt, potem 1-2 kluczowe podstrony), kolejne podstrony dokladasz w nastepnych etapach. W obrebie kazdej podstrony idziesz SEKCJA PO SEKCJI tym samym cyklem. Domyslna kolejnosc sekcji strony glownej, jesli karta nie mowi inaczej: **hero -> dla kogo/problem -> skrot oferty -> dowody/opinie -> skrot o mnie -> CTA glowne.** Na podstronach (oferta, o mnie, blog, realizacje, kontakt) zestaw sekcji bierzesz z Karty Architektury. Po skonczonej podstronie: commit + PROGRESS.md, zapytaj czy jedziemy z nastepna podstrona, czy przerwa.
 
 Cykl jednej sekcji:
 1. **Powiedz, ktora sekcje robisz** i co ona ma osiagnac (1 zdanie). Np. "Robie hero - to pierwsze, co widzi odwiedzajacy, ma jasno powiedziec co oferujesz i poprowadzic do [glowne CTA]."
@@ -170,10 +173,10 @@ git add -A && git commit -m "sekcja: formularz kontaktowy (Resend)"
 
 Powiedz: "Formularz dziala lokalnie i bedzie dzialal na zywo po deployu. Klucz siedzi bezpiecznie w `.env.local`, nie wchodzi do gita - w Vercel wpiszemy go recznie pod ta sama nazwa."
 
-### Krok 5 - zamkniecie budowy
-1. Gdy wszystkie sekcje z Karty Architektury Tresci sa zrobione i zacommitowane - powiedz po ludzku, ze szkielet tresci jest gotowy.
+### Krok 5 - zamkniecie etapu / budowy
+1. Gdy rdzen systemu (etap 1: strona glowna + kontakt + kluczowe podstrony) jest zrobiony i zacommitowany - powiedz po ludzku, ze rdzen systemu dziala. Jesli w mapie sa kolejne etapy (dalsze podstrony, blog, realizacje) - przypomnij, ze dokladamy je w nastepnych sesjach tym samym cyklem, a `/strona wznow` wraca do planu z PROGRESS.md.
 2. Skieruj do nastepnego kroku: "Teraz skill `sprawdz-kod` - sprawdzi, czy strona zbuduje sie bez bledow, przeleci checkliste wygladu i podstawowe bezpieczenstwo, zanim wyslemy ja w swiat." Nie pushuj, nie deployuj - to nie ten skill.
-3. Upewnij sie, ze `PROGRESS.md` odzwierciedla stan: wszystkie sekcje odhaczone, nastepny krok = `sprawdz-kod` -> M6 deploy.
+3. Upewnij sie, ze `PROGRESS.md` odzwierciedla stan: zrobione podstrony i sekcje odhaczone, nastepne etapy (dalsze podstrony) wypisane, nastepny krok dla rdzenia = `sprawdz-kod` -> M6 deploy.
 
 ## Anti-ai-look (egzekwuj przy KAZDEJ sekcji)
 Pelny ruleset: `40-skills/anti-ai-look-ruleset.md` (jeden poziom wyzej) oraz skrot w `karty/design-decyzje.md`. Otwieraj pelny plik tylko, gdy trafisz na watpliwosc. Twarde minimum, ktorego pilnujesz sam:

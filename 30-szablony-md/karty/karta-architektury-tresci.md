@@ -1,95 +1,86 @@
 # Karta Architektury Treści
 
-Ta karta opisuje, co ma znalezc sie na stronie i w jakiej kolejnosci. To jest mapa sekcji dla Claude Code.
+Ta karta opisuje mape calej Twojej strony-systemu: jakie podstrony powstaja, jaka pelnia role, jak laczy je nawigacja, z jakich sekcji sklada sie kazda z nich i co jest trescia dynamiczna w CMS. To nie jest pojedynczy landing - to system z wielu podstron, ktore razem prowadza odwiedzajacego przez lejek.
 
-## Typ strony
+## Mapa systemu (lista podstron z rola)
 
-Zaznacz lub opisz:
+Wypisz podstrony, ktore tworza system. Przy kazdej wpisz jej role w lejku. Cala mapa jest projektowana teraz, nawet jesli nie wszystko zbudujesz w pierwszym etapie.
 
-- Jedna strona typu landing page:
-- Strona wielostronicowa:
-- Podstrony potrzebne pozniej:
+- Strona glowna - rola: skrot calosci i glowny wezel lejka:
+- Oferta - rola: pelna oferta i sprzedaz:
+- O mnie - rola: zaufanie i historia:
+- Blog / Wiedza - rola: autorytet i SEO (z CMS):
+- Realizacje / Case studies - rola: dowody (z CMS):
+- Kontakt - rola: domkniecie:
+- Inne podstrony:
 
-Rekomendacja na start kursu: jedna mocna strona, a podstrony dopiero pozniej.
+## Nawigacja główna
 
-## Lista sekcji w kolejności
+Ktore podstrony sa w menu i w jakiej kolejnosci. Menu i stopka sa wspolne dla calego systemu.
 
-Wypisz sekcje strony. Przy kazdej sekcji wpisz jej role i najwazniejsza tresc.
+- Menu:
+- Stopka (linki, dane, social):
 
-### 1. Hero
+## Treść dynamiczna w CMS (od startu)
 
-- Rola:
-- Naglowek:
-- Podtytul:
-- CTA:
-- Wizual: zdjecie / mockup / brak / inne:
+Ktore kolekcje chcesz edytowac sam(a) w przegladarce, bez kodu. To czesc architektury systemu, a nie dodatek na pozniej (M7 tylko podlacza panel).
 
-### 2. Problem / dla kogo to jest
+- Blog / wpisy:
+- Realizacje / case studies:
+- Opinie:
+- Inne:
 
-- Rola:
-- Jaki problem pokazujemy:
-- Jakim jezykiem klient o tym mowi:
+## Sekcje per podstrona
 
-### 3. Oferta / jak pomagam
+Dla kazdej podstrony rozpisz sekcje w kolejnosci. Przy kazdej sekcji wpisz jej role i najwazniejsza tresc.
 
-- Rola:
-- Co pokazujemy:
-- Najwazniejszy rezultat:
+### Strona glowna
 
-### 4. Dowody
+- Hero - rola / naglowek / CTA / wizual:
+- Dla kogo / problem - rola / jezyk klienta:
+- Skrot oferty - rola / najwazniejszy rezultat:
+- Dowody - rola / opinie, liczby:
+- Skrot o mnie - rola / co buduje zaufanie:
+- CTA glowne - rola / tekst:
 
-- Rola:
-- Opinie, liczby, case studies:
-- Czego brakuje i trzeba uzupelnic:
+### Oferta (podstrona)
 
-### 5. O mnie
+- Sekcje:
 
-- Rola:
-- Co buduje zaufanie:
-- Jakie zdjecie:
+### O mnie (podstrona)
 
-### 6. Jak to działa / proces
+- Sekcje:
 
-- Rola:
-- Kroki:
+### Blog / Wiedza (podstrona)
 
-### 7. FAQ
+- Uklad listy wpisow + szablon wpisu:
 
-- Rola:
-- Jakie obiekcje zbijamy:
+### Realizacje / Case studies (podstrona)
 
-### 8. CTA końcowe + formularz
+- Uklad listy + szablon case study:
 
-- Rola:
-- Tekst CTA:
-- Jakie pola formularza:
+### Kontakt (podstrona)
 
-### 9. Stopka
-
-- Linki:
-- Dane:
-- Social media:
+- Sekcje + pola formularza:
 
 ## Gdzie pada główne CTA
 
-Wypisz maksymalnie 2-3 miejsca. CTA nie ma byc w kazdej sekcji.
+Na kazdej podstronie jedno dominujace CTA. System jako calosc ma lejek, nie przycisk w kazdej sekcji.
 
-- Hero:
-- Po ofercie:
-- Koniec strony:
+- Strona glowna:
+- Oferta:
+- Pozostale podstrony:
 
-## Co pomijamy w pierwszej wersji
+## Etapy budowy (rdzeń teraz / reszta później)
 
-Wypisz rzeczy, ktore moga poczekac.
+Co budujemy w pierwszym etapie, a co dokladamy potem. To plan dla budowy w kawalkach (token-economy), nie rezygnacja z podstron.
 
-- Blog:
-- Podcast:
-- Sklep:
-- Panel klienta:
-- Inne:
+- Etap 1 (rdzen): strona glowna + kontakt +
+- Etap 2:
+- Etap 3:
 
 ## Notatki dla Claude Code
 
-Wpisz tu wszystkie decyzje, ktore maja pomoc przy budowie strony.
+Wpisz tu wszystkie decyzje, ktore maja pomoc przy budowie systemu.
 
 - 

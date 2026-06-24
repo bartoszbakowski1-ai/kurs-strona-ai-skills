@@ -1,31 +1,43 @@
 # Karta Strategiczna
 
-Ta karta opisuje, po co istnieje konkretna strona. Nie opisuje calego biznesu. Od tego jest folder `kontekst/`.
+Ta karta opisuje, po co istnieje cala Twoja strona-system i jaki lejek prowadzi przez podstrony. Nie opisuje calego biznesu. Od tego jest folder `kontekst/`.
 
-## Cel strony
+## Cel systemu
 
-Jedno zdanie: co ma sie stac, gdy wlasciwa osoba wejdzie na strone?
+Jedno zdanie: co ma sie stac dzieki tej stronie w skali biznesu?
 
 Przyklady:
 
-- Ma zostawic kontakt na rozmowe diagnostyczna.
-- Ma zapisac sie na liste oczekujacych.
-- Ma kupic produkt cyfrowy.
-- Ma pobrac darmowy material i trafic do newslettera.
+- Staly doplyw zapytan na rozmowe diagnostyczna.
+- Sprzedaz produktu cyfrowego.
+- Budowa listy mailowej przez lead magnet i newsletter.
+- Autorytet i widocznosc w temacie (blog, case studies).
 
 Moja odpowiedz:
 
 > 
 
-## Główna akcja (CTA)
+## Główna akcja + akcje wspierające (lejek)
 
-Jeden przycisk, jedna akcja. Nie piec roznych kierunkow.
+System ma jedna glowna konwersje, do ktorej prowadzi calosc, plus akcje wspierajace na podstronach. Na jednej podstronie pada jedno dominujace CTA, ale system jako calosc to lejek, nie jeden przycisk.
 
-- Tekst przycisku:
-- Dokad prowadzi:
-- Czy akcja jest bezplatna, platna, kontaktowa, zapisowa:
+- Glowna akcja (tekst przycisku + dokad prowadzi):
+- Akcje wspierajace (lead magnet, newsletter, case study, zapis):
+- Czy akcje sa bezplatne, platne, kontaktowe, zapisowe:
 
-## Dla kogo jest ta strona
+## Rola każdej podstrony
+
+Krotko, co robi kazda czesc systemu w lejku.
+
+- Strona glowna:
+- Oferta:
+- O mnie:
+- Blog / Wiedza:
+- Realizacje / Case studies:
+- Lead magnet / zapis:
+- Kontakt:
+
+## Dla kogo jest ten system
 
 Wpisz konkretna osobe z `kontekst/persona.md`, ale w wersji dla strony.
 
@@ -39,30 +51,31 @@ Z jakiego punktu A do jakiego punktu B prowadzisz odbiorce?
 - Po:
 - Co sie zmienia po drodze:
 
-## Oferta na stronie
+## Oferta w systemie
 
-Co pokazujemy na tej stronie?
+Co sprzedajemy i gdzie to zyje (osobna podstrona oferty czy sekcja na home).
 
 - Nazwa oferty:
 - Jednozdaniowa obietnica:
 - Co klient dostaje:
+- Gdzie zyje na stronie (podstrona / sekcja):
 - Czy pokazujemy cene:
 - Czy oferta wymaga rozmowy:
 
 ## Dowody i zaufanie
 
-Wypisz materialy, ktore uwiarygadniaja strone.
+Wypisz materialy, ktore uwiarygadniaja system. Zaznacz, ktore sa dynamiczne (kolekcja w CMS).
 
-- Opinie:
+- Opinie (dynamiczne?):
 - Liczby:
-- Case studies:
+- Case studies (dynamiczne?):
 - Logo klientow / partnerow:
 - Screeny, zdjecia, efekty:
 - Jeszcze brakuje:
 
-## Czego strona NIE ma robic
+## Czego system NIE ma robic
 
-Wypisz rzeczy, ktorych nie chcemy, zeby strona byla o wszystkim.
+Wypisz rzeczy, ktorych nie chcemy, zeby system byl o wszystkim.
 
 - Nie ma sprzedawac:
 - Nie ma przyciagac:

@@ -2,6 +2,8 @@
 
 To jest robocza paczka dla uczestnika kursu. Pobierasz ja, otwierasz w Claude Code i przechodzisz kurs razem z AI.
 
+W tym kursie budujesz cala strone-system: strone glowna plus podstrony (oferta, o mnie, blog/wiedza, realizacje, kontakt), ktore razem prowadza odwiedzajacego przez lejek i zbieraja kontakty, z czescia tresci edytowalna w przegladarce (CMS). To nie jest pojedynczy landing page. System powstaje etapami: najpierw rdzen, potem kolejne podstrony.
+
 W srodku sa:
 
 - `START-TUTAJ.md` - najprostsza sciezka po zakupie,
@@ -84,7 +86,7 @@ Gdy dojdziesz do M1, uruchom:
 Uruchom skill kontekst.
 ```
 
-Gdy masz juz kontekst, karty i pierwsza strone, mozesz prosic Claude Code o kolejne elementy systemu:
+Gdy masz juz kontekst, karty i rdzen systemu, mozesz dokladac do niego pojedyncze strony pod konkretny cel:
 
 ```plain text
 Uruchom skill lp. Zrob landing page pod jeden cel: zapis na webinar, lead magnet albo sprzedaz.
@@ -97,10 +99,10 @@ Uruchom skill oferta. Zrob spersonalizowana strone oferty na podstawie rozmowy z
 ## Skille w paczce
 
 - `kontekst` - tworzy Twoj osobisty i zawodowy kontekst do pracy z AI,
-- `karty` - tworzy 3 karty strony: strategiczna, architektury tresci i wizualna,
-- `design` - zamienia karte wizualna w system designu i pilnuje anti-ai-look,
+- `karty` - tworzy 3 karty Twojej strony-systemu: strategiczna (lejek), architektury tresci (mapa podstron) i wizualna (design system),
+- `design` - zamienia karte wizualna w spojny design system i pilnuje anti-ai-look,
 - `obrazy` - pomaga dodac realne zdjecia i assety,
-- `zbuduj-strone` - buduje strone sekcja po sekcji,
+- `zbuduj-strone` - buduje strone-system etapami: strona glowna i podstrony, sekcja po sekcji,
 - `lp` - buduje konwertujacy landing page pod jeden cel, np. webinar, lead magnet albo sprzedaz,
 - `oferta` - tworzy spersonalizowana strone oferty z rozmowy, briefu albo notatek klienta,
 - `sprawdz-kod` - sprawdza build, mobile, jakosc, anti-ai-look i bezpieczenstwo,
@@ -114,4 +116,4 @@ Ty mowisz Claude Code, **co** ma powstac i **dlaczego**.
 
 Claude Code robi **jak**: pliki, kod, komendy, build, formularz, GitHub, Vercel.
 
-Nie zaczynaj od budowy strony. Najpierw przejdz `kontekst` i `karty`.
+Nie zaczynaj od budowy strony. Najpierw przejdz `kontekst` i `karty` - tam projektujesz caly system (mape podstron, lejek, design system), zanim cokolwiek powstanie w kodzie.

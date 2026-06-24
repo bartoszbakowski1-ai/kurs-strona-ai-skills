@@ -2,6 +2,8 @@
 
 Jesli wlasnie kupiles/kupilas kurs, zacznij od tej strony.
 
+W tym kursie budujesz cala strone-system: strone glowna plus podstrony (oferta, o mnie, blog/wiedza, realizacje, kontakt), ktore razem prowadza przez lejek i zbieraja kontakty. To nie pojedynczy landing - system powstaje etapami, najpierw rdzen, potem kolejne podstrony.
+
 ## Co dostajesz
 
 Masz dwa miejsca:
@@ -63,17 +65,17 @@ Pierwszy realny krok kursu:
 Uruchom skill kontekst.
 ```
 
-Nie przeskakuj od razu do budowania strony. Najpierw Claude Code musi poznac Twoj kontekst i stworzyc 3 karty strony.
+Nie przeskakuj od razu do budowania strony. Najpierw Claude Code musi poznac Twoj kontekst i stworzyc 3 karty calej strony-systemu (mapa podstron, lejek, design system).
 
-## Co po zbudowaniu pierwszej strony
+## Co po zbudowaniu rdzenia systemu
 
-Gdy masz juz fundament strony, paczka daje Ci tez skille do kolejnych zastosowan:
+Gdy masz juz dzialajacy rdzen systemu, paczka daje Ci tez skille do dokladania pojedynczych stron pod konkretny cel:
 
 ```plain text
 Uruchom skill lp.
 ```
 
-Do stworzenia jednego landing page pod webinar, kampanie, lead magnet, konsultacje albo sprzedaz.
+Do stworzenia jednego landing page pod webinar, kampanie, lead magnet, konsultacje albo sprzedaz - jako podstrona dokladana do systemu.
 
 ```plain text
 Uruchom skill oferta.

@@ -1,13 +1,13 @@
 # Instrukcja dla Claude Code
 
-To repo jest paczka kursowa "Stworz strone z AI". Uzytkownik jest nietechniczny i chce zbudowac wlasna strone z pomoca Claude Code.
+To repo jest paczka kursowa "Stworz strone z AI". Uzytkownik jest nietechniczny i chce zbudowac z pomoca Claude Code wlasna strone-system: strone glowna plus podstrony (oferta, o mnie, blog/wiedza, realizacje, kontakt), ktore razem prowadza przez lejek i zbieraja kontakty, z czescia tresci edytowalna w CMS. To nie jest pojedynczy landing page. System powstaje etapami: najpierw rdzen, potem kolejne podstrony.
 
 ## Twoja rola
 
 Prowadz uczestnika krok po kroku. Nie zaczynaj od kodowania strony, jesli nie ma jeszcze:
 
 - folderu `kontekst/` z plikami `profil.md`, `persona.md`, `procesy.md`,
-- folderu `karty/` z 3 kartami strony,
+- folderu `karty/` z 3 kartami strony-systemu,
 - zainstalowanych skilli kursowych w `.claude/skills/`.
 
 ## Najwazniejsza zasada kursu
@@ -41,11 +41,11 @@ Zatrzymaj go spokojnie i sprawdz fundament:
 
 Jesli fundamentu brakuje, uruchom odpowiedni skill.
 
-## Gdy uczestnik ma juz fundament strony
+## Gdy uczestnik ma juz rdzen systemu
 
-Wtedy mozesz uzyc skilli rozszerzajacych system:
+Wtedy mozesz uzyc skilli, ktore dokladaja do systemu pojedyncze strony pod konkretny cel:
 
 - `lp` - jeden landing page pod jeden cel: webinar, kampania, lead magnet, konsultacja albo sprzedaz,
 - `oferta` - spersonalizowana strona oferty na podstawie rozmowy, briefu albo notatek klienta.
 
-Nie uruchamiaj ich jako pierwszego kroku kursu. Najpierw kontekst, karty i podstawowa strona.
+To podstrony dokladane do systemu, nie zamiennik systemu. Nie uruchamiaj ich jako pierwszego kroku kursu. Najpierw kontekst, karty i rdzen systemu z mapy.

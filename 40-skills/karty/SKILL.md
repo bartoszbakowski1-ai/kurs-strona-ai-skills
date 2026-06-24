@@ -1,11 +1,11 @@
 ---
 name: karty
-description: Uruchom w M3, po tym jak uczestnik ma już gotowy kontekst z M1 (folder kontekst/ z plikami profil.md, persona.md, procesy.md). Przeprowadza 3 krótkie wywiady i tworzy 3 karty w folderze karty/ - karta-strategiczna.md (cel strony, główne CTA, transformacja, oferta na stronie), karta-architektury-tresci.md (sekcje, podstrony, kolejność, hierarchia) i karta-wizualna.md (paleta, font pairing, nastrój, referencje - baza design tokens i anti-ai-look). Te karty są fundamentem, z którego skill zbuduj-strone (M5) buduje stronę. Wywołaj, gdy użytkownik mówi "uruchom skill karty", "zróbmy karty", "zaprojektujmy stronę" albo gdy istnieje folder kontekst/, a nie ma jeszcze folderu karty/.
+description: Uruchom w M3, po tym jak uczestnik ma już gotowy kontekst z M1 (folder kontekst/ z plikami profil.md, persona.md, procesy.md). Przeprowadza 3 krótkie wywiady i tworzy 3 karty w folderze karty/ - karta-strategiczna.md (cel systemu, lejek, główne i wspierające akcje, rola każdej podstrony, oferta), karta-architektury-tresci.md (mapa strony-systemu: strona główna + podstrony, nawigacja, sekcje per podstrona, co jest dynamiczne w CMS, hierarchia) i karta-wizualna.md (paleta, font pairing, nastrój, referencje, komponenty wielorazowe - baza design systemu i anti-ai-look). Karty projektują CAŁY system od startu (strona wielostronicowa, nie pojedynczy landing), a skill zbuduj-strone (M5) buduje go etapami. Wywołaj, gdy użytkownik mówi "uruchom skill karty", "zróbmy karty", "zaprojektujmy stronę" albo gdy istnieje folder kontekst/, a nie ma jeszcze folderu karty/.
 ---
 
 # Skill: karty
 
-Prowadzisz NIETECHNICZNEGO użytkownika (trener, coach, ekspert) przez zaprojektowanie jego strony na papierze, ZANIM cokolwiek zbudujemy w kodzie. Efekt: 3 karty w folderze `karty/`, z których skill `zbuduj-strone` (M5) buduje stronę sekcja po sekcji.
+Prowadzisz NIETECHNICZNEGO użytkownika (trener, coach, ekspert) przez zaprojektowanie jego strony-systemu na papierze, ZANIM cokolwiek zbudujemy w kodzie. Nie projektujesz pojedynczego landing page. Projektujesz system: stronę główną PLUS podstrony (oferta, o mnie, blog/wiedza, realizacje, kontakt), które razem prowadzą odwiedzającego przez lejek i zbierają kontakty. Efekt: 3 karty w folderze `karty/`, z których skill `zbuduj-strone` (M5) buduje ten system etapami, sekcja po sekcji i podstrona po podstronie.
 
 ROBI: 3 wywiady (strategia, architektura treści, wizual) i zapisuje 3 karty.
 NIE ROBI: nie pyta o klienta/ofertę od zera (to masz w kontekście z M1), nie pisze kodu, nie generuje strony, nie podejmuje decyzji za uczestnika w sprawie treści marki.
@@ -29,38 +29,38 @@ NIE ROBI: nie pyta o klienta/ofertę od zera (to masz w kontekście z M1), nie p
 3. PRZECZYTAJ wszystkie 3 pliki z `kontekst/`. To Twoja baza: ofertę, personę i język klienta MASZ stąd, NIE pytasz o nie ponownie.
 4. Sprawdź, czy istnieje folder `karty/`. Jeśli nie - utwórz go. Jeśli istnieje i są w nim już jakieś karty - powiedz, których kart brakuje, i rób tylko brakujące (idempotentność: można uruchomić 2x bez szkody, nie nadpisujesz gotowej karty bez pytania).
 
-## Krok 1 - KARTA STRATEGICZNA (po co ta strona)
+## Krok 1 - KARTA STRATEGICZNA (po co ten system)
 
-Cel: ustalić jedną rzecz, którą strona ma osiągnąć. To NIE jest powtórka wywiadu o kliencie - personę i ofertę masz z M1. Tu decydujemy o STRONIE.
+Cel: ustalić, co cały system ma osiągnąć dla biznesu uczestnika i jaki lejek prowadzi przez podstrony. To NIE jest powtórka wywiadu o kliencie - personę i ofertę masz z M1. Tu decydujemy o STRONIE-SYSTEMIE.
 
 Wywiad etapami (2-3 pytania naraz):
-1. **Cel strony** - co ma się stać, gdy ktoś tu wejdzie. Jedno zdanie. Jeśli nie wie, podaj opcje: zapis na newsletter / zostawienie kontaktu na rozmowę / zapis na listę oczekujących / kupno produktu / pobranie czegoś za darmo.
-2. **Jedna główna akcja (CTA)** - ta JEDNA rzecz, którą odwiedzający ma kliknąć. Strona ma prowadzić do jednego celu, nie do pięciu. Ustal dokładny tekst przycisku (np. "Umów rozmowę", "Zapisz się", "Pobierz przewodnik").
-3. **Transformacja** - z jakiego punktu A do jakiego punktu B prowadzisz klienta. Użyj języka persony z M1.
-4. **Oferta na stronie** - co konkretnie pokazujemy na tej stronie (nie cały cennik - to, co ma być widoczne tu). Czy są ceny, czy "na rozmowie".
-5. **Dowody** - czym budujemy zaufanie: opinie, liczby, logo, realizacje. Wypisz te, które uczestnik realnie ma. Jeśli nie ma jeszcze opinii - zaznacz to, zaplanujemy placeholder do uzupełnienia.
+1. **Cel systemu** - co ma się stać dzięki tej stronie w skali biznesu. Jedno zdanie. Jeśli nie wie, podaj opcje: stały dopływ zapytań na rozmowę / sprzedaż produktu cyfrowego / budowa listy mailowej / autorytet i widoczność w temacie.
+2. **Główna akcja + akcje wspierające (lejek)** - jedna główna konwersja (np. "Umów rozmowę", "Kup", "Zapisz się"), do której prowadzi cały system, PLUS akcje wspierające na podstronach (pobierz lead magnet, zapis na newsletter, przeczytaj case study). Na pojedynczej podstronie pada jedno dominujące CTA, ale system jako całość ma lejek, nie jeden przycisk. Ustal dokładne teksty przycisków.
+3. **Rola każdej podstrony** - krótko, co robi każda część systemu: strona główna konwertuje, oferta sprzedaje, blog/wiedza buduje autorytet i SEO, realizacje/case studies dowodzą, lead magnet zbiera maile, kontakt domyka. Bazę bierzesz z celu i z architektury (Krok 2), tu zapisujesz intencję.
+4. **Transformacja** - z jakiego punktu A do jakiego punktu B prowadzisz klienta. Użyj języka persony z M1.
+5. **Oferta w systemie** - co sprzedajemy i gdzie to żyje (osobna podstrona oferty czy sekcja na home). Czy są ceny, czy "na rozmowie".
+6. **Dowody** - czym budujemy zaufanie: opinie, liczby, logo, realizacje. Zaznacz, które są dynamiczne (kolekcja w CMS: opinie, case studies) - to wraca w Karcie Architektury. Jeśli nie ma jeszcze opinii - zaplanuj placeholder do uzupełnienia.
 
-Zapisz `karty/karta-strategiczna.md` z sekcjami: Cel strony, Główna akcja (CTA), Transformacja, Oferta na stronie, Dowody i zaufanie, Czego strona NIE ma robić. Pokaż krótko do akceptacji.
+Zapisz `karty/karta-strategiczna.md` z sekcjami: Cel systemu, Główna akcja i akcje wspierające (lejek), Rola każdej podstrony, Transformacja, Oferta w systemie, Dowody i zaufanie, Czego system NIE ma robić. Pokaż krótko do akceptacji.
 
-## Krok 2 - KARTA ARCHITEKTURY TREŚCI (co i w jakiej kolejności)
+## Krok 2 - KARTA ARCHITEKTURY TREŚCI (mapa systemu: strona główna + podstrony)
 
-Cel: ustalić, z jakich sekcji składa się strona, w jakiej kolejności i co jest najważniejsze. TY proponujesz układ na bazie celu z Karty Strategicznej, uczestnik akceptuje lub poprawia treść.
+Cel: zaprojektować MAPĘ całej strony-systemu - jakie podstrony powstają, jaką pełnią rolę, jak łączy je nawigacja, z jakich sekcji składa się każda z nich i co jest treścią dynamiczną w CMS. TY proponujesz mapę na bazie celu z Karty Strategicznej, uczestnik akceptuje lub poprawia treść. Domyślnie projektujesz system wielostronicowy, nie pojedynczy landing.
 
-1. Zaproponuj domyślny szkielet jednej strony (landing page) i zapytaj, czy pasuje. Bazowy, sprawdzony układ dla strony eksperta:
-   - Hero (nagłówek + jedno zdanie + główne CTA + prawdziwe zdjęcie uczestnika)
-   - Dla kogo to jest / problem klienta (język persony z M1)
-   - Oferta / jak pomagam (co dostaje klient)
-   - Dowody (opinie, liczby, realizacje)
-   - O mnie (krótko, ludzko, z M1)
-   - FAQ (zbij realne obiekcje persony)
-   - Sekcja końcowa CTA + formularz kontaktowy
-   - Stopka
-   WAŻNE: nie podawaj tego jako sztywnej kolejności "jak każdy" - dopasuj do celu z karty 1 i przestaw/usuń sekcje, żeby układ nie był generyczny (anti-ai-look: nie zostawiaj dokładnie hero->3 ficzery->opinie->CTA bez własnej sekcji).
-2. Zapytaj o PODSTRONY: czy strona ma być jedną stroną (landing), czy potrzebne są osobne podstrony (np. blog, portfolio/realizacje, oferta szczegółowa, kontakt). Domyślnie rekomenduj start od jednej mocnej strony - podstrony dokładamy później. Jeśli uczestnik chce blog lub opinie jako osobną kolekcję - zaznacz to (to sygnał, że w M7 przyda się Sanity).
-3. Dla każdej sekcji ustal w 1-2 zdaniach: co tam jest i jaka jest jej rola. Treść bierz z kontekstu i z karty strategicznej, dopytuj tylko o luki.
-4. Ustal HIERARCHIĘ: która sekcja jest najważniejsza (zwykle hero + oferta), gdzie pada główne CTA (min. 2 miejsca: hero i sekcja końcowa).
+1. Zaproponuj domyślną MAPĘ STRONY (strona główna + podstrony) i zapytaj, czy pasuje. Bazowa, sprawdzona mapa systemu dla eksperta:
+   - **Strona główna** - skrót całości i główny węzeł lejka: hero, dla kogo/problem, skrót oferty, dowody, skrót o mnie, główne CTA.
+   - **Oferta** (podstrona) - pełna oferta, co klient dostaje, jak wygląda współpraca, FAQ, CTA.
+   - **O mnie** (podstrona) - historia, podejście, dowody wiarygodności, ludzkie zdjęcia.
+   - **Blog / Wiedza** (podstrona + wpisy) - autorytet i SEO, zasilana z CMS.
+   - **Realizacje / Case studies** (podstrona + wpisy) - dowody, zasilane z CMS.
+   - **Kontakt** (podstrona) - formularz, domknięcie.
+   Dobierz zestaw podstron do celu i realnej treści uczestnika - jeśli nie ma jeszcze materiału na blog, zaplanuj podstronę jako kolejny etap, ale ujmij ją w mapie systemu od startu. Nie wszystkie podstrony muszą powstać w pierwszym etapie budowy, ale CAŁA mapa jest zaprojektowana teraz.
+2. **Nawigacja i hierarchia podstron**: ustal menu główne (które podstrony w nawigacji), co jest najważniejsze, gdzie w lejku pada główne CTA na każdej podstronie. Zaplanuj wspólne elementy systemu: nawigację i stopkę, które są na każdej podstronie.
+3. **Treść dynamiczna (CMS od startu, nie "może później")**: zaznacz, które kolekcje żyją w CMS i będą edytowane bez kodu - typowo blog/wiedza, realizacje/case studies, opinie. To NIE jest dodatek z M7 - to część architektury systemu projektowana teraz (M7 tylko podłącza panel). Reszta treści jest statyczna.
+4. **Sekcje per podstrona**: dla każdej podstrony rozpisz sekcje w kolejności (każda z rolą i kluczową treścią). Treść bierz z kontekstu i z karty strategicznej, dopytuj tylko o luki. Anti-ai-look: nie zostawiaj na home dokładnie hero->3 ficzery->opinie->CTA bez własnej sekcji.
+5. **Etapowanie budowy**: oznacz, co budujemy w pierwszym etapie (rdzeń systemu: strona główna + kontakt + 1-2 kluczowe podstrony), a co dokładamy w kolejnych etapach. To plan dla skilla zbuduj-strone, żeby system powstawał w kawałkach (token-economy), a nie cały naraz.
 
-Zapisz `karty/karta-architektury-tresci.md` z sekcjami: Typ strony (landing / wielostronicowa), Lista sekcji w kolejności (każda z rolą i kluczową treścią), Podstrony (jeśli są), Gdzie pada główne CTA, Co pomijamy w pierwszej wersji.
+Zapisz `karty/karta-architektury-tresci.md` z sekcjami: Mapa systemu (lista podstron z rolą), Nawigacja główna, Treść dynamiczna w CMS, Sekcje per podstrona (każda z rolą i kluczową treścią), Gdzie pada główne CTA, Etapy budowy (rdzeń teraz / reszta później).
 
 ## Krok 3 - KARTA WIZUALNA (jak ma wyglądać) - najważniejsza dla anti-ai-look
 
@@ -73,8 +73,9 @@ Wywiad etapami:
 4. **Charakter typografii** - zapytaj o charakter nagłówków: bardziej elegancki/redakcyjny czy nowoczesny/bezpośredni. NIE pytaj o konkretne nazwy fontów - to TY dobierasz parę. Zapisz w karcie konkretną parę z next/font/google WYŁĄCZNIE z dozwolonej listy z pełnym latin-ext (polskie ogonki działają): nagłówki Sora / Space Grotesk / Manrope / Plus Jakarta Sans / Bricolage Grotesque, body Inter lub Manrope. Przykłady doboru: elegancki/redakcyjny -> nagłówki Plus Jakarta Sans + body Inter; nowoczesny/bezpośredni -> nagłówki Sora lub Space Grotesk + body Inter; ciepły -> nagłówki Bricolage Grotesque + body Inter. NIGDY nie wpisuj fontu spoza tej listy (np. Fraunces, Playfair nie mają pełnego latin-ext). Zawsze 2 fonty, nigdy jeden na wszystko.
 5. **Zdjęcia i media** - to kluczowe dla anti-ai-look. Zapytaj wprost, jakie PRAWDZIWE zdjęcia lub media uczestnik ma albo może zrobić: portret/twarz, zdjęcia z pracy/warsztatów, zdjęcia produktu, screeny, krótkie video. Ustal minimum 3 realne zdjęcia/media jako bramkę, a dla dłuższej strony cel 5-7. Zaznacz w karcie, że plastikowe AI-ilustracje są zakazane - tymczasowo placeholder, docelowo realne foto/media (tym zajmie się skill `obrazy`).
 6. **Referencje** - poproś o 2-3 konkretne strony, które się uczestnikowi podobają (linki). Jeśli nie ma - zaproponuj kierunek słowny, ale dopytaj o konkret ("podaj choć jedną stronę, która Ci się podoba, obojętnie z jakiej branży"). Zapisz CO konkretnie się podoba w każdej referencji (układ, kolory, zdjęcia, typografia), nie samą nazwę.
+7. **Spójność systemu** - przypomnij sobie, że to nie jeden landing, tylko system z wielu podstron. Wizual ma być wspólny dla całości: jedna nawigacja, jedna stopka, jeden zestaw komponentów (przyciski, karty, nagłówki podstron, szablon wpisu bloga, szablon case study). NIE pytasz o to uczestnika - to decyzja techniczna. Zapisujesz ją w karcie jako wytyczną dla skilli design i zbuduj-strone: design system ma być spójny przez wszystkie podstrony.
 
-Zapisz `karty/karta-wizualna.md`. Użyj DOKŁADNIE tej struktury, bo z niej powstają design tokens:
+Zapisz `karty/karta-wizualna.md`. Użyj DOKŁADNIE tej struktury, bo z niej powstają design tokens i design system:
 
 ```markdown
 # Karta Wizualna
@@ -101,6 +102,11 @@ Zapisz `karty/karta-wizualna.md`. Użyj DOKŁADNIE tej struktury, bo z niej pows
 1. [link] - podoba się: [co konkretnie]
 2. [link] - podoba się: [co konkretnie]
 
+## Design system (spójny przez wszystkie podstrony)
+- Wspólna nawigacja i stopka na każdej podstronie
+- Wielorazowe komponenty: przyciski, karty, nagłówek podstrony, szablon wpisu bloga, szablon case study
+- Te same tokeny (kolory, fonty, radius, spacing) na całej stronie-systemie, zero stylowania per podstrona
+
 ## Reguły anti-ai-look (twarde, dla skilli design i sprawdz-kod)
 - text-balance na wszystkich nagłówkach, tracking naturalny (zero tracking-tight)
 - jeden akcent brandowy, ZERO fioletowo-niebieskich gradientów i gradient-text na nagłówkach
@@ -116,8 +122,8 @@ Wartości w nawiasach [...] wypełnij z odpowiedzi uczestnika. Sekcję "Reguły 
 
 ## Krok 4 - zamknięcie
 
-1. Podsumuj 1 zdaniem: karty gotowe, w folderze `karty/` są 3 pliki.
-2. Powiedz, co dalej: w następnym kroku (skill `design`, M4) na bazie Karty Wizualnej AI zrobi wygląd i design tokens, a potem (skill `zbuduj-strone`, M5) zbuduje stronę sekcja po sekcji z tych 3 kart.
+1. Podsumuj 1 zdaniem: karty gotowe, w folderze `karty/` są 3 pliki - masz zaprojektowany cały system (mapa podstron, lejek, design system), nie pojedynczy landing.
+2. Powiedz, co dalej: w następnym kroku (skill `design`, M4) na bazie Karty Wizualnej AI zrobi design system i tokeny, a potem (skill `zbuduj-strone`, M5) zbuduje system etapami - najpierw rdzeń (strona główna + kontakt), potem kolejne podstrony z mapy.
 3. Jeśli uczestnik przerwał w połowie - zapisz to, co masz, i powiedz, że można wrócić: kolejne uruchomienie skilla wykryje gotowe karty i dopyta tylko o brakujące.
 
 ## Guardraile (zawsze)
