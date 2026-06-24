@@ -1,6 +1,6 @@
 # Moja strona
 
-Cel projektu: zbudowac i opublikowac strone, ktora jasno pokazuje oferte, prowadzi do kontaktu i wyglada jak konkretna marka, a nie domyslny szablon AI.
+Cel projektu: zbudowac i opublikowac strone-system (strona glowna + podstrony), ktora jasno pokazuje oferte, prowadzi przez lejek do kontaktu i wyglada jak konkretna marka, a nie domyslny szablon AI.
 
 ## Grupa docelowa
 

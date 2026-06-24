@@ -34,7 +34,7 @@ Naczelna zasada: UNIWERSALNOŚĆ (u każdego ma wyjść tak samo) i BEZPIECZEŃS
 | `karty` | 3 karty (strategiczna, architektury treści, wizualna) | M3 |
 | `design` | design tokens z Karty Wizualnej + reguły anti-ai-look | M4 |
 | `obrazy` | dobór i generowanie zdjęć na stronę | M4 |
-| `zbuduj-strone` | budowa sekcja po sekcji, batching, `PROGRESS.md`, formularz | M5 |
+| `zbuduj-strone` | budowa systemu etapami: strona główna + podstrony, sekcja po sekcji, batching, `PROGRESS.md`, formularz | M5 |
 | `sprawdz-kod` | lokalny build + anti-ai-look + brama bezpieczeństwa | M5 |
 | `bezpieczenstwo` | głębszy audyt: sekrety, API/formularz, nagłówki, zależności | M5/M6 |
 | lekcja deploy | GitHub + Vercel + domena (jednorazowo, nie skill) | M6 |
@@ -124,7 +124,7 @@ Cel: uczestnik nie wie, co dalej. Ty wiesz, bo czytasz pliki.
 
 1. Na podstawie samodiagnozy z Kroku 0 ustal etap i wskaż JEDEN najbliższy ruch:
    - brak folderu `kontekst/` -> "Zacznijmy od fundamentu. Uruchom skill `kontekst` - zbierzemy wiedzę o Tobie i Twojej pracy."
-   - jest `kontekst/`, brak `karty/` -> "Mamy kontekst. Teraz skill `karty` - zaprojektujemy konkretnie Twoją stronę (strategia, treści, wizual)."
+   - jest `kontekst/`, brak `karty/` -> "Mamy kontekst. Teraz skill `karty` - zaprojektujemy całą Twoją stronę-system (lejek, mapa podstron, wizual)."
    - są `karty/`, brak projektu (`package.json`) -> uruchom start projektu (krok 2 niżej).
    - jest projekt, ale `PROGRESS.md` pokazuje niedokończone sekcje -> "Wracamy do budowy. Piszę `/strona wznow` za Ciebie." i przejdź do sekcji A.
    - wszystko zrobione i jest live -> "Strona stoi. Chcesz dodać podstronę (`/strona nowa-podstrona`) czy podpiąć Sanity (skill `sanity`)?"

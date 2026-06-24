@@ -101,7 +101,7 @@ Zapisz `kontekst/procesy.md` z sekcjami:
    ```bash
    ls -1 kontekst/
    ```
-3. Powiedz, co dalej: w nastepnym kroku (skill `karty`, modul M3) na bazie tego kontekstu zaprojektujemy konkretnie Twoja strone. Persony ani oferty nie bedziemy juz przepytywac drugi raz - karty czytaja to z `kontekst/`.
+3. Powiedz, co dalej: w nastepnym kroku (skill `karty`, modul M3) na bazie tego kontekstu zaprojektujemy cala Twoja strone-system - mape podstron, lejek i wyglad. Persony ani oferty nie bedziemy juz przepytywac drugi raz - karty czytaja to z `kontekst/`.
 4. Jesli uczestnik byl zmeczony albo przerwal w polowie - zapisz to, co masz, i powiedz wprost: mozesz wrocic w dowolnym momencie, kolejne uruchomienie tego skilla wykryje gotowe pliki i dopyta tylko o brakujace.
 
 ## Guardraile (twarde)

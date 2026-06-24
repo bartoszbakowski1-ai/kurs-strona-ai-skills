@@ -15,7 +15,7 @@ Po kursie uczestnik nie ma tylko jednej strony. Ma system, w którym może prosi
 Najważniejsze zdanie:
 
 ```text
-Nie kupujesz tylko lekcji. Dostajesz system pracy z Claude Code: dokumenty, skille, prompty i proces, który pozwala zbudować stronę, a potem robić kolejne landing page'e i oferty bez zaczynania od zera.
+Nie kupujesz tylko lekcji. Dostajesz system pracy z Claude Code: dokumenty, skille, prompty i proces, który pozwala zbudować całą stronę-system (strona główna + podstrony), a potem dokładać do niego kolejne landing page'e i oferty bez zaczynania od zera.
 ```
 
 ## Skille pokazowe

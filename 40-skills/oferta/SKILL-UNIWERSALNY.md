@@ -1,6 +1,6 @@
 ---
 name: oferta
-description: Użyj po zbudowaniu podstawowej strony, gdy użytkownik chce stworzyć JEDNĄ spersonalizowaną stronę oferty dla konkretnego klienta na podstawie transkrypcji rozmowy, notatek, briefu albo maila. Wywołaj na hasła "zrób ofertę z rozmowy", "oferta z transkrypcji", "stwórz ofertę dla klienta", "strona oferty dla [klient]", "/oferta". Czyta materiał źródłowy, wyciąga sytuację klienta jego słowami, oznacza braki jako [do potwierdzenia], buduje route `/oferta/[slug]` lub inny uzgodniony adres w istniejącym projekcie Next.js, używa design systemu, jednego CTA i anti-ai-look. NIE zmyśla liczb, wyników, zakresu ani ceny.
+description: Użyj po zbudowaniu rdzenia strony-systemu, gdy użytkownik chce dodać do systemu JEDNĄ spersonalizowaną stronę oferty dla konkretnego klienta na podstawie transkrypcji rozmowy, notatek, briefu albo maila. Wywołaj na hasła "zrób ofertę z rozmowy", "oferta z transkrypcji", "stwórz ofertę dla klienta", "strona oferty dla [klient]", "/oferta". Czyta materiał źródłowy, wyciąga sytuację klienta jego słowami, oznacza braki jako [do potwierdzenia], buduje route `/oferta/[slug]` lub inny uzgodniony adres w istniejącym projekcie Next.js, używa design systemu, jednego CTA i anti-ai-look. NIE zmyśla liczb, wyników, zakresu ani ceny.
 ---
 
 # Skill: oferta

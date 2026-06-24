@@ -1,6 +1,6 @@
 ---
 name: lp
-description: 'Użyj po zbudowaniu podstawowej strony, gdy użytkownik chce szybko dodać JEDEN konwertujący landing page pod jeden cel: zapis na webinar/live, sprzedaż kursu lub usługi, lista oczekujących, lead magnet, konsultacja, przedsprzedaż albo kampania reklamowa. Wywołaj na hasła "zrób landing", "nowy LP", "landing pod webinar", "landing pod sprzedaż", "strona zapisu", "LP pod kampanię", "/lp". Buduje jedną skupioną stronę konwersyjną w istniejącym projekcie Next.js, używa istniejącego design systemu, pilnuje CTA/formularza above the fold, jednego celu, jednego CTA, anti-ai-look, mobile, formularza/Resend gdy potrzebny, braku sekretów/API keys i kontroli sprawdz-kod. NIE buduje całego serwisu i NIE wymyśla dowodów.'
+description: 'Użyj po zbudowaniu rdzenia strony-systemu, gdy użytkownik chce dodać do systemu JEDEN konwertujący landing page (podstronę) pod jeden cel: zapis na webinar/live, sprzedaż kursu lub usługi, lista oczekujących, lead magnet, konsultacja, przedsprzedaż albo kampania reklamowa. Wywołaj na hasła "zrób landing", "nowy LP", "landing pod webinar", "landing pod sprzedaż", "strona zapisu", "LP pod kampanię", "/lp". Buduje jedną skupioną stronę konwersyjną w istniejącym projekcie Next.js, używa istniejącego design systemu, pilnuje CTA/formularza above the fold, jednego celu, jednego CTA, anti-ai-look, mobile, formularza/Resend gdy potrzebny, braku sekretów/API keys i kontroli sprawdz-kod. NIE buduje całego serwisu i NIE wymyśla dowodów.'
 ---
 
 # Skill: lp

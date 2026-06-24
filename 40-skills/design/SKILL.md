@@ -1,6 +1,6 @@
 ---
 name: design
-description: Uruchom w module M4, PO tym jak istnieje plik karty-wizualna.md (z modulu M3 / skilla karty), a PRZED budowa sekcji strony (skill zbuduj-strone). Zamienia Karte Wizualna w spojny system designu strony: zmienne CSS (kolory, fonty, spacing, radius) w globals.css, konfiguracje fontow przez next/font, oraz wbudowuje twarde reguly anti-ai-look, dzieki ktorym strona NIE wyglada jak generyczny output AI. Wywolaj, gdy uzytkownik mowi "uruchom skill design", "ustaw wyglad", "zrob design tokens", "zbuduj system kolorow i fontow" albo gdy w projekcie jest karta-wizualna.md, ale globals.css nie ma jeszcze zmiennych marki.
+description: Uruchom w module M4, PO tym jak istnieje plik karty-wizualna.md (z modulu M3 / skilla karty), a PRZED budowa sekcji strony (skill zbuduj-strone). Zamienia Karte Wizualna w spojny design system calej strony-systemu, wspolny dla wszystkich podstron: zmienne CSS (kolory, fonty, spacing, radius) w globals.css, konfiguracje fontow przez next/font, oraz wbudowuje twarde reguly anti-ai-look, dzieki ktorym strona NIE wyglada jak generyczny output AI. Wywolaj, gdy uzytkownik mowi "uruchom skill design", "ustaw wyglad", "zrob design tokens", "zbuduj system kolorow i fontow" albo gdy w projekcie jest karta-wizualna.md, ale globals.css nie ma jeszcze zmiennych marki.
 ---
 
 # Skill: design (wykonawca)
@@ -158,7 +158,7 @@ p, li {
 }
 ```
 
-4. Po zapisaniu powiedz uczestnikowi po ludzku: od teraz cala strona bierze kolory i fonty z jednego miejsca, wiec zmiana koloru marki to bedzie jedna linijka, a nie szukanie po calej stronie.
+4. Po zapisaniu powiedz uczestnikowi po ludzku: od teraz cala strona-system (wszystkie podstrony) bierze kolory i fonty z jednego miejsca, wiec zmiana koloru marki to bedzie jedna linijka, a nie szukanie po calej stronie.
 
 ### Krok 4 - wbuduj reguly anti-ai-look
 1. Przeczytaj plik `anti-ai-look.md` lezacy obok tego skilla (w tym samym folderze). To skondensowana lista ZAKAZANE / NAKAZANE plus szybka checklista.
@@ -191,7 +191,7 @@ git add -A && git commit -m "design: tokeny CSS + fonty + reguly anti-ai-look"
 ```
 
 2. Zaktualizuj `PROGRESS.md` (jesli nie istnieje - utworz): dopisz, ze design tokens i fonty sa ustawione, wpisz w sekcji "Decyzje" kolory i fonty, ustaw nastepny krok na "M5 budowa sekcji (skill zbuduj-strone)".
-3. Zamknij 2 zdaniami: system designu gotowy, kolory i fonty zyja w jednym miejscu, strona ma wbudowane zabezpieczenie przed wygladem AI. Nastepny krok to skill `zbuduj-strone`, ktory sklei strone sekcja po sekcji z Twoich kart.
+3. Zamknij 2 zdaniami: design system gotowy i wspolny dla wszystkich podstron, kolory i fonty zyja w jednym miejscu, strona ma wbudowane zabezpieczenie przed wygladem AI. Nastepny krok to skill `zbuduj-strone`, ktory zbuduje system etapami - strone glowna i podstrony, sekcja po sekcji z Twoich kart.
 
 ## Guardraile (twarde)
 - Nie nadpisuj `layout.tsx` ani `globals.css` w ciemno, jesli maja juz tresc marki - najpierw pokaz roznice i zapytaj o "tak".

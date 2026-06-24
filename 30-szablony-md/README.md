@@ -35,6 +35,6 @@ Przeczytaj pliki w folderach kontekst/ i karty/. Przeprowadz mnie krok po kroku 
 
 `kontekst/` opisuje Ciebie, Twoja prace, klientow, oferte i proces. To jest pamiec robocza Claude o Tobie.
 
-`karty/` opisuje konkretna strone, ktora budujesz teraz: jej cel, strukture, tresc i wyglad.
+`karty/` opisuje cala Twoja strone-system, ktora budujesz: jej cel i lejek, mape podstron, tresc i wyglad.
 
-Dlatego odpowiedz brzmi: tak, uczestnik powinien miec personalny i zawodowy kontekst w Claude Code, ale nie jako czwarta karta strony. To osobny fundament z M1. Trzy karty z M3 sa juz dokumentami o stronie.
+Dlatego odpowiedz brzmi: tak, uczestnik powinien miec personalny i zawodowy kontekst w Claude Code, ale nie jako czwarta karta strony. To osobny fundament z M1. Trzy karty z M3 sa juz dokumentami o calej stronie-systemie.
