@@ -1,6 +1,6 @@
 # Moja strona
 
-Cel projektu: zbudowac i opublikowac strone-system (strona glowna + podstrony), ktora jasno pokazuje oferte, prowadzi przez lejek do kontaktu i wyglada jak konkretna marka, a nie domyslny szablon AI.
+Cel projektu: zbudować i opublikować stronę-system (strona główna + podstrony), która jasno pokazuje ofertę, prowadzi przez lejek do kontaktu i wygląda jak konkretna marka, a nie domyślny szablon AI.
 
 ## Grupa docelowa
 
@@ -8,13 +8,13 @@ Cel projektu: zbudowac i opublikowac strone-system (strona glowna + podstrony), 
 
 ## Oferta
 
-[Wpisz glowna oferte]
+[Wpisz główną ofertę]
 
-## Najwazniejsza akcja uzytkownika
+## Najważniejsza akcja użytkownika
 
-[Kontakt / umow rozmowe / pobierz material / kup / zapisz sie]
+[Kontakt / umów rozmowę / pobierz materiał / kup / zapisz się]
 
-## Zrodla kontekstu
+## Źródła kontekstu
 
 - `kontekst/profil.md`
 - `kontekst/persona.md`
@@ -23,8 +23,8 @@ Cel projektu: zbudowac i opublikowac strone-system (strona glowna + podstrony), 
 - `karty/karta-architektury-tresci.md`
 - `karty/karta-wizualna.md`
 
-## Jak pracowac z projektem
+## Jak pracować z projektem
 
-1. Przed wieksza zmiana sprawdz `PROGRESS.md`.
-2. Po wiekszej zmianie zaktualizuj `PROGRESS.md`.
-3. Przed publikacja uruchom skill `sprawdz-kod`.
+1. Przed większą zmianą sprawdź `PROGRESS.md`.
+2. Po większej zmianie zaktualizuj `PROGRESS.md`.
+3. Przed publikacją uruchom skill `sprawdz-kod`.

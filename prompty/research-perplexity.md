@@ -1,104 +1,104 @@
-# Prompty do Perplexity - gdy nie wiesz, co wpisac
+# Prompty do Perplexity - gdy nie wiesz, co wpisać
 
-Czasem przy budowie kontekstu (M1) albo kart (M3) padnie pytanie, na ktore nie masz od razu odpowiedzi: kim jest moja persona, jak nazwac oferte, jakie CTA, czym sie wyroznic. To normalne. Zamiast zgadywac, otworz [Perplexity](https://www.perplexity.ai) i uzyj gotowego promptu z tej listy. Skopiuj, uzupelnij pola w `[nawiasach]`, wklej. Potem wroc do Claude Code z gotowa odpowiedzia.
+Czasem przy budowie kontekstu (M1) albo kart (M3) padnie pytanie, na które nie masz od razu odpowiedzi: kim jest moja persona, jak nazwać ofertę, jakie CTA, czym się wyróżnić. To normalne. Zamiast zgadywać, otwórz [Perplexity](https://www.perplexity.ai) i użyj gotowego promptu z tej listy. Skopiuj, uzupełnij pola w `[nawiasach]`, wklej. Potem wróć do Claude Code z gotową odpowiedzią.
 
-Zasada: Perplexity podaje pomysly i punkt wyjscia. Decyzje podejmujesz Ty - bierzesz to, co pasuje do Ciebie i Twoich realnych klientow.
+Zasada: Perplexity podaje pomysły i punkt wyjścia. Decyzje podejmujesz Ty - bierzesz to, co pasuje do Ciebie i Twoich realnych klientów.
 
 ---
 
 ## Persona - komu pomagam
 
-**Kiedy:** w M1 (skill kontekst), gdy nie umiesz opisac idealnego klienta.
+**Kiedy:** w M1 (skill kontekst), gdy nie umiesz opisać idealnego klienta.
 
 ```
-Jestem [czym sie zajmujesz, np. trenerka sprzedazy dla malych firm]. Sprzedaje [oferta].
-Pomoz mi opisac mojego idealnego klienta:
+Jestem [czym się zajmujesz, np. trenerka sprzedaży dla małych firm]. Sprzedaję [oferta].
+Pomóż mi opisać mojego idealnego klienta:
 - kim jest (rola, etap, sytuacja),
-- z czym sie boryka na co dzien,
-- jakimi DOSLOWNYMI slowami opisuje swoj problem,
-- czego juz probowal i czemu nie zadzialalo,
+- z czym się boryka na co dzień,
+- jakimi DOSŁOWNYMI słowami opisuje swój problem,
+- czego już próbował i czemu nie zadziałało,
 - co go blokuje przed zakupem takiej oferty jak moja.
-Daj 2 rozne warianty persony i przy kazdym 3-5 prawdziwie brzmiacych cytatow.
+Daj 2 różne warianty persony i przy każdym 3-5 prawdziwie brzmiących cytatów.
 ```
 
 ---
 
-## Oferta i pozycjonowanie - czym sie wyroznic
+## Oferta i pozycjonowanie - czym się wyróżnić
 
 **Kiedy:** w M1 (oferta) i M3 (Karta Strategiczna), gdy oferta brzmi jak u wszystkich.
 
 ```
 Moja oferta to [opis: co dajesz, dla kogo, jaki efekt].
-Konkurencja albo alternatywy, ktore klient rozwaza, to [np. inni trenerzy / kursy / robienie tego samemu].
-Pomoz mi spozycjonowac te oferte:
+Konkurencja albo alternatywy, które klient rozważa, to [np. inni trenerzy / kursy / robienie tego samemu].
+Pomóż mi spozycjonować tę ofertę:
 - jaka jest jej najmocniejsza, konkretna obietnica,
-- czym realnie roznie sie od alternatyw (nie ogolniki),
-- jakie 3 zdania na stronie glownej najjasniej to pokaza.
-Pisz prostym jezykiem, bez marketingowego belkotu i bez slow typu "kompleksowo", "synergia", "rozwiazania".
+- czym realnie różni się od alternatyw (nie ogólniki),
+- jakie 3 zdania na stronie głównej najjaśniej to pokażą.
+Pisz prostym językiem, bez marketingowego bełkotu i bez słów typu "kompleksowo", "synergia", "rozwiązania".
 ```
 
 ---
 
-## Naglowki i CTA - co napisac na gorze strony
+## Nagłówki i CTA - co napisać na górze strony
 
-**Kiedy:** w M3 (Karta Strategiczna i Architektury), gdy nie wiesz, jaki naglowek albo tekst przycisku.
+**Kiedy:** w M3 (Karta Strategiczna i Architektury), gdy nie wiesz, jaki nagłówek albo tekst przycisku.
 
 ```
-Strona jest dla [persona] i ma jeden cel: [np. zapis na rozmowe / kupno / pobranie lead magnetu].
-Oferta: [krotki opis].
+Strona jest dla [persona] i ma jeden cel: [np. zapis na rozmowę / kupno / pobranie lead magnetu].
+Oferta: [krótki opis].
 Zaproponuj:
-- 5 naglowkow do sekcji hero (konkretne, mowiace o efekcie dla klienta, nie o mnie),
-- 5 tekstow przyciskow CTA (krotkie, jasne, bez "dowiedz sie wiecej"),
-- 3 podtytuly, ktore rozwijaja naglowek jednym zdaniem.
+- 5 nagłówków do sekcji hero (konkretne, mówiące o efekcie dla klienta, nie o mnie),
+- 5 tekstów przycisków CTA (krótkie, jasne, bez "dowiedz się więcej"),
+- 3 podtytuły, które rozwijają nagłówek jednym zdaniem.
 Polski, ludzki ton.
 ```
 
 ---
 
-## Dowody i obiekcje - co moze powstrzymac klienta
+## Dowody i obiekcje - co może powstrzymać klienta
 
 **Kiedy:** w M3 (Karta Strategiczna - dowody, oraz sekcja FAQ).
 
 ```
-Sprzedaje [oferta] dla [persona].
-Wypisz typowe obiekcje, ktore taka osoba ma przed zakupem (cena, czas, "czy to dla mnie", zaufanie, czy sobie poradze).
-Przy kazdej obiekcji zaproponuj, jak ja rozbroic na stronie: jakim zdaniem, jakim dowodem (opinia, liczba, gwarancja, przyklad).
-Daj tez 6 pytan do sekcji FAQ z krotkimi, szczerymi odpowiedziami.
+Sprzedaję [oferta] dla [persona].
+Wypisz typowe obiekcje, które taka osoba ma przed zakupem (cena, czas, "czy to dla mnie", zaufanie, czy sobie poradzę).
+Przy każdej obiekcji zaproponuj, jak ją rozbroić na stronie: jakim zdaniem, jakim dowodem (opinia, liczba, gwarancja, przykład).
+Daj też 6 pytań do sekcji FAQ z krótkimi, szczerymi odpowiedziami.
 ```
 
 ---
 
-## Analityka - skad wziac potrzebne ID (do M7)
+## Analityka - skąd wziąć potrzebne ID (do M7)
 
-**Kiedy:** w M7 (skill analityka), gdy skill prosi o ID, a Ty nie wiesz, gdzie je znalezc.
-
-```
-Jestem osoba nietechniczna. Wytlumacz mi krok po kroku, prostym jezykiem,
-jak zalozyc konto Google Analytics 4 i znalezc Measurement ID dla mojej strony.
-Podaj dokladnie, gdzie klikac, i powiedz, kiedy zaczna splywac pierwsze dane.
-```
+**Kiedy:** w M7 (skill analityka), gdy skill prosi o ID, a Ty nie wiesz, gdzie je znaleźć.
 
 ```
-Wytlumacz mi prosto, czym jest Google Tag Manager, jak zalozyc kontener
-i skad skopiowac jego ID (zaczyna sie od GTM-). Bez zargonu.
+Jestem osobą nietechniczną. Wytłumacz mi krok po kroku, prostym językiem,
+jak założyć konto Google Analytics 4 i znaleźć Measurement ID dla mojej strony.
+Podaj dokładnie, gdzie klikać, i powiedz, kiedy zaczną spływać pierwsze dane.
 ```
 
 ```
-Jak zalozyc Meta Pixel w Meta Business Manager i gdzie znalezc jego numer (ID)?
-Tlumacz jak osobie, ktora pierwszy raz to robi.
+Wytłumacz mi prosto, czym jest Google Tag Manager, jak założyć kontener
+i skąd skopiować jego ID (zaczyna się od GTM-). Bez żargonu.
 ```
 
 ```
-Czym jest weryfikacja w Google Search Console i jak ja przejsc dla mojej strony?
-Wytlumacz roznice miedzy weryfikacja przez DNS a przez znacznik meta, prosto.
+Jak założyć Meta Pixel w Meta Business Manager i gdzie znaleźć jego numer (ID)?
+Tłumacz jak osobie, która pierwszy raz to robi.
 ```
 
 ```
-Czym jest zgoda na cookies (cookie consent) i kiedy jej potrzebuje, jesli
-dodaje na strone Google Analytics i Meta Pixel? Wytlumacz w kontekscie RODO,
-prostym jezykiem, bez prawniczego belkotu.
+Czym jest weryfikacja w Google Search Console i jak ją przejść dla mojej strony?
+Wytłumacz różnicę między weryfikacją przez DNS a przez znacznik meta, prosto.
+```
+
+```
+Czym jest zgoda na cookies (cookie consent) i kiedy jej potrzebuję, jeśli
+dodaję na stronę Google Analytics i Meta Pixel? Wytłumacz w kontekście RODO,
+prostym językiem, bez prawniczego bełkotu.
 ```
 
 ---
 
-Nie znalazles tu swojego pytania? Napisz wlasny prompt wedlug wzoru: kim jestes, dla kogo, czego potrzebujesz, w jakiej formie ma byc odpowiedz. Im wiecej konkretu o Tobie i Twoich klientach podasz, tym lepsza odpowiedz.
+Nie znalazłeś tu swojego pytania? Napisz własny prompt według wzoru: kim jesteś, dla kogo, czego potrzebujesz, w jakiej formie ma być odpowiedź. Im więcej konkretu o Tobie i Twoich klientach podasz, tym lepsza odpowiedź.

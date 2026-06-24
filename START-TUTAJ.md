@@ -1,8 +1,8 @@
 # Start tutaj
 
-Jesli wlasnie kupiles/kupilas kurs, zacznij od tej strony.
+Jeśli właśnie kupiłeś/kupiłaś kurs, zacznij od tej strony.
 
-W tym kursie budujesz cala strone-system: strone glowna plus podstrony (oferta, o mnie, blog/wiedza, realizacje, kontakt), ktore razem prowadza przez lejek i zbieraja kontakty. To nie pojedynczy landing - system powstaje etapami, najpierw rdzen, potem kolejne podstrony.
+W tym kursie budujesz całą stronę-system: stronę główną plus podstrony (oferta, o mnie, blog/wiedza, realizacje, kontakt), które razem prowadzą przez lejek i zbierają kontakty. To nie pojedynczy landing - system powstaje etapami, najpierw rdzeń, potem kolejne podstrony.
 
 ## Co dostajesz
 
@@ -14,15 +14,15 @@ Masz dwa miejsca:
 2. **GitHub Course Kit** - paczka do Claude Code:
    https://github.com/bartoszbakowski1-ai/kurs-strona-ai-skills
 
-Notion pokazuje sciezke. GitHub daje pliki, skille, szablony i prompty, z ktorymi Claude Code ma pracowac.
+Notion pokazuje ścieżkę. GitHub daje pliki, skille, szablony i prompty, z którymi Claude Code ma pracować.
 
-## Najprostsza sciezka
+## Najprostsza ścieżka
 
-1. Otworz Notion i przeczytaj M0.
+1. Otwórz Notion i przeczytaj M0.
 2. Pobierz repozytorium z GitHuba przez `Code` -> `Download ZIP`.
 3. Rozpakuj ZIP.
-4. Otworz folder swojej strony w Claude Code.
-5. Wklej prompt z sekcji ponizej.
+4. Otwórz folder swojej strony w Claude Code.
+5. Wklej prompt z sekcji poniżej.
 
 ## Prompt do Claude Code
 
@@ -47,7 +47,7 @@ Nie buduj jeszcze strony.
 Po instalacji powiedz mi, jaki jest pierwszy krok kursu.
 ```
 
-## Jesli nie masz jeszcze projektu strony
+## Jeśli nie masz jeszcze projektu strony
 
 Wklej:
 
@@ -65,17 +65,17 @@ Pierwszy realny krok kursu:
 Uruchom skill kontekst.
 ```
 
-Nie przeskakuj od razu do budowania strony. Najpierw Claude Code musi poznac Twoj kontekst i stworzyc 3 karty calej strony-systemu (mapa podstron, lejek, design system).
+Nie przeskakuj od razu do budowania strony. Najpierw Claude Code musi poznać Twój kontekst i stworzyć 3 karty całej strony-systemu (mapa podstron, lejek, design system).
 
 ## Co po zbudowaniu rdzenia systemu
 
-Gdy masz juz dzialajacy rdzen systemu, paczka daje Ci tez skille do dokladania pojedynczych stron pod konkretny cel:
+Gdy masz już działający rdzeń systemu, paczka daje Ci też skille do dokładania pojedynczych stron pod konkretny cel:
 
 ```plain text
 Uruchom skill lp.
 ```
 
-Do stworzenia jednego landing page pod webinar, kampanie, lead magnet, konsultacje albo sprzedaz - jako podstrona dokladana do systemu.
+Do stworzenia jednego landing page pod webinar, kampanię, lead magnet, konsultacje albo sprzedaż - jako podstrona dokładana do systemu.
 
 ```plain text
 Uruchom skill oferta.

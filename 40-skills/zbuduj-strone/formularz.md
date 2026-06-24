@@ -1,25 +1,25 @@
-# Formularz kontaktowy przez Resend (plik towarzyszacy skilla zbuduj-strone)
+# Formularz kontaktowy przez Resend (plik towarzyszący skilla zbuduj-strone)
 
-Ladowany on-demand z Kroku 4 skilla `zbuduj-strone`. Otworz go DOPIERO przy budowie formularza - oszczedzasz tokeny uczestnika. To golden path: Resend + Next.js API route. NIE n8n, NIE Formspree. Klucz w `.env.local`, NIGDY w gicie, w Vercel ta sama nazwa zmiennej.
+Ładowany on-demand z Kroku 4 skilla `zbuduj-strone`. Otwórz go DOPIERO przy budowie formularza - oszczędzasz tokeny uczestnika. To golden path: Resend + Next.js API route. NIE n8n, NIE Formspree. Klucz w `.env.local`, NIGDY w gicie, w Vercel ta sama nazwa zmiennej.
 
-Tu masz: (1) skad uczestnik bierze klucz Resend, (2) zaleznosc do instalacji, (3) `.env.local` + `.gitignore`, (4) gotowy `route.ts`, (5) gotowy komponent formularza, (6) wpiecie do strony, (7) co powiedziec o deployu, (8) najczestsze problemy. Wykonaj po kolei.
+Tu masz: (1) skąd uczestnik bierze klucz Resend, (2) zależność do instalacji, (3) `.env.local` + `.gitignore`, (4) gotowy `route.ts`, (5) gotowy komponent formularza, (6) wpięcie do strony, (7) co powiedzieć o deployu, (8) najczęstsze problemy. Wykonaj po kolei.
 
 ---
 
-## 1. Skad wziac klucz Resend (poprowadz uczestnika, prostym jezykiem)
+## 1. Skąd wziąć klucz Resend (poprowadź uczestnika, prostym językiem)
 
-Powiedz mniej wiecej tak (po jednym kroku, czekaj az zrobi):
-1. "Wejdz na resend.com i zaloz darmowe konto (mozna przez Google/GitHub). Darmowy plan to 100 maili dziennie - na formularz kontaktowy z naddatkiem."
-2. "Po zalogowaniu w menu po lewej kliknij **API Keys**, potem **Create API Key**. Nazwa dowolna, np. `moja-strona`, uprawnienia zostaw domyslne (Full access / Sending)."
-3. "Skopiuj klucz - zaczyna sie od `re_...`. Pokaze sie TYLKO RAZ, wiec skopiuj od razu. Najbezpieczniej wklej go samodzielnie do pliku `.env.local` (za chwile go utworze). Jesli wkleisz go tutaj, wpisze go do `.env.local` i dopilnuje, zeby nie trafil do gita."
+Powiedz mniej więcej tak (po jednym kroku, czekaj aż zrobi):
+1. "Wejdź na resend.com i załóż darmowe konto (można przez Google/GitHub). Darmowy plan to 100 maili dziennie - na formularz kontaktowy z naddatkiem."
+2. "Po zalogowaniu w menu po lewej kliknij **API Keys**, potem **Create API Key**. Nazwa dowolna, np. `moja-strona`, uprawnienia zostaw domyślne (Full access / Sending)."
+3. "Skopiuj klucz - zaczyna się od `re_...`. Pokaże się TYLKO RAZ, więc skopiuj od razu. Najbezpieczniej wklej go samodzielnie do pliku `.env.local` (za chwilę go utworzę). Jeśli wkleisz go tutaj, wpiszę go do `.env.local` i dopilnuję, żeby nie trafił do gita."
 
-Adres nadawcy (`from`) - wytlumacz laikowi prosto:
-- Na start `from` = `onboarding@resend.dev`. To adres testowy Resend - dziala BEZ wlasnej domeny, ale TYLKO do testow: na darmowym koncie bez zweryfikowanej domeny maile moga dojsc wylacznie na adres wlasciciela konta Resend (ten, ktorym uczestnik zakladal konto). To wystarczy, zeby zobaczyc, ze formularz dziala.
-- Do produkcji (gdy strona ma realnie zbierac kontakty od obcych osob): trzeba w Resend dodac i ZWERYFIKOWAC wlasna domene (zakladka **Domains**) i wtedy `from` = `kontakt@twojadomena.pl`. To krok na potem (po M6), nie teraz - ale powiedz uczestnikowi 1 zdaniem, ze bez wlasnej domeny formularz nadaje sie tylko do testu na wlasna skrzynke.
+Adres nadawcy (`from`) - wytłumacz laikowi prosto:
+- Na start `from` = `onboarding@resend.dev`. To adres testowy Resend - działa BEZ własnej domeny, ale TYLKO do testów: na darmowym koncie bez zweryfikowanej domeny maile mogą dojść wyłącznie na adres właściciela konta Resend (ten, którym uczestnik zakładał konto). To wystarczy, żeby zobaczyć, że formularz działa.
+- Do produkcji (gdy strona ma realnie zbierać kontakty od obcych osób): trzeba w Resend dodać i ZWERYFIKOWAĆ własną domenę (zakładka **Domains**) i wtedy `from` = `kontakt@twojadomena.pl`. To krok na potem (po M6), nie teraz - ale powiedz uczestnikowi 1 zdaniem, że bez własnej domeny formularz nadaje się tylko do testu na własną skrzynkę.
 
-Adres odbiorcy (`to`, czyli `KONTAKT_TO`) - to najwazniejszy szczegol, bo tu laik najczesciej cicho utyka:
-- Na DARMOWYM koncie bez wlasnej domeny `KONTAKT_TO` MUSI byc dokladnie tym adresem e-mail, ktorym uczestnik zakladal konto Resend. Inny adres = mail po cichu nie dojdzie (w przegladarce nie bedzie bledu).
-- Dlatego zapytaj o JEDNO: "Na jaki adres e-mail maja przychodzic wiadomosci z formularza? Na start podaj ten sam e-mail, ktorym zakladasz konto Resend - inaczej testowy mail nie dojdzie." - to bedzie `KONTAKT_TO`.
+Adres odbiorcy (`to`, czyli `KONTAKT_TO`) - to najważniejszy szczegół, bo tu laik najczęściej cicho utyka:
+- Na DARMOWYM koncie bez własnej domeny `KONTAKT_TO` MUSI być dokładnie tym adresem e-mail, którym uczestnik zakładał konto Resend. Inny adres = mail po cichu nie dojdzie (w przeglądarce nie będzie błędu).
+- Dlatego zapytaj o JEDNO: "Na jaki adres e-mail mają przychodzić wiadomości z formularza? Na start podaj ten sam e-mail, którym zakładasz konto Resend - inaczej testowy mail nie dojdzie." - to będzie `KONTAKT_TO`.
 
 ---
 
@@ -31,9 +31,9 @@ npm install resend
 
 ---
 
-## 3. .env.local + .gitignore (guardrail bezpieczenstwa)
+## 3. .env.local + .gitignore (guardrail bezpieczeństwa)
 
-1. Utworz `.env.local` w glownym folderze projektu z trescia (wklej tu klucz uczestnika w miejsce `re_...`). WAZNE: na darmowym Resend `KONTAKT_TO` = ten sam e-mail, ktorym uczestnik zakladal konto Resend (inaczej mail nie dojdzie). `KONTAKT_FROM` zostaw `onboarding@resend.dev` az do momentu zweryfikowania wlasnej domeny:
+1. Utwórz `.env.local` w głównym folderze projektu z treścią (wklej tu klucz uczestnika w miejsce `re_...`). WAŻNE: na darmowym Resend `KONTAKT_TO` = ten sam e-mail, którym uczestnik zakładał konto Resend (inaczej mail nie dojdzie). `KONTAKT_FROM` zostaw `onboarding@resend.dev` aż do momentu zweryfikowania własnej domeny:
 
 ```bash
 RESEND_API_KEY=re_tu_wklej_klucz
@@ -43,19 +43,19 @@ KONTAKT_TO=adres@uczestnika.pl
 KONTAKT_FROM=onboarding@resend.dev
 ```
 
-2. OD RAZU upewnij sie, ze `.env.local` jest w `.gitignore` (Next.js dodaje go domyslnie, ale sprawdz):
+2. OD RAZU upewnij się, że `.env.local` jest w `.gitignore` (Next.js dodaje go domyślnie, ale sprawdź):
 
 ```bash
 grep -qx ".env.local" .gitignore && echo "OK .env.local jest w .gitignore" || echo ".env.local" >> .gitignore
 ```
 
-3. GUARDRAIL: `.env.local` NIGDY nie trafia do gita. Nie dodawaj go do commita. Jesli `git status` pokazuje `.env.local` jako sledzony - zatrzymaj sie i napraw (`git rm --cached .env.local`), zanim cokolwiek zacommitujesz.
+3. GUARDRAIL: `.env.local` NIGDY nie trafia do gita. Nie dodawaj go do commita. Jeśli `git status` pokazuje `.env.local` jako śledzony - zatrzymaj się i napraw (`git rm --cached .env.local`), zanim cokolwiek zacommitujesz.
 
 ---
 
 ## 4. API route - src/app/api/contact/route.ts
 
-Utworz plik `src/app/api/contact/route.ts` z dokladnie taka trescia. Ma serwerowa walidacje, limity dlugosci, honeypot antyspamowy i generyczne bledy:
+Utwórz plik `src/app/api/contact/route.ts` z dokładnie taką treścią. Ma serwerową walidację, limity długości, honeypot antyspamowy i generyczne błędy:
 
 ```ts
 import { NextResponse } from "next/server";
@@ -197,13 +197,13 @@ export async function POST(request: Request) {
 }
 ```
 
-Uwaga: `replyTo` ustawia adres nadawcy z formularza, wiec uczestnik moze odpowiedziec na maila wprost do osoby, ktora go napisala. Honeypot `firma` i `startedAt` nie sa idealnym antyspamem, ale mocno ograniczaja najprostsze boty. Po deployu w M6 dodamy jeszcze rate limit dla `/api/contact` w Vercel WAF, jesli bedzie dostepny na planie uczestnika.
+Uwaga: `replyTo` ustawia adres nadawcy z formularza, więc uczestnik może odpowiedzieć na maila wprost do osoby, która go napisała. Honeypot `firma` i `startedAt` nie są idealnym antyspamem, ale mocno ograniczają najprostsze boty. Po deployu w M6 dodamy jeszcze rate limit dla `/api/contact` w Vercel WAF, jeśli będzie dostępny na planie uczestnika.
 
 ---
 
 ## 5. Komponent formularza - src/components/sections/Kontakt.tsx
 
-Utworz `src/components/sections/Kontakt.tsx`. Uzywa shadcn (`input`, `button`) i WYLACZNIE zmiennych z `globals.css`. Naglowek z `text-balance`, zero eyebrow CAPSEM, zero hardkodowanych kolorow.
+Utwórz `src/components/sections/Kontakt.tsx`. Używa shadcn (`input`, `button`) i WYŁĄCZNIE zmiennych z `globals.css`. Nagłówek z `text-balance`, zero eyebrow CAPSEM, zero hardkodowanych kolorów.
 
 ```tsx
 "use client";
@@ -311,33 +311,33 @@ export function Kontakt() {
 
 ## 6. Wepnij formularz do strony
 
-W `src/app/page.tsx` zaimportuj i wstaw `<Kontakt />` w miejscu sekcji kontaktu (wedlug kolejnosci z Karty Architektury Tresci, zwykle przed stopka):
+W `src/app/page.tsx` zaimportuj i wstaw `<Kontakt />` w miejscu sekcji kontaktu (według kolejności z Karty Architektury Treści, zwykle przed stopką):
 
 ```tsx
 import { Kontakt } from "@/components/sections/Kontakt";
 
-// ...w JSX strony, na wlasciwym miejscu:
+// ...w JSX strony, na właściwym miejscu:
 <Kontakt />
 ```
 
 ---
 
-## 7. Co powiedziec o deployu (jedno zdanie teraz, reszta w M6)
+## 7. Co powiedzieć o deployu (jedno zdanie teraz, reszta w M6)
 
-Powiedz uczestnikowi: "Formularz dziala juz lokalnie. Zeby dzialal na zywo, w M6 przy deployu na Vercel wkleimy ten sam klucz w panelu Vercel pod ta sama nazwa - `RESEND_API_KEY` (oraz `KONTAKT_TO` i `KONTAKT_FROM`). Plik `.env.local` zostaje na Twoim komputerze, nie idzie do gita - i o to chodzi."
+Powiedz uczestnikowi: "Formularz działa już lokalnie. Żeby działał na żywo, w M6 przy deployu na Vercel wkleimy ten sam klucz w panelu Vercel pod tą samą nazwą - `RESEND_API_KEY` (oraz `KONTAKT_TO` i `KONTAKT_FROM`). Plik `.env.local` zostaje na Twoim komputerze, nie idzie do gita - i o to chodzi."
 
-Zanotuj w `PROGRESS.md` w sekcji "Klucze": zmienne `RESEND_API_KEY`, `KONTAKT_TO`, `KONTAKT_FROM` sa w `.env.local` (NIE w git), w Vercel trzeba wpisac te same nazwy. W sekcji "Bezpieczenstwo" dopisz: po deployu ustawic rate limit dla `/api/contact` w Vercel WAF, jesli plan to umozliwia.
+Zanotuj w `PROGRESS.md` w sekcji "Klucze": zmienne `RESEND_API_KEY`, `KONTAKT_TO`, `KONTAKT_FROM` są w `.env.local` (NIE w git), w Vercel trzeba wpisać te same nazwy. W sekcji "Bezpieczeństwo" dopisz: po deployu ustawić rate limit dla `/api/contact` w Vercel WAF, jeśli plan to umożliwia.
 
 ---
 
-## 8. Gdy formularz nie dziala (fallback dla laika)
+## 8. Gdy formularz nie działa (fallback dla laika)
 
-Najpierw uniwersalna zasada: jesli w terminalu jest czerwony tekst - skopiuj go w calosci i wklej do mnie z prosba "napraw i wyjasnij po polsku". Najczestsze przyczyny po kolei:
+Najpierw uniwersalna zasada: jeśli w terminalu jest czerwony tekst - skopiuj go w całości i wklej do mnie z prośbą "napraw i wyjaśnij po polsku". Najczęstsze przyczyny po kolei:
 
-- **Nie przychodzi mail, brak bledu w przegladarce.** Najczesciej brak klucza albo serwer dev nie zostal zrestartowany po dodaniu `.env.local`. Zatrzymaj serwer (Ctrl+C) i uruchom `npm run dev` jeszcze raz - zmienne z `.env.local` laduja sie tylko przy starcie.
-- **Blad "Missing API key" / `RESEND_API_KEY is undefined`.** Klucza nie ma w `.env.local` albo jest literowka w nazwie zmiennej. Sprawdz, ze linia to dokladnie `RESEND_API_KEY=re_...` bez spacji wokol `=`.
-- **Mail nie dochodzi, a w logach jest blad Resend o adresie.** Na darmowym koncie bez wlasnej domeny `to` musi byc adresem wlasciciela konta Resend. Ustaw `KONTAKT_TO` na e-mail, ktorym uczestnik zakladal konto Resend.
-- **404 na `/api/contact`.** Plik jest w zlym miejscu. Ma byc dokladnie `src/app/api/contact/route.ts` (folder `api`, podfolder `contact`, plik `route.ts`).
-- **Build/dev krzyczy o `"use client"`.** Komponent `Kontakt.tsx` musi miec `"use client"` w pierwszej linii (uzywa `useState`) - jest w szkielecie wyzej, nie usuwaj go.
+- **Nie przychodzi mail, brak błędu w przeglądarce.** Najczęściej brak klucza albo serwer dev nie został zrestartowany po dodaniu `.env.local`. Zatrzymaj serwer (Ctrl+C) i uruchom `npm run dev` jeszcze raz - zmienne z `.env.local` ładują się tylko przy starcie.
+- **Błąd "Missing API key" / `RESEND_API_KEY is undefined`.** Klucza nie ma w `.env.local` albo jest literówka w nazwie zmiennej. Sprawdź, że linia to dokładnie `RESEND_API_KEY=re_...` bez spacji wokół `=`.
+- **Mail nie dochodzi, a w logach jest błąd Resend o adresie.** Na darmowym koncie bez własnej domeny `to` musi być adresem właściciela konta Resend. Ustaw `KONTAKT_TO` na e-mail, którym uczestnik zakładał konto Resend.
+- **404 na `/api/contact`.** Plik jest w złym miejscu. Ma być dokładnie `src/app/api/contact/route.ts` (folder `api`, podfolder `contact`, plik `route.ts`).
+- **Build/dev krzyczy o `"use client"`.** Komponent `Kontakt.tsx` musi mieć `"use client"` w pierwszej linii (używa `useState`) - jest w szkielecie wyżej, nie usuwaj go.
 
-GUARDRAIL: jesli mial(a)by wyciec klucz (np. trafil do gita) - po naprawie wygeneruj NOWY klucz w Resend (zakladka API Keys), stary uznaj za spalony i usun. Stare klucze w historii gita sa niebezpieczne.
+GUARDRAIL: jeśli miał(a)by wyciec klucz (np. trafił do gita) - po naprawie wygeneruj NOWY klucz w Resend (zakładka API Keys), stary uznaj za spalony i usuń. Stare klucze w historii gita są niebezpieczne.

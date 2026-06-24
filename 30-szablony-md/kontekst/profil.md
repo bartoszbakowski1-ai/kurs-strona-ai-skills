@@ -1,76 +1,76 @@
 # Profil
 
-Ten plik opisuje Ciebie i Twoj biznes. Claude bedzie z niego korzystac, zeby nie pisac strony jak dla anonimowej osoby.
+Ten plik opisuje Ciebie i Twój biznes. Claude będzie z niego korzystać, żeby nie pisać strony jak dla anonimowej osoby.
 
 ## Kim jestem
 
 Wpisz 2-4 zdania:
 
-- jak sie nazywasz albo pod jaka marka dzialasz,
-- czym sie zajmujesz,
+- jak się nazywasz albo pod jaką marką działasz,
+- czym się zajmujesz,
 - od kiedy to robisz,
-- z jakiego doswiadczenia korzystasz.
+- z jakiego doświadczenia korzystasz.
 
-Przyklad:
+Przykład:
 
-> Nazywam sie Anna Nowak i pomagam trenerom personalnym przeniesc wiedze z pracy 1:1 do produktow online. Od 8 lat pracuje z klientami indywidualnymi, a od 2 lat prowadze warsztaty o tworzeniu ofert cyfrowych.
+> Nazywam się Anna Nowak i pomagam trenerom personalnym przenieść wiedzę z pracy 1:1 do produktów online. Od 8 lat pracuję z klientami indywidualnymi, a od 2 lat prowadzę warsztaty o tworzeniu ofert cyfrowych.
 
 ## Oferta
 
-Wypisz, co sprzedajesz teraz albo co chcesz sprzedawac przez strone.
+Wypisz, co sprzedajesz teraz albo co chcesz sprzedawać przez stronę.
 
-- Glowna oferta:
+- Główna oferta:
 - Dla kogo:
 - Cena albo widełki cenowe:
 - Co klient dostaje:
-- Ile trwa wspolpraca:
+- Ile trwa współpraca:
 
 ## Klienci
 
-Wypisz, skad przychodza klienci i kogo najczesciej obslugujesz.
+Wypisz, skąd przychodzą klienci i kogo najczęściej obsługujesz.
 
-- Najczestszy typ klienta:
-- Skad przychodza:
-- Co kupuja najczesciej:
-- Dlaczego wybieraja mnie:
+- Najczęstszy typ klienta:
+- Skąd przychodzą:
+- Co kupują najczęściej:
+- Dlaczego wybierają mnie:
 
 ## Liczby i fakty
 
-Wpisz wszystko, co moze budowac wiarygodnosc. Nie musza byc wielkie liczby. Maja byc prawdziwe.
+Wpisz wszystko, co może budować wiarygodność. Nie muszą być wielkie liczby. Mają być prawdziwe.
 
-- Lata doswiadczenia:
-- Liczba klientow / projektow / warsztatow:
-- Wyniki klientow:
-- Certyfikaty, publikacje, wystapienia:
+- Lata doświadczenia:
+- Liczba klientów / projektów / warsztatów:
+- Wyniki klientów:
+- Certyfikaty, publikacje, wystąpienia:
 - Inne fakty:
 
-## Jak mowie
+## Jak mówię
 
-Opisz ton, ktory ma brzmiec jak Ty.
+Opisz ton, który ma brzmieć jak Ty.
 
-- Moj styl komunikacji:
-- Slow, ktorych uzywam czesto:
-- Slow, ktorych nie chce uzywac:
-- Czy mowie bardziej bezposrednio, spokojnie, ekspercko, energicznie, cieplo:
+- Mój styl komunikacji:
+- Słów, których używam często:
+- Słów, których nie chcę używać:
+- Czy mówię bardziej bezpośrednio, spokojnie, ekspercko, energicznie, ciepło:
 
-## Cele na 12 miesiecy
+## Cele na 12 miesięcy
 
-Wpisz, po co ta strona ma Ci pomoc w biznesie.
+Wpisz, po co ta strona ma Ci pomóc w biznesie.
 
-- Co chce sprzedawac mocniej:
-- Jakie kontakty chce zbierac:
-- Jaki efekt biznesowy bedzie sukcesem:
+- Co chcę sprzedawać mocniej:
+- Jakie kontakty chcę zbierać:
+- Jaki efekt biznesowy będzie sukcesem:
 
 ## Antycele
 
-Czego nie chcesz robic, nawet jesli "wszyscy tak robia"?
+Czego nie chcesz robić, nawet jeśli "wszyscy tak robią"?
 
-- Nie chce:
+- Nie chcę:
 - Nie pasuje do mojej marki:
-- Nie chce przyciagac klientow, ktorzy:
+- Nie chcę przyciągać klientów, którzy:
 
 ## Notatki dla Claude
 
-Tutaj dopisz wszystko, co ma pomoc Claude pisac bardziej jak Ty.
+Tutaj dopisz wszystko, co ma pomóc Claude pisać bardziej jak Ty.
 
 - 

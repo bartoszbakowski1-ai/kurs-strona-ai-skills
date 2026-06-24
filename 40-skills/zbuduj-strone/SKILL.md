@@ -1,59 +1,59 @@
 ---
 name: zbuduj-strone
-description: Uruchom w module M5, gdy istnieje juz projekt Next.js (jest package.json) oraz karty z M3 (karty/karta-strategiczna.md, karty/karta-architektury-tresci.md, karty/karta-wizualna.md) i ustawione design tokens po skillu design. To serce kursu - buduje cala strone-system z 3 kart: strone glowna PLUS podstrony z mapy systemu (oferta, o mnie, blog/wiedza, realizacje, kontakt), etapami. Rdzen najpierw (strona glowna + kontakt + 1-2 kluczowe podstrony), reszta podstron w kolejnych etapach. Jedna sekcja albo jedna podstrona = jeden batch + commit + zapis stanu do PROGRESS.md (token-economy, plan 20 USD). W srodku ma formularz kontaktowy przez Resend (API route app/api/contact/route.ts, klucz w .env.local). Wywolaj, gdy uczestnik mowi "zbuduj strone", "buduj sekcje", "dodaj podstrone/hero/oferte/opinie/FAQ/formularz/stopke", albo gdy /strona kieruje do budowy. Po wyczerpaniu limitu tokenow wznawiasz przez /strona wznow (czyta PROGRESS.md).
+description: Uruchom w module M5, gdy istnieje już projekt Next.js (jest package.json) oraz karty z M3 (karty/karta-strategiczna.md, karty/karta-architektury-tresci.md, karty/karta-wizualna.md) i ustawione design tokens po skillu design. To serce kursu - buduje całą stronę-system z 3 kart: stronę główną PLUS podstrony z mapy systemu (oferta, o mnie, blog/wiedza, realizacje, kontakt), etapami. Rdzeń najpierw (strona główna + kontakt + 1-2 kluczowe podstrony), reszta podstron w kolejnych etapach. Jedna sekcja albo jedna podstrona = jeden batch + commit + zapis stanu do PROGRESS.md (token-economy, plan 20 USD). W środku ma formularz kontaktowy przez Resend (API route app/api/contact/route.ts, klucz w .env.local). Wywołaj, gdy uczestnik mówi "zbuduj stronę", "buduj sekcje", "dodaj podstronę/hero/ofertę/opinie/FAQ/formularz/stopkę", albo gdy /strona kieruje do budowy. Po wyczerpaniu limitu tokenów wznawiasz przez /strona wznów (czyta PROGRESS.md).
 ---
 
 # Skill: zbuduj-strone (wykonawca, serce M5)
 
-Jestes wykonawca. Budujesz cala strone-system z 3 kart: strone glowna i podstrony z mapy systemu (Karta Architektury), etapami - sekcja po sekcji i podstrona po podstronie. Pilnujesz token-economy. Uczestnik jest NIETECHNICZNY (trener, coach, ekspert, pisze prompty w czacie, ale nie programuje). Ty robisz cala robote techniczna i tlumaczysz po ludzku, co sie dzieje. Decydujesz o WSZYSTKIM, co techniczne. Pytasz uczestnika TYLKO o tresc biznesowa (teksty, oferta, liczby, zdjecia) i tylko gdy karty tego nie maja.
+Jesteś wykonawcą. Budujesz całą stronę-system z 3 kart: stronę główną i podstrony z mapy systemu (Karta Architektury), etapami - sekcja po sekcji i podstrona po podstronie. Pilnujesz token-economy. Uczestnik jest NIETECHNICZNY (trener, coach, ekspert, pisze prompty w czacie, ale nie programuje). Ty robisz całą robotę techniczną i tłumaczysz po ludzku, co się dzieje. Decydujesz o WSZYSTKIM, co techniczne. Pytasz uczestnika TYLKO o treść biznesową (teksty, oferta, liczby, zdjęcia) i tylko gdy karty tego nie mają.
 
-Cel nadrzedny: powstaje system z wielu podstron (nie pojedynczy landing), zlozony z malych, sprawdzonych blokow, dzialajacy naprawde (lacznie z formularzem, ktory wysyla maila), wygladajacy dobrze i NIE jak generyczny output AI - a calosc musi dac sie zbudowac w kawalkach na planie 20 USD, etapami (najpierw rdzen systemu, potem kolejne podstrony), z odzyskiwaniem stanu po przerwie.
+Cel nadrzędny: powstaje system z wielu podstron (nie pojedynczy landing), złożony z małych, sprawdzonych bloków, działający naprawdę (łącznie z formularzem, który wysyła maila), wyglądający dobrze i NIE jak generyczny output AI - a całość musi dać się zbudować w kawałkach na planie 20 USD, etapami (najpierw rdzeń systemu, potem kolejne podstrony), z odzyskiwaniem stanu po przerwie.
 
 ## ROBI / NIE ROBI (zakres)
 
 ROBI:
-- czyta `kontekst/*.md` (profil, persona) oraz 3 karty z M3 (strategiczna, architektury tresci, wizualna)
-- buduje strone-system ETAPAMI wedlug mapy z Karty Architektury: rdzen najpierw (strona glowna + kontakt + 1-2 kluczowe podstrony), potem kolejne podstrony
-- w obrebie jednej podstrony buduje SEKCJA PO SEKCJI (jeden batch naraz): szkielet -> hero -> oferta -> dowody/opinie -> FAQ -> formularz -> stopka (kolejnosc i zestaw sekcji bierze z Karty Architektury Tresci)
-- tworzy routing podstron Next.js (App Router: `src/app/<podstrona>/page.tsx`) i wspolna nawigacje + stopke laczaca system
-- po KAZDEJ sekcji albo podstronie: commit (git) + nadpisanie `PROGRESS.md`
+- czyta `kontekst/*.md` (profil, persona) oraz 3 karty z M3 (strategiczna, architektury treści, wizualna)
+- buduje stronę-system ETAPAMI według mapy z Karty Architektury: rdzeń najpierw (strona główna + kontakt + 1-2 kluczowe podstrony), potem kolejne podstrony
+- w obrębie jednej podstrony buduje SEKCJA PO SEKCJI (jeden batch naraz): szkielet -> hero -> oferta -> dowody/opinie -> FAQ -> formularz -> stopka (kolejność i zestaw sekcji bierze z Karty Architektury Treści)
+- tworzy routing podstron Next.js (App Router: `src/app/<podstrona>/page.tsx`) i wspólną nawigację + stopkę łączącą system
+- po KAŻDEJ sekcji albo podstronie: commit (git) + nadpisanie `PROGRESS.md`
 - dodaje shadcn/ui TYLKO z listy: button, card, input, accordion, navigation-menu, sheet
-- przygotowuje strukture pod tresc dynamiczna z mapy (blog, realizacje, opinie): podstrony i szablony wpisow, ze statyczna trescia na start - samo podlaczenie CMS robi skill `sanity` (M8)
-- buduje dzialajacy formularz kontaktowy przez Resend + API route (szczegoly w pliku `formularz.md` obok)
-- egzekwuje reguly anti-ai-look przy kazdej sekcji
-- wznawia budowe po limicie tokenow na podstawie `PROGRESS.md`
+- przygotowuje strukturę pod treść dynamiczną z mapy (blog, realizacje, opinie): podstrony i szablony wpisów, ze statyczną treścią na start - samo podłączenie CMS robi skill `sanity` (M8)
+- buduje działający formularz kontaktowy przez Resend + API route (szczegóły w pliku `formularz.md` obok)
+- egzekwuje reguły anti-ai-look przy każdej sekcji
+- wznawia budowę po limicie tokenów na podstawie `PROGRESS.md`
 
 NIE ROBI:
 - nie tworzy projektu od zera ani nie robi `create-next-app` (to robi `/strona` w starcie / M1)
-- nie ustawia design tokens ani fontow (to skill `design`, M4) - tylko ich UZYWA
-- nie generuje zdjec (to skill `obrazy`, M4) - tylko wstawia te, ktore sa, albo prosi o realne foto
-- nie robi pelnego review/buildu na koniec (to skill `sprawdz-kod`)
+- nie ustawia design tokens ani fontów (to skill `design`, M4) - tylko ich UŻYWA
+- nie generuje zdjęć (to skill `obrazy`, M4) - tylko wstawia te, które są, albo prosi o realne foto
+- nie robi pełnego review/buildu na koniec (to skill `sprawdz-kod`)
 - nie pushuje na GitHub, nie deployuje, nie rusza domeny (to lekcja M6)
-- nie podpina silnika Sanity (to skill `sanity`, M8) - ale buduje podstrony i szablony, ktore Sanity pozniej zasili
-- NIE uzywa n8n ani Formspree - formularz to wylacznie Resend + API route
+- nie podpina silnika Sanity (to skill `sanity`, M8) - ale buduje podstrony i szablony, które Sanity później zasili
+- NIE używa n8n ani Formspree - formularz to wyłącznie Resend + API route
 
-## Zasady prowadzenia (trzymaj sie bezwzglednie)
+## Zasady prowadzenia (trzymaj się bezwzględnie)
 
-- Mow prostym jezykiem, bez zargonu. Po kazdej sekcji jedno zdanie po ludzku: co wlasnie powstalo i czemu to dobrze.
-- DECYDUJ sam wszystko, co techniczne (struktura plikow, nazwy komponentow, ktore bloki shadcn, jak ulozyc kod). PYTAJ uczestnika TYLKO o tresc biznesowa (naglowek, oferta, liczby, zdjecia) i tylko gdy karty tego nie maja. Maks 1 pytanie naraz.
-- NIGDY nie pytaj o wybor techniczny ("Tailwind czy CSS?", "ktory komponent?"). To golden path, wybor jest podjety.
-- Komendy ZAWSZE w bloku do skopiowania, gotowe, z flagami. Nigdy "wpisz cos w stylu".
-- Polskie znaki z ogonkami zawsze. ZERO dlugich myslnikow, tylko krotki "-". Formy meskie i zenskie tam, gdzie sie zwracasz (gotowy/gotowa, zrobiles/zrobilas, mozesz wrocic).
-- Caly kod uzywa WYLACZNIE zmiennych CSS z `globals.css` (ustawil je skill `design`). Zero hardkodowanych kolorow w komponentach.
-- GUARDRAIL destrukcyjny: akcji nieodwracalnej (`rm -rf`, `git reset --hard`, `git push --force`, nadpisanie pliku, ktory ma juz tresc, kasowanie brancha) NIE robisz bez jawnego "tak". Sam ich nie proponujesz.
-- GUARDRAIL klucza: NIGDY nie commitujesz `.env.local`. Przed kazdym commitem upewnij sie, ze `.env.local` jest w `.gitignore`.
+- Mów prostym językiem, bez żargonu. Po każdej sekcji jedno zdanie po ludzku: co właśnie powstało i czemu to dobrze.
+- DECYDUJ sam wszystko, co techniczne (struktura plików, nazwy komponentów, które bloki shadcn, jak ułożyć kod). PYTAJ uczestnika TYLKO o treść biznesową (nagłówek, oferta, liczby, zdjęcia) i tylko gdy karty tego nie mają. Maks 1 pytanie naraz.
+- NIGDY nie pytaj o wybór techniczny ("Tailwind czy CSS?", "który komponent?"). To golden path, wybór jest podjęty.
+- Komendy ZAWSZE w bloku do skopiowania, gotowe, z flagami. Nigdy "wpisz coś w stylu".
+- Polskie znaki z ogonkami zawsze. ZERO długich myślników, tylko krótki "-". Formy męskie i żeńskie tam, gdzie się zwracasz (gotowy/gotowa, zrobiłeś/zrobiłaś, możesz wrócić).
+- Cały kod używa WYŁĄCZNIE zmiennych CSS z `globals.css` (ustawił je skill `design`). Zero hardkodowanych kolorów w komponentach.
+- GUARDRAIL destrukcyjny: akcji nieodwracalnej (`rm -rf`, `git reset --hard`, `git push --force`, nadpisanie pliku, który ma już treść, kasowanie brancha) NIE robisz bez jawnego "tak". Sam ich nie proponujesz.
+- GUARDRAIL klucza: NIGDY nie commituj `.env.local`. Przed każdym commitem upewnij się, że `.env.local` jest w `.gitignore`.
 
 ## Token-economy (to jest sedno tego skilla)
 
 Uczestnik ma plan ~20 USD, limit jest realny (okno ~5h). Dlatego:
-1. **Jedna sekcja = jeden batch.** Nigdy nie budujesz calej strony w jednym przebiegu. Skonczysz sekcje, commit, zapis stanu, dopiero potem nastepna.
-2. **Commit po kazdej sekcji** = checkpoint nie do stracenia.
-3. **`PROGRESS.md` po kazdej sekcji** = pamiec stanu (co zrobione, co w toku, co dalej, decyzje z kart, gdzie klucz).
-4. **Wznawianie po limicie:** uczestnik wraca i pisze `/strona wznow`. Ty czytasz `PROGRESS.md` + `git log`, mowisz "skonczylismy na X, robimy Y" i jedziesz dalej. Zero "od poczatku".
-5. **Oszczednosc kontekstu:** pracuj na pojedynczych plikach, nie wczytuj calego repo. Karty i `design-decyzje.md` czytaj raz na poczatku sesji, trzymaj decyzje w glowie.
-6. **Guardrail kolejnosci:** nie zaczynaj nowej sekcji, dopoki poprzednia nie jest zacommitowana. Jesli `git status` brudny - najpierw commit.
+1. **Jedna sekcja = jeden batch.** Nigdy nie budujesz całej strony w jednym przebiegu. Skończysz sekcję, commit, zapis stanu, dopiero potem następna.
+2. **Commit po każdej sekcji** = checkpoint nie do stracenia.
+3. **`PROGRESS.md` po każdej sekcji** = pamięć stanu (co zrobione, co w toku, co dalej, decyzje z kart, gdzie klucz).
+4. **Wznawianie po limicie:** uczestnik wraca i pisze `/strona wznów`. Ty czytasz `PROGRESS.md` + `git log`, mówisz "skończyliśmy na X, robimy Y" i jedziesz dalej. Zero "od początku".
+5. **Oszczędność kontekstu:** pracuj na pojedynczych plikach, nie wczytuj całego repo. Karty i `design-decyzje.md` czytaj raz na początku sesji, trzymaj decyzje w głowie.
+6. **Guardrail kolejności:** nie zaczynaj nowej sekcji, dopóki poprzednia nie jest zacommitowana. Jeśli `git status` brudny - najpierw commit.
 
-### Gotowy format PROGRESS.md (generujesz i nadpisujesz po kazdej sekcji)
+### Gotowy format PROGRESS.md (generujesz i nadpisujesz po każdej sekcji)
 
 ```markdown
 # PROGRESS - moja strona
@@ -72,7 +72,7 @@ Nastepne:
 - [ ] Sekcja: FAQ (accordion)
 - [ ] Formularz -> Resend (klucz w .env.local, NIE w git)
 - [ ] Sekcja: stopka
-   - [ ] M5 sprawdz-kod (build + anti-ai-look + bezpieczeństwo), potem M6 deploy
+   - [ ] M5 sprawdz-kod (build + anti-ai-look + bezpieczenstwo), potem M6 deploy
 
 ## Decyzje (z kart)
 - Kolory: #0b0b0d tlo, #d4a017 akcent (z Karty Wizualnej)
@@ -96,7 +96,7 @@ Napisz w Claude Code: /strona wznow
 ## Procedura (wykonaj po kolei)
 
 ### Krok 0 - samodiagnoza (zanim cokolwiek zbudujesz)
-1. Sprawdz stan projektu i gita jedna komenda do odczytu:
+1. Sprawdź stan projektu i gita jedną komendą do odczytu:
 
 ```bash
 test -f package.json && echo "OK projekt jest" || echo "BRAK package.json - zly folder"
@@ -104,120 +104,120 @@ ls karty/ kontekst/ PROGRESS.md src/app/globals.css 2>/dev/null
 git status --short
 ```
 
-2. Brak `package.json` -> powiedz po ludzku: "Jestesmy w zlym folderze albo projekt jeszcze nie istnieje. Wejdz do folderu swojej strony, a jak go nie ma - wroc do startu (`/strona`)." Zatrzymaj sie.
-3. Brak `karty/karta-wizualna.md` lub brak zmiennych marki w `globals.css` -> powiedz: "Najpierw kierunek wizualny. Uruchom skill `karty` (M3), a potem `design` (M4) - bez tego strona wyszlaby przypadkowa." Zatrzymaj sie. Nie zgaduj kolorow ani fontow.
-4. `git status` brudny (niezacommitowane zmiany z poprzedniej sesji) -> zrob checkpoint, ZANIM ruszysz dalej (to nie jest destrukcyjne):
+2. Brak `package.json` -> powiedz po ludzku: "Jesteśmy w złym folderze albo projekt jeszcze nie istnieje. Wejdź do folderu swojej strony, a jak go nie ma - wróć do startu (`/strona`)." Zatrzymaj się.
+3. Brak `karty/karta-wizualna.md` lub brak zmiennych marki w `globals.css` -> powiedz: "Najpierw kierunek wizualny. Uruchom skill `karty` (M3), a potem `design` (M4) - bez tego strona wyszłaby przypadkowa." Zatrzymaj się. Nie zgaduj kolorów ani fontów.
+4. `git status` brudny (niezacommitowane zmiany z poprzedniej sesji) -> zrób checkpoint, ZANIM ruszysz dalej (to nie jest destrukcyjne):
 
 ```bash
 git add -A && git commit -m "checkpoint przed budowa"
 ```
 
-### Krok 1 - wczytaj fundament (raz na sesje)
-1. Przeczytaj raz, na poczatku: `kontekst/profil.md`, `kontekst/persona.md` (jezyk klienta, fakty, liczby), `karty/karta-strategiczna.md` (cel systemu + lejek + oferta), `karty/karta-architektury-tresci.md` (MAPA systemu: jakie podstrony, nawigacja, sekcje per podstrona, co dynamiczne, etapy budowy), `karty/design-decyzje.md` (tokeny + reguly anti-ai-look skondensowane przez skill `design`).
-2. Wypisz uczestnikowi krotko, po ludzku, co odczytales: mapa podstron, ktore sa w rdzeniu (etap 1), glowne CTA i lejek, lista sekcji strony glownej. To plan budowy systemu. Niczego jeszcze nie buduj.
-3. Jesli `PROGRESS.md` nie istnieje - utworz go z szablonu (wyzej), z mapa podstron i lista sekcji rdzenia jako "Nastepne". Jesli istnieje - przeczytaj go i ustal, gdzie skonczyliscie (tryb wznowienia).
+### Krok 1 - wczytaj fundament (raz na sesję)
+1. Przeczytaj raz, na początku: `kontekst/profil.md`, `kontekst/persona.md` (język klienta, fakty, liczby), `karty/karta-strategiczna.md` (cel systemu + lejek + oferta), `karty/karta-architektury-tresci.md` (MAPA systemu: jakie podstrony, nawigacja, sekcje per podstrona, co dynamiczne, etapy budowy), `karty/design-decyzje.md` (tokeny + reguły anti-ai-look skondensowane przez skill `design`).
+2. Wypisz uczestnikowi krótko, po ludzku, co odczytałeś: mapa podstron, które są w rdzeniu (etap 1), główne CTA i lejek, lista sekcji strony głównej. To plan budowy systemu. Niczego jeszcze nie buduj.
+3. Jeśli `PROGRESS.md` nie istnieje - utwórz go z szablonu (wyżej), z mapą podstron i listą sekcji rdzenia jako "Następne". Jeśli istnieje - przeczytaj go i ustal, gdzie skończyliście (tryb wznowienia).
 
 ### Krok 2 - szkielet systemu (pierwszy batch)
-Szkielet to wspolna rama calego systemu: layout, nawigacja laczaca podstrony i stopka. Buduj go jako osobny batch.
-1. Utworz wspolny layout w `src/app/layout.tsx`: kontener tresci max ~1100px, nawigacja na gorze (navigation-menu z shadcn na desktopie, sheet jako menu mobilne) z linkami do podstron z mapy (Karta Architektury), stopka wspolna dla calego systemu. Strona glowna to `src/app/page.tsx`. Dla kazdej podstrony z etapu 1 zaloz pusty routing (`src/app/<podstrona>/page.tsx`) ze slotem na sekcje, zeby nawigacja od razu dzialala (linki nie prowadza w pustke).
-2. Dodaj komponenty shadcn, ktorych uzyjesz - TYLKO z dozwolonej listy. shadcn jest juz zainicjowany (zrobil to skill `design` w Kroku 3 komenda `npx shadcn@latest init -d --yes`), wiec `add` nie zapyta o init i nie wejdzie w tryb interaktywny. Komenda (uruchom raz, dobierz potrzebne z listy):
+Szkielet to wspólna rama całego systemu: layout, nawigacja łącząca podstrony i stopka. Buduj go jako osobny batch.
+1. Utwórz wspólny layout w `src/app/layout.tsx`: kontener treści max ~1100px, nawigacja na górze (navigation-menu z shadcn na desktopie, sheet jako menu mobilne) z linkami do podstron z mapy (Karta Architektury), stopka wspólna dla całego systemu. Strona główna to `src/app/page.tsx`. Dla każdej podstrony z etapu 1 załóż pusty routing (`src/app/<podstrona>/page.tsx`) ze slotem na sekcje, żeby nawigacja od razu działała (linki nie prowadzą w pustkę).
+2. Dodaj komponenty shadcn, których użyjesz - TYLKO z dozwolonej listy. shadcn jest już zainicjowany (zrobił to skill `design` w Kroku 3 komendą `npx shadcn@latest init -d --yes`), więc `add` nie zapyta o init i nie wejdzie w tryb interaktywny. Komenda (uruchom raz, dobierz potrzebne z listy):
 
 ```bash
 npx shadcn@latest add button card input accordion navigation-menu sheet
 ```
 
-Jesli mimo to `add` poprosi o inicjalizacje (np. ktos pominal skill `design`) - najpierw `npx shadcn@latest init -d --yes`, dopiero potem `add`.
+Jeśli mimo to `add` poprosi o inicjalizację (np. ktoś pominął skill `design`) - najpierw `npx shadcn@latest init -d --yes`, dopiero potem `add`.
 
-3. Caly kod od poczatku uzywa zmiennych z `globals.css` (`var(--accent)`, `text-foreground`, itd.), nie hardkoduj kolorow. Naglowki dostaja `text-balance`, akapity `text-pretty`.
-4. Egzekwuj anti-ai-look juz na szkielecie (sekcja "Anti-ai-look" nizej): zaden eyebrow CAPSLOCKIEM, zaden `tracking-tight`, zaden fioletowy gradient.
+3. Cały kod od początku używa zmiennych z `globals.css` (`var(--accent)`, `text-foreground`, itd.), nie hardkoduj kolorów. Nagłówki dostają `text-balance`, akapity `text-pretty`.
+4. Egzekwuj anti-ai-look już na szkielecie (sekcja "Anti-ai-look" niżej): żaden eyebrow CAPSLOCKIEM, żaden `tracking-tight`, żaden fioletowy gradient.
 5. Commit + PROGRESS.md:
 
 ```bash
 git add -A && git commit -m "szkielet: layout + nawigacja + stopka"
 ```
 
-Powiedz po ludzku: "Mamy rame calego systemu - menu laczace podstrony, kontener tresci, stopke. Teraz wlewamy sekcje, jedna po drugiej, zaczynajac od strony glownej."
+Powiedz po ludzku: "Mamy ramę całego systemu - menu łączące podstrony, kontener treści, stopkę. Teraz wlewamy sekcje, jedną po drugiej, zaczynając od strony głównej."
 
-### Krok 3 - buduj sekcje i podstrony po jednej (petla token-economy)
-Budujesz system etapami z mapy (Karta Architektury). Zaczynasz od rdzenia (etap 1: strona glowna, potem kontakt, potem 1-2 kluczowe podstrony), kolejne podstrony dokladasz w nastepnych etapach. W obrebie kazdej podstrony idziesz SEKCJA PO SEKCJI tym samym cyklem. Domyslna kolejnosc sekcji strony glownej, jesli karta nie mowi inaczej: **hero -> dla kogo/problem -> skrot oferty -> dowody/opinie -> skrot o mnie -> CTA glowne.** Na podstronach (oferta, o mnie, blog, realizacje, kontakt) zestaw sekcji bierzesz z Karty Architektury. Po skonczonej podstronie: commit + PROGRESS.md, zapytaj czy jedziemy z nastepna podstrona, czy przerwa.
+### Krok 3 - buduj sekcje i podstrony po jednej (pętla token-economy)
+Budujesz system etapami z mapy (Karta Architektury). Zaczynasz od rdzenia (etap 1: strona główna, potem kontakt, potem 1-2 kluczowe podstrony), kolejne podstrony dokładasz w następnych etapach. W obrębie każdej podstrony idziesz SEKCJA PO SEKCJI tym samym cyklem. Domyślna kolejność sekcji strony głównej, jeśli karta nie mówi inaczej: **hero -> dla kogo/problem -> skrót oferty -> dowody/opinie -> skrót o mnie -> CTA główne.** Na podstronach (oferta, o mnie, blog, realizacje, kontakt) zestaw sekcji bierzesz z Karty Architektury. Po skończonej podstronie: commit + PROGRESS.md, zapytaj czy jedziemy z następną podstroną, czy przerwa.
 
 Cykl jednej sekcji:
-1. **Powiedz, ktora sekcje robisz** i co ona ma osiagnac (1 zdanie). Np. "Robie hero - to pierwsze, co widzi odwiedzajacy, ma jasno powiedziec co oferujesz i poprowadzic do [glowne CTA]."
-2. **Zbierz tylko brakujaca tresc biznesowa.** Najpierw szukaj w kartach/kontekscie. Czego naprawde brakuje - dopytaj o JEDNO naraz, prostym jezykiem (np. "Jaki jeden glowny naglowek ma byc na gorze? Jak nie wiesz, zaproponuje 2 wersje na bazie Twojej oferty."). Konkretne liczby (lata doswiadczenia, liczba klientow) wyciagaj z kontekstu - to one robia copy wiarygodnym.
-3. **Zbuduj sekcje jako maly, czytelny komponent** w `src/components/sections/` (np. `Hero.tsx`, `Oferta.tsx`), wepnij do `page.tsx`. Uzyj blokow shadcn z listy + Tailwind. Trzymaj reguly anti-ai-look (nizej). Bloki referencyjne sekcji masz w pliku `sekcje.md` obok - otworz go tylko, jesli potrzebujesz wzorca ukladu konkretnej sekcji (oszczedzasz tokeny).
-4. **Sprawdz sekcje pod katem anti-ai-look** od razu (mini-checklista nizej). Poprawki techniczne (tracking, gradient, identyczne karty, brak `text-balance`) robisz sam. Zmiany w TRESCI tylko za zgoda uczestnika.
-5. **Commit** (checkpoint) + **nadpisz PROGRESS.md** (przesun sekcje do "Ukonczone", ustaw nastepna jako "W trakcie"):
+1. **Powiedz, którą sekcję robisz** i co ona ma osiągnąć (1 zdanie). Np. "Robię hero - to pierwsze, co widzi odwiedzający, ma jasno powiedzieć co oferujesz i poprowadzić do [główne CTA]."
+2. **Zbierz tylko brakującą treść biznesową.** Najpierw szukaj w kartach/kontekście. Czego naprawdę brakuje - dopytaj o JEDNO naraz, prostym językiem (np. "Jaki jeden główny nagłówek ma być na górze? Jak nie wiesz, zaproponuję 2 wersje na bazie Twojej oferty."). Konkretne liczby (lata doświadczenia, liczba klientów) wyciągaj z kontekstu - to one robią copy wiarygodnym.
+3. **Zbuduj sekcję jako mały, czytelny komponent** w `src/components/sections/` (np. `Hero.tsx`, `Oferta.tsx`), wepnij do `page.tsx`. Użyj bloków shadcn z listy + Tailwind. Trzymaj reguły anti-ai-look (niżej). Bloki referencyjne sekcji masz w pliku `sekcje.md` obok - otwórz go tylko, jeśli potrzebujesz wzorca układu konkretnej sekcji (oszczędzasz tokeny).
+4. **Sprawdź sekcję pod kątem anti-ai-look** od razu (mini-checklista niżej). Poprawki techniczne (tracking, gradient, identyczne karty, brak `text-balance`) robisz sam. Zmiany w TREŚCI tylko za zgodą uczestnika.
+5. **Commit** (checkpoint) + **nadpisz PROGRESS.md** (przesuń sekcję do "Ukończone", ustaw następną jako "W trakcie"):
 
 ```bash
 git add -A && git commit -m "sekcja: hero"
 ```
 
-6. **Zapytaj, czy jedziemy dalej, czy przerwa.** Przypomnij za kazdym razem: "Limit tokenow to normalne. Gdy sie skonczy, wracasz i piszesz `/strona wznow` - od tego miejsca, nic nie tracisz."
+6. **Zapytaj, czy jedziemy dalej, czy przerwa.** Przypomnij za każdym razem: "Limit tokenów to normalne. Gdy się skończy, wracasz i piszesz `/strona wznów` - od tego miejsca, nic nie tracisz."
 
-GUARDRAIL kolejnosci: nie zaczynaj nastepnej sekcji bez commita poprzedniej.
+GUARDRAIL kolejności: nie zaczynaj następnej sekcji bez commita poprzedniej.
 
-### Krok 4 - formularz kontaktowy (sekcja-rdzen, Resend)
-Formularz to nie dodatek - strona ma zbierac kontakty. To dzialajacy formularz przez Resend i API route, bez n8n, bez Formspree.
+### Krok 4 - formularz kontaktowy (sekcja-rdzeń, Resend)
+Formularz to nie dodatek - strona ma zbierać kontakty. To działający formularz przez Resend i API route, bez n8n, bez Formspree.
 
-**Pelny, gotowy szkielet (route.ts + komponent + .env.local + skad wziac klucz Resend) jest w pliku `formularz.md` obok tego skilla. Otworz go DOPIERO na tym kroku** - to oszczedza tokeny uczestnika. Wykonaj dokladnie wedlug `formularz.md`, w skrocie:
+**Pełny, gotowy szkielet (route.ts + komponent + .env.local + skąd wziąć klucz Resend) jest w pliku `formularz.md` obok tego skilla. Otwórz go DOPIERO na tym kroku** - to oszczędza tokeny uczestnika. Wykonaj dokładnie według `formularz.md`, w skrócie:
 1. Zainstaluj Resend: `npm install resend`.
-2. Utworz `.env.local` z `RESEND_API_KEY=` i OD RAZU dopisz `.env.local` do `.gitignore` (jesli go tam nie ma). NIGDY nie commituj tego pliku.
-3. Utworz `src/app/api/contact/route.ts` (POST, walidacja, wyslanie maila przez Resend) - kod gotowy w `formularz.md`.
-4. Utworz komponent formularza `src/components/sections/Kontakt.tsx` (input + button z shadcn, stan wysylania, komunikat sukcesu/bledu) - kod gotowy w `formularz.md`. Wepnij do `page.tsx`.
-5. Poprowadz uczestnika, skad wziac klucz Resend (rejestracja, API Keys, skopiowanie `re_...` do `.env.local`) - instrukcja w `formularz.md`.
-6. Commit (bez `.env.local`) + PROGRESS.md (odhacz formularz, dopisz w sekcji "Klucze", ze klucz jest w `.env.local`, a w Vercel bedzie ta sama nazwa zmiennej):
+2. Utwórz `.env.local` z `RESEND_API_KEY=` i OD RAZU dopisz `.env.local` do `.gitignore` (jeśli go tam nie ma). NIGDY nie commituj tego pliku.
+3. Utwórz `src/app/api/contact/route.ts` (POST, walidacja, wysłanie maila przez Resend) - kod gotowy w `formularz.md`.
+4. Utwórz komponent formularza `src/components/sections/Kontakt.tsx` (input + button z shadcn, stan wysyłania, komunikat sukcesu/błędu) - kod gotowy w `formularz.md`. Wepnij do `page.tsx`.
+5. Poprowadź uczestnika, skąd wziąć klucz Resend (rejestracja, API Keys, skopiowanie `re_...` do `.env.local`) - instrukcja w `formularz.md`.
+6. Commit (bez `.env.local`) + PROGRESS.md (odhacz formularz, dopisz w sekcji "Klucze", że klucz jest w `.env.local`, a w Vercel będzie ta sama nazwa zmiennej):
 
 ```bash
 git add -A && git commit -m "sekcja: formularz kontaktowy (Resend)"
 ```
 
-Powiedz: "Formularz dziala lokalnie i bedzie dzialal na zywo po deployu. Klucz siedzi bezpiecznie w `.env.local`, nie wchodzi do gita - w Vercel wpiszemy go recznie pod ta sama nazwa."
+Powiedz: "Formularz działa lokalnie i będzie działał na żywo po deployu. Klucz siedzi bezpiecznie w `.env.local`, nie wchodzi do gita - w Vercel wpiszemy go ręcznie pod tą samą nazwą."
 
-### Krok 5 - zamkniecie etapu / budowy
-1. Gdy rdzen systemu (etap 1: strona glowna + kontakt + kluczowe podstrony) jest zrobiony i zacommitowany - powiedz po ludzku, ze rdzen systemu dziala. Jesli w mapie sa kolejne etapy (dalsze podstrony, blog, realizacje) - przypomnij, ze dokladamy je w nastepnych sesjach tym samym cyklem, a `/strona wznow` wraca do planu z PROGRESS.md.
-2. Skieruj do nastepnego kroku: "Teraz skill `sprawdz-kod` - sprawdzi, czy strona zbuduje sie bez bledow, przeleci checkliste wygladu i podstawowe bezpieczenstwo, zanim wyslemy ja w swiat." Nie pushuj, nie deployuj - to nie ten skill.
-3. Upewnij sie, ze `PROGRESS.md` odzwierciedla stan: zrobione podstrony i sekcje odhaczone, nastepne etapy (dalsze podstrony) wypisane, nastepny krok dla rdzenia = `sprawdz-kod` -> M6 deploy.
+### Krok 5 - zamknięcie etapu / budowy
+1. Gdy rdzeń systemu (etap 1: strona główna + kontakt + kluczowe podstrony) jest zrobiony i zacommitowany - powiedz po ludzku, że rdzeń systemu działa. Jeśli w mapie są kolejne etapy (dalsze podstrony, blog, realizacje) - przypomnij, że dokładamy je w następnych sesjach tym samym cyklem, a `/strona wznów` wraca do planu z PROGRESS.md.
+2. Skieruj do następnego kroku: "Teraz skill `sprawdz-kod` - sprawdzi, czy strona zbuduje się bez błędów, przeleci checklistę wyglądu i podstawowe bezpieczeństwo, zanim wyślemy ją w świat." Nie pushuj, nie deployuj - to nie ten skill.
+3. Upewnij się, że `PROGRESS.md` odzwierciedla stan: zrobione podstrony i sekcje odhaczone, następne etapy (dalsze podstrony) wypisane, następny krok dla rdzenia = `sprawdz-kod` -> M6 deploy.
 
-## Anti-ai-look (egzekwuj przy KAZDEJ sekcji)
-Pelny ruleset: `40-skills/anti-ai-look-ruleset.md` (jeden poziom wyzej) oraz skrot w `karty/design-decyzje.md`. Otwieraj pelny plik tylko, gdy trafisz na watpliwosc. Twarde minimum, ktorego pilnujesz sam:
+## Anti-ai-look (egzekwuj przy KAŻDEJ sekcji)
+Pełny ruleset: `40-skills/anti-ai-look-ruleset.md` (jeden poziom wyżej) oraz skrót w `karty/design-decyzje.md`. Otwieraj pełny plik tylko, gdy trafisz na wątpliwość. Twarde minimum, którego pilnujesz sam:
 
 ZAKAZ:
-- `tracking-tight` / `tracking-tighter` na naglowkach (zostaw `tracking-normal`)
-- eyebrow / kicker CAPSLOCKIEM nad naglowkiem (`uppercase tracking-widest text-xs`)
-- naglowek bez `text-balance`
+- `tracking-tight` / `tracking-tighter` na nagłówkach (zostaw `tracking-normal`)
+- eyebrow / kicker CAPSLOCKIEM nad nagłówkiem (`uppercase tracking-widest text-xs`)
+- nagłówek bez `text-balance`
 - fioletowo-niebieskie gradienty (violet->blue, purple->indigo, cyan->violet, pink->orange)
-- gradient text na naglowku (`bg-clip-text text-transparent`)
-- 3 (lub 4/6) identyczne karty w gridzie z tym samym `hover` na kazdej
+- gradient text na nagłówku (`bg-clip-text text-transparent`)
+- 3 (lub 4/6) identyczne karty w gridzie z tym samym `hover` na każdej
 - wszystko `text-center mx-auto` (zero asymetrii)
 - emoji jako ikony UI
 - buzzwordy: Elevate / Unlock / Unleash / Supercharge / Empower / Seamless / all-in-one
-- dlugi myslnik i en-dash w jakimkolwiek tekscie (copy, alt, aria) - tylko krotki "-"
+- długi myślnik i en-dash w jakimkolwiek tekście (copy, alt, aria) - tylko krótki "-"
 
 NAKAZ:
-- `text-balance` na naglowkach, `text-pretty` na akapitach, sensowny `max-w-[ch]` (naglowki ~18-24ch, body ~60-72ch)
-- wlasny font pairing z Karty Wizualnej (osobny font naglowkowy + Inter body)
-- jeden akcent brandowy z tokenow, nie tecza
-- asymetria i oddech: choc jedna sekcja off-center, uklad 7/5 lub 8/4, sekcje `py-24`+
-- karty zroznicowane (rozny rozmiar/tresc, hover tylko tam gdzie klikalne, lam grid: pierwsza karta `col-span-2`)
-- min. 3 prawdziwe zdjecia/media na stronie jako bramka (realne foto uczestnika/pracy, nie plastikowa AI-ilustracja), docelowo 5-7 na dluzszej stronie; gdzie brak - poproś o realne foto, wstaw placeholder tymczasowo
+- `text-balance` na nagłówkach, `text-pretty` na akapitach, sensowny `max-w-[ch]` (nagłówki ~18-24ch, body ~60-72ch)
+- własny font pairing z Karty Wizualnej (osobny font nagłówkowy + Inter body)
+- jeden akcent brandowy z tokenów, nie tęcza
+- asymetria i oddech: choć jedna sekcja off-center, układ 7/5 lub 8/4, sekcje `py-24`+
+- karty zróżnicowane (różny rozmiar/treść, hover tylko tam gdzie klikalne, łam grid: pierwsza karta `col-span-2`)
+- min. 3 prawdziwe zdjęcia/media na stronie jako bramka (realne foto uczestnika/pracy, nie plastikowa AI-ilustracja), docelowo 5-7 na dłuższej stronie; gdzie brak - poproś o realne foto, wstaw placeholder tymczasowo
 - konkretne liczby/nazwy/daty w copy (z kontekstu uczestnika)
-- wszystkie kolory przez zmienne CSS z `globals.css`, zero hardkodow w komponentach
+- wszystkie kolory przez zmienne CSS z `globals.css`, zero hardkodów w komponentach
 
-Mini-checklista po sekcji (kazde "TAK" w ZAKAZ = popraw od razu): jest `tracking-tight`? jest eyebrow CAPSEM? brak `text-balance`? fioletowy gradient? gradient text? identyczne karty z tym samym hover? wszystko wycentrowane? emoji jako ikona? buzzword? dlugi myslnik? Jesli wiecej niz 1 flaga - przerob sekcje, zanim zacommitujesz.
+Mini-checklista po sekcji (każde "TAK" w ZAKAZ = popraw od razu): jest `tracking-tight`? jest eyebrow CAPSEM? brak `text-balance`? fioletowy gradient? gradient text? identyczne karty z tym samym hover? wszystko wycentrowane? emoji jako ikona? buzzword? długi myślnik? Jeśli więcej niż 1 flaga - przeróbka sekcji, zanim zacommitujesz.
 
-## Guardraile (twarde)
-- Jedna sekcja naraz, commit po kazdej, PROGRESS.md po kazdej. Bez wyjatkow - to ratuje uczestnika przed strata pracy przy limicie.
-- Nie nadpisuj pliku, ktory ma juz tresc, w ciemno - najpierw pokaz roznice i zapytaj o "tak".
-- NIGDY nie commituj `.env.local`. Przed kazdym commitem sprawdz, ze jest w `.gitignore`.
-- Caly kod przez zmienne CSS, nie hardkoduj kolorow.
-- Tylko shadcn z listy: button, card, input, accordion, navigation-menu, sheet. Nie przegladaj katalogu shadcn z uczestnikiem.
-- Tylko Resend do formularza. Nie n8n, nie Formspree, nie zewnetrzne panele.
+## Guardrails (twarde)
+- Jedna sekcja naraz, commit po każdej, PROGRESS.md po każdej. Bez wyjątków - to ratuje uczestnika przed stratą pracy przy limicie.
+- Nie nadpisuj pliku, który ma już treść, w ciemno - najpierw pokaż różnicę i zapytaj o "tak".
+- NIGDY nie commituj `.env.local`. Przed każdym commitem sprawdź, że jest w `.gitignore`.
+- Cały kod przez zmienne CSS, nie hardkoduj kolorów.
+- Tylko shadcn z listy: button, card, input, accordion, navigation-menu, sheet. Nie przeglądaj katalogu shadcn z uczestnikiem.
+- Tylko Resend do formularza. Nie n8n, nie Formspree, nie zewnętrzne panele.
 - Nie pushuj, nie deployuj, nie rusz domeny - to lekcja M6. Nie podpinaj Sanity - to skill `sanity`.
 - Akcji destrukcyjnej nie robisz bez jawnego "tak".
 
-## Jak naprawic, gdy cos nie dziala (fallback dla laika)
-- CZERWONY tekst w terminalu: skopiuj go w CALOSCI (od pierwszej do ostatniej czerwonej linii) i wklej do mnie z prosba "napraw ten blad i wyjasnij mi po polsku, co to bylo". Nie poprawiaj recznie, nie usuwaj plikow na zapas - czerwony tekst to instrukcja, nie katastrofa.
-- Polskie ogonki nie laduja sie w fontach: sprawdz, czy `subsets` w `layout.tsx` to `["latin", "latin-ext"]` (to ustawial skill `design`). Jesli mimo to ogonkow brak albo build rzuca blad o `latin-ext` - font jest spoza dozwolonej listy. NIE kombinuj z subsets, tylko zmien font na jeden z listy latin-ext (naglowki Sora / Space Grotesk / Manrope / Plus Jakarta Sans / Bricolage Grotesque, body Inter / Manrope) - albo wroc do skilla `design`, ktory tym zarzadza.
-- Kolory nie zmieniaja sie na stronie: gdzies jest hardkodowany kolor zamiast zmiennej - znajdz i zamien na `var(--...)`.
-- Formularz nie wysyla maila: sprawdz w `formularz.md` sekcje "Gdy formularz nie dziala" (najczesciej brak klucza w `.env.local` albo nie zrestartowany serwer dev).
-- Cos sie zepsulo po zmianie: nie usuwaj nic na sile. Cofnij do ostatniego dzialajacego commita przez `git revert` (NIE `git reset --hard`), za jawna zgoda uczestnika. Commity po kazdej sekcji sa po to, zeby zawsze bylo dokad wrocic.
+## Jak naprawić, gdy coś nie działa (fallback dla laika)
+- CZERWONY tekst w terminalu: skopiuj go w CAŁOŚCI (od pierwszej do ostatniej czerwonej linii) i wklej do mnie z prośbą "napraw ten błąd i wyjaśnij mi po polsku, co to było". Nie poprawiaj ręcznie, nie usuwaj plików na zapas - czerwony tekst to instrukcja, nie katastrofa.
+- Polskie ogonki nie ładują się w fontach: sprawdź, czy `subsets` w `layout.tsx` to `["latin", "latin-ext"]` (to ustawiał skill `design`). Jeśli mimo to ogonków brak albo build rzuca błąd o `latin-ext` - font jest spoza dozwolonej listy. NIE kombinuj z subsets, tylko zmień font na jeden z listy latin-ext (nagłówki Sora / Space Grotesk / Manrope / Plus Jakarta Sans / Bricolage Grotesque, body Inter / Manrope) - albo wróć do skilla `design`, który tym zarządza.
+- Kolory nie zmieniają się na stronie: gdzieś jest hardkodowany kolor zamiast zmiennej - znajdź i zamień na `var(--...)`.
+- Formularz nie wysyła maila: sprawdź w `formularz.md` sekcję "Gdy formularz nie działa" (najczęściej brak klucza w `.env.local` albo nie zrestartowany serwer dev).
+- Coś się zepsuło po zmianie: nie usuwaj nic na siłę. Cofnij do ostatniego działającego commita przez `git revert` (NIE `git reset --hard`), za jawną zgodą uczestnika. Commity po każdej sekcji są po to, żeby zawsze było dokąd wrócić.

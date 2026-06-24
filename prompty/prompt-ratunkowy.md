@@ -1,23 +1,23 @@
 # Prompt ratunkowy
 
-Uzyj, gdy cos nie dziala albo Claude Code zaczyna zgadywac.
+Użyj, gdy coś nie działa albo Claude Code zaczyna zgadywać.
 
 ```plain text
-Zatrzymaj sie i zrob diagnoze.
+Zatrzymaj się i zrób diagnozę.
 Nie pisz teraz nowego kodu.
 
-Sprawdz:
+Sprawdź:
 - w jakim folderze pracujemy,
 - czy to folder projektu strony,
 - jaki jest status git,
-- jakie sa ostatnie zmiany,
+- jakie są ostatnie zmiany,
 - czy istnieje README.md, PROGRESS.md, kontekst/ i karty/,
-- jaki blad widac w terminalu.
+- jaki błąd widać w terminalu.
 
-Potem pokaz mi:
+Potem pokaż mi:
 1. co jest problemem,
 2. jaka jest najbardziej prawdopodobna przyczyna,
-3. jaki jest najbezpieczniejszy nastepny krok.
+3. jaki jest najbezpieczniejszy następny krok.
 
-Nie uzywaj git reset --hard i nie kasuj plikow bez mojej zgody.
+Nie używaj git reset --hard i nie kasuj plików bez mojej zgody.
 ```

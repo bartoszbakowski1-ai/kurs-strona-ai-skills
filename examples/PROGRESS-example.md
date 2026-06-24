@@ -8,10 +8,10 @@
 
 - [ ] kontekst osobisty i zawodowy
 - [ ] karta strategiczna
-- [ ] karta architektury tresci
+- [ ] karta architektury treści
 - [ ] karta wizualna
 - [ ] projekt Next.js
-- [ ] strona glowna
+- [ ] strona główna
 - [ ] formularz
 - [ ] mobile
 - [ ] publikacja Vercel
@@ -22,8 +22,8 @@
 
 ## Ostatnie zmiany
 
-- [Data] [Co zostalo zmienione]
+- [Data] [Co zostało zmienione]
 
-## Nastepny krok
+## Następny krok
 
 [Jeden konkretny krok]

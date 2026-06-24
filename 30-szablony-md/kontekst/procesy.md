@@ -1,49 +1,49 @@
 # Procesy
 
-Ten plik opisuje, jak pracujesz. Dzieki temu strona moze pokazac Twoja metode, a nie tylko ogolna obietnice.
+Ten plik opisuje, jak pracujesz. Dzięki temu strona może pokazać Twoją metodę, a nie tylko ogólną obietnicę.
 
-## Jak wyglada wspolpraca
+## Jak wygląda współpraca
 
 Wypisz kroki od pierwszego kontaktu do efektu.
 
 1. Pierwszy kontakt:
 2. Diagnoza / rozmowa / ankieta:
-3. Glowna praca:
+3. Główna praca:
 4. Co klient dostaje po drodze:
-5. Koniec wspolpracy:
-6. Co dzieje sie dalej:
+5. Koniec współpracy:
+6. Co dzieje się dalej:
 
 ## Moja metoda
 
-Jesli masz nazwana metode, wpisz ja tutaj. Jesli nie masz, opisz po prostu swoje podejscie.
+Jeśli masz nazwaną metodę, wpisz ją tutaj. Jeśli nie masz, opisz po prostu swoje podejście.
 
 - Jak zaczynam:
-- Na co zwracam najwieksza uwage:
-- Co robie inaczej niz inni:
-- Co jest moim standardem jakosci:
+- Na co zwracam największą uwagę:
+- Co robię inaczej niż inni:
+- Co jest moim standardem jakości:
 
-## Moj wyroznik
+## Mój wyróżnik
 
-Wpisz 1-3 rzeczy, ktore realnie odrozniaja Cie od innych.
+Wpisz 1-3 rzeczy, które realnie odróżniają Cię od innych.
 
 - 
 - 
 - 
 
-## Czego nie robie
+## Czego nie robię
 
-To jest wazne, bo dobra strona przyciaga wlasciwych ludzi i odpycha niewlasciwych.
+To jest ważne, bo dobra strona przyciąga właściwych ludzi i odpycha niewłaściwych.
 
-- Nie obiecuje:
-- Nie pracuje z:
-- Nie robie:
-- Nie chce, zeby moja strona brzmiala jak:
+- Nie obiecuję:
+- Nie pracuję z:
+- Nie robię:
+- Nie chcę, żeby moja strona brzmiała jak:
 
-## Materialy, ktore juz mam
+## Materiały, które już mam
 
-Wypisz wszystko, co moze wejsc na strone.
+Wypisz wszystko, co może wejść na stronę.
 
-- Zdjecia:
+- Zdjęcia:
 - Opinie:
 - Case studies:
 - Logo / identyfikacja:

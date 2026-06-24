@@ -1,8 +1,8 @@
-# Instalacja reczna
+# Instalacja ręczna
 
 Te kroki wykonujesz w folderze swojego projektu strony, czyli tam, gdzie masz `package.json`.
 
-Jesli nie wiesz, gdzie jest projekt, popros Claude Code:
+Jeśli nie wiesz, gdzie jest projekt, poproś Claude Code:
 
 ```plain text
 Sprawdz, czy jestem w folderze projektu strony. Pokaz sciezke, package.json i aktualny status git. Jesli to nie ten folder, pomoz mi znalezc wlasciwy.
@@ -14,7 +14,7 @@ Sprawdz, czy jestem w folderze projektu strony. Pokaz sciezke, package.json i ak
 git clone https://github.com/bartoszbakowski1-ai/kurs-strona-ai-skills.git /tmp/kurs-strona-ai-skills
 ```
 
-## 2. Utworz foldery Claude
+## 2. Utwórz foldery Claude
 
 ```bash
 mkdir -p .claude/skills .claude/commands .claude/materialy
@@ -29,13 +29,13 @@ for skill in analityka bezpieczenstwo design karty kontekst lp obrazy oferta san
 done
 ```
 
-## 4. Skopiuj komende `/strona`
+## 4. Skopiuj komendę `/strona`
 
 ```bash
 cp /tmp/kurs-strona-ai-skills/40-skills/strona/COMMAND.md .claude/commands/strona.md
 ```
 
-## 5. Skopiuj materialy kursowe
+## 5. Skopiuj materiały kursowe
 
 ```bash
 rm -rf .claude/materialy/30-szablony-md .claude/materialy/kurs .claude/materialy/prompty
@@ -44,13 +44,13 @@ cp -R /tmp/kurs-strona-ai-skills/kurs .claude/materialy/kurs
 cp -R /tmp/kurs-strona-ai-skills/prompty .claude/materialy/prompty
 ```
 
-## 6. Sprawdz wynik
+## 6. Sprawdź wynik
 
 ```bash
 find .claude -maxdepth 3 -type f | sort
 ```
 
-Powinienes/powinnas widziec m.in.:
+Powinieneś/powinnaś widzieć m.in.:
 
 ```plain text
 .claude/commands/strona.md

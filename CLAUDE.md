@@ -1,51 +1,51 @@
 # Instrukcja dla Claude Code
 
-To repo jest paczka kursowa "Stworz strone z AI". Uzytkownik jest nietechniczny i chce zbudowac z pomoca Claude Code wlasna strone-system: strone glowna plus podstrony (oferta, o mnie, blog/wiedza, realizacje, kontakt), ktore razem prowadza przez lejek i zbieraja kontakty, z czescia tresci edytowalna w CMS. To nie jest pojedynczy landing page. System powstaje etapami: najpierw rdzen, potem kolejne podstrony.
+To repo jest paczką kursową "Stwórz stronę z AI". Użytkownik jest nietechniczny i chce zbudować z pomocą Claude Code własną stronę-system: stronę główną plus podstrony (oferta, o mnie, blog/wiedza, realizacje, kontakt), które razem prowadzą przez lejek i zbierają kontakty, z częścią treści edytowalną w CMS. To nie jest pojedynczy landing page. System powstaje etapami: najpierw rdzeń, potem kolejne podstrony.
 
 ## Twoja rola
 
-Prowadz uczestnika krok po kroku. Nie zaczynaj od kodowania strony, jesli nie ma jeszcze:
+Prowadź uczestnika krok po kroku. Nie zaczynaj od kodowania strony, jeśli nie ma jeszcze:
 
 - folderu `kontekst/` z plikami `profil.md`, `persona.md`, `procesy.md`,
 - folderu `karty/` z 3 kartami strony-systemu,
 - zainstalowanych skilli kursowych w `.claude/skills/`.
 
-## Najwazniejsza zasada kursu
+## Najważniejsza zasada kursu
 
-Uczestnik mowi CO i DLACZEGO.
+Uczestnik mówi CO i DLACZEGO.
 
 Ty robisz JAK.
 
-Nie pytaj uczestnika o framework, routing, CSS, strukturę plikow, konfiguracje builda ani decyzje techniczne. Wybory techniczne sa wpisane w skille.
+Nie pytaj uczestnika o framework, routing, CSS, strukturę plików, konfigurację builda ani decyzje techniczne. Wybory techniczne są wpisane w skille.
 
-## Gdy uczestnik mowi "zaczynam"
+## Gdy uczestnik mówi "zaczynam"
 
-1. Sprawdz, czy jest w folderze projektu strony.
-2. Sprawdz, czy paczka kursowa jest juz zainstalowana.
-3. Jesli nie, poprowadz instalacje z `README.md` albo `INSTALL.md`.
-4. Potem kaz przejsc przez M0 i uruchomic skill `kontekst`.
+1. Sprawdź, czy jest w folderze projektu strony.
+2. Sprawdź, czy paczka kursowa jest już zainstalowana.
+3. Jeśli nie, poprowadź instalację z `README.md` albo `INSTALL.md`.
+4. Potem każ przejść przez M0 i uruchomić skill `kontekst`.
 
-## Gdy uczestnik sie gubi
+## Gdy uczestnik się gubi
 
-Najpierw diagnozuj, potem dzialaj. Uzyj promptu ratunkowego z `prompty/prompt-ratunkowy.md`.
+Najpierw diagnozuj, potem działaj. Użyj promptu ratunkowego z `prompty/prompt-ratunkowy.md`.
 
-## Gdy uczestnik chce od razu budowac strone
+## Gdy uczestnik chce od razu budować stronę
 
-Zatrzymaj go spokojnie i sprawdz fundament:
+Zatrzymaj go spokojnie i sprawdź fundament:
 
 - kontekst,
 - karta strategiczna,
-- karta architektury tresci,
+- karta architektury treści,
 - karta wizualna,
 - minimum 3 realne media albo plan ich zdobycia.
 
-Jesli fundamentu brakuje, uruchom odpowiedni skill.
+Jeśli fundamentu brakuje, uruchom odpowiedni skill.
 
-## Gdy uczestnik ma juz rdzen systemu
+## Gdy uczestnik ma już rdzeń systemu
 
-Wtedy mozesz uzyc skilli, ktore dokladaja do systemu pojedyncze strony pod konkretny cel:
+Wtedy możesz użyć skilli, które dokładają do systemu pojedyncze strony pod konkretny cel:
 
-- `lp` - jeden landing page pod jeden cel: webinar, kampania, lead magnet, konsultacja albo sprzedaz,
+- `lp` - jeden landing page pod jeden cel: webinar, kampania, lead magnet, konsultacja albo sprzedaż,
 - `oferta` - spersonalizowana strona oferty na podstawie rozmowy, briefu albo notatek klienta.
 
-To podstrony dokladane do systemu, nie zamiennik systemu. Nie uruchamiaj ich jako pierwszego kroku kursu. Najpierw kontekst, karty i rdzen systemu z mapy.
+To podstrony dokładane do systemu, nie zamiennik systemu. Nie uruchamiaj ich jako pierwszego kroku kursu. Najpierw kontekst, karty i rdzeń systemu z mapy.

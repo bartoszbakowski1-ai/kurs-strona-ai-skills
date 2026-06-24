@@ -1,22 +1,22 @@
-# Stworz strone z AI - Course Kit dla Claude Code
+# Stwórz stronę z AI - Course Kit dla Claude Code
 
-To jest robocza paczka dla uczestnika kursu. Pobierasz ja, otwierasz w Claude Code i przechodzisz kurs razem z AI.
+To jest robocza paczka dla uczestnika kursu. Pobierasz ją, otwierasz w Claude Code i przechodzisz kurs razem z AI.
 
-W tym kursie budujesz cala strone-system: strone glowna plus podstrony (oferta, o mnie, blog/wiedza, realizacje, kontakt), ktore razem prowadza odwiedzajacego przez lejek i zbieraja kontakty, z czescia tresci edytowalna w przegladarce (CMS). To nie jest pojedynczy landing page. System powstaje etapami: najpierw rdzen, potem kolejne podstrony.
+W tym kursie budujesz całą stronę-system: stronę główną plus podstrony (oferta, o mnie, blog/wiedza, realizacje, kontakt), które razem prowadzą odwiedzającego przez lejek i zbierają kontakty, z częścią treści edytowalną w przeglądarce (CMS). To nie jest pojedynczy landing page. System powstaje etapami: najpierw rdzeń, potem kolejne podstrony.
 
-W srodku sa:
+W środku są:
 
-- `START-TUTAJ.md` - najprostsza sciezka po zakupie,
-- `kurs/` - moduly M0-M9 jako pliki Markdown,
+- `START-TUTAJ.md` - najprostsza ścieżka po zakupie,
+- `kurs/` - moduły M0-M9 jako pliki Markdown,
 - `40-skills/` - skille do Claude Code,
 - `30-szablony-md/` - szablony kontekstu i 3 kart strony,
 - `prompty/` - prompty startowe i ratunkowe,
-- `examples/` - przykladowe pliki projektu,
-- `INSTALL.md` - instalacja reczna, gdy Claude Code nie pobierze paczki automatycznie.
+- `examples/` - przykładowe pliki projektu,
+- `INSTALL.md` - instalacja ręczna, gdy Claude Code nie pobierze paczki automatycznie.
 
 ## Najszybszy start
 
-1. Otworz panel kursu w Notion:
+1. Otwórz panel kursu w Notion:
 
    https://app.notion.com/p/382156016bef810382feca3d25fe2610
 
@@ -24,9 +24,9 @@ W srodku sa:
 
    https://github.com/bartoszbakowski1-ai/kurs-strona-ai-skills
 
-   Mozesz kliknac `Code` -> `Download ZIP` albo sklonowac przez git.
+   Możesz kliknąć `Code` -> `Download ZIP` albo sklonować przez git.
 
-3. Otworz folder swojej strony w Claude Code i wklej:
+3. Otwórz folder swojej strony w Claude Code i wklej:
 
 ```plain text
 Pracujemy w kursie "Stworz strone z AI".
@@ -45,9 +45,9 @@ Nie nadpisuj moich istniejacych plikow projektu poza folderem .claude/.
 Na koniec wypisz, jakie skille i materialy sa dostepne.
 ```
 
-## Co ma powstac w Twoim projekcie
+## Co ma powstać w Twoim projekcie
 
-Po instalacji w folderze Twojej strony powinno byc:
+Po instalacji w folderze Twojej strony powinno być:
 
 ```plain text
 .claude/
@@ -71,7 +71,7 @@ Po instalacji w folderze Twojej strony powinno byc:
     prompty/
 ```
 
-## Jak zaczac kurs w Claude Code
+## Jak zacząć kurs w Claude Code
 
 Po instalacji wklej:
 
@@ -87,7 +87,7 @@ Gdy dojdziesz do M1, uruchom:
 Uruchom skill kontekst.
 ```
 
-Gdy masz juz kontekst, karty i rdzen systemu, mozesz dokladac do niego pojedyncze strony pod konkretny cel:
+Gdy masz już kontekst, karty i rdzeń systemu, możesz dokładać do niego pojedyncze strony pod konkretny cel:
 
 ```plain text
 Uruchom skill lp. Zrob landing page pod jeden cel: zapis na webinar, lead magnet albo sprzedaz.
@@ -99,23 +99,23 @@ Uruchom skill oferta. Zrob spersonalizowana strone oferty na podstawie rozmowy z
 
 ## Skille w paczce
 
-- `kontekst` - tworzy Twoj osobisty i zawodowy kontekst do pracy z AI,
-- `karty` - tworzy 3 karty Twojej strony-systemu: strategiczna (lejek), architektury tresci (mapa podstron) i wizualna (design system),
-- `design` - zamienia karte wizualna w spojny design system i pilnuje anti-ai-look,
-- `obrazy` - pomaga dodac realne zdjecia i assety,
-- `zbuduj-strone` - buduje strone-system etapami: strona glowna i podstrony, sekcja po sekcji,
-- `lp` - buduje konwertujacy landing page pod jeden cel, np. webinar, lead magnet albo sprzedaz,
-- `oferta` - tworzy spersonalizowana strone oferty z rozmowy, briefu albo notatek klienta,
-- `sprawdz-kod` - sprawdza build, mobile, jakosc, anti-ai-look i bezpieczenstwo,
-- `bezpieczenstwo` - robi lekki audyt sekretow, API, formularza i deploya,
+- `kontekst` - tworzy Twój osobisty i zawodowy kontekst do pracy z AI,
+- `karty` - tworzy 3 karty Twojej strony-systemu: strategiczną (lejek), architektury treści (mapa podstron) i wizualną (design system),
+- `design` - zamienia kartę wizualną w spójny design system i pilnuje anti-ai-look,
+- `obrazy` - pomaga dodać realne zdjęcia i assety,
+- `zbuduj-strone` - buduje stronę-system etapami: strona główna i podstrony, sekcja po sekcji,
+- `lp` - buduje konwertujący landing page pod jeden cel, np. webinar, lead magnet albo sprzedaż,
+- `oferta` - tworzy spersonalizowaną stronę oferty z rozmowy, briefu albo notatek klienta,
+- `sprawdz-kod` - sprawdza build, mobile, jakość, anti-ai-look i bezpieczeństwo,
+- `bezpieczenstwo` - robi lekki audyt sekretów, API, formularza i deployu,
 - `analityka` - po publikacji wpina prosty pomiar: Vercel Analytics, GA4 przez GTM, Search Console, sitemap i pixel,
-- `sanity` - opcjonalnie podpina panel edycji tresci,
+- `sanity` - opcjonalnie podpina panel edycji treści,
 - `/strona` - komenda-dyrygent do statusu, wznowienia i rozwoju strony.
 
-## Najwazniejsza zasada
+## Najważniejsza zasada
 
-Ty mowisz Claude Code, **co** ma powstac i **dlaczego**.
+Ty mówisz Claude Code, **co** ma powstać i **dlaczego**.
 
 Claude Code robi **jak**: pliki, kod, komendy, build, formularz, GitHub, Vercel.
 
-Nie zaczynaj od budowy strony. Najpierw przejdz `kontekst` i `karty` - tam projektujesz caly system (mape podstron, lejek, design system), zanim cokolwiek powstanie w kodzie.
+Nie zaczynaj od budowy strony. Najpierw przejdź `kontekst` i `karty` - tam projektujesz cały system (mapę podstron, lejek, design system), zanim cokolwiek powstanie w kodzie.

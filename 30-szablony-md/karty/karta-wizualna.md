@@ -1,56 +1,56 @@
 # Karta Wizualna
 
-Ta karta pilnuje, zeby strona nie wygladala jak generyczny output AI. Ma byc konkretna. "Nowoczesnie i czysto" to za malo.
+Ta karta pilnuje, żeby strona nie wyglądała jak generyczny output AI. Ma być konkretna. "Nowocześnie i czysto" to za mało.
 
 ## Nastrój
 
-Wpisz 3 slowa i jedno zdanie rozwinięcia.
+Wpisz 3 słowa i jedno zdanie rozwinięcia.
 
-- Slowo 1:
-- Slowo 2:
-- Slowo 3:
-- Rozwiniecie:
+- Słowo 1:
+- Słowo 2:
+- Słowo 3:
+- Rozwinięcie:
 
-Przyklady:
+Przykłady:
 
-- ciepla, spokojna, ekspercka
-- odwazna, konkretna, energiczna
+- ciepła, spokojna, ekspercka
+- odważna, konkretna, energiczna
 - redakcyjna, elegancka, precyzyjna
 
 ## Paleta (design tokens)
 
-Jesli masz kolory marki, wpisz je tutaj. Jesli nie masz, popros Claude o propozycje na bazie nastroju.
+Jeśli masz kolory marki, wpisz je tutaj. Jeśli nie masz, poproś Claude o propozycje na bazie nastroju.
 
-- Tlo:
-- Tekst glowny:
-- Akcent (przyciski, wyroznienia):
+- Tło:
+- Tekst główny:
+- Akcent (przyciski, wyróżnienia):
 - Kolor pomocniczy:
 - Tryb: jasny / ciemny
 
-Zasada: jeden mocny akcent brandowy. Bez teczowego tekstu i bez fioletowo-niebieskich gradientow jako domyslnego stylu AI.
+Zasada: jeden mocny akcent brandowy. Bez tęczowego tekstu i bez fioletowo-niebieskich gradientów jako domyślnego stylu AI.
 
 ## Typografia
 
-Nie musisz wybierac nazw fontow samodzielnie. Opisz charakter, a Claude dobierze pare.
+Nie musisz wybierać nazw fontów samodzielnie. Opisz charakter, a Claude dobierze parę.
 
-- Naglowki maja byc: eleganckie / nowoczesne / cieple / odwazne / inne:
-- Tekst ma byc:
+- Nagłówki mają być: eleganckie / nowoczesne / ciepłe / odważne / inne:
+- Tekst ma być:
 - Czego unikamy:
 
 Dozwolone fonty dla kursu:
 
-- Naglowki: Sora, Space Grotesk, Manrope, Plus Jakarta Sans, Bricolage Grotesque
+- Nagłówki: Sora, Space Grotesk, Manrope, Plus Jakarta Sans, Bricolage Grotesque
 - Tekst: Inter albo Manrope
 
 ## Zdjęcia i media (realne, NIE plastikowe AI)
 
-Wypisz minimum 3 prawdziwe zdjecia/media, ktore masz albo mozesz zrobic. Dla dluzszej strony celuj w 5-7, bo same ikony i karty bardzo szybko wygladaja jak AI.
+Wypisz minimum 3 prawdziwe zdjęcia/media, które masz albo możesz zrobić. Dla dłuższej strony celuj w 5-7, bo same ikony i karty bardzo szybko wyglądają jak AI.
 
 - Portret:
-- Zdjecie z pracy:
-- Zdjecie procesu / notatek / produktu:
-- Zdjecie z klientem / warsztatu:
-- Krotkie video / nagranie / screen produktu:
+- Zdjęcie z pracy:
+- Zdjęcie procesu / notatek / produktu:
+- Zdjęcie z klientem / warsztatu:
+- Krótkie video / nagranie / screen produktu:
 - Inne:
 
 Hero:
@@ -59,25 +59,25 @@ Hero:
 
 ## Referencje
 
-Podaj 2-3 strony albo marki, ktorych styl Ci sie podoba. Najwazniejsze: napisz, co konkretnie chcesz z tego wziac.
+Podaj 2-3 strony albo marki, których styl Ci się podoba. Najważniejsze: napisz, co konkretnie chcesz z tego wziąć.
 
 1. Link / marka:
-   - Podoba mi sie:
+   - Podoba mi się:
 2. Link / marka:
-   - Podoba mi sie:
+   - Podoba mi się:
 3. Link / marka:
-   - Podoba mi sie:
+   - Podoba mi się:
 
 ## Reguły anti-ai-look
 
-Te zasady zostaja w karcie. Claude Code ma ich pilnowac przy budowie i sprawdzaniu strony.
+Te zasady zostają w karcie. Claude Code ma ich pilnować przy budowie i sprawdzaniu strony.
 
-- text-balance na wszystkich naglowkach, tracking naturalny
-- jeden akcent brandowy, zero fioletowo-niebieskich gradientow i gradient-text na naglowkach
-- wlasny font pairing, nie Inter na wszystko
+- text-balance na wszystkich nagłówkach, tracking naturalny
+- jeden akcent brandowy, zero fioletowo-niebieskich gradientów i gradient-text na nagłówkach
+- własny font pairing, nie Inter na wszystko
 - asymetria i oddech, zero "wszystko text-center mx-auto"
-- rozne karty, zero gridu identycznych kart z tym samym hover
-- minimum 3 realne zdjecia/media, docelowo 5-7 na dluzszej stronie, zero emoji jako ikon
-- ikony tylko ze spojnego zestawu lucide-react
-- copy z konkretami i liczbami, zero pustych buzzwordow
-- polskie znaki z ogonkami, zero dlugich myslnikow
+- różne karty, zero gridu identycznych kart z tym samym hover
+- minimum 3 realne zdjęcia/media, docelowo 5-7 na dłuższej stronie, zero emoji jako ikon
+- ikony tylko ze spójnego zestawu lucide-react
+- copy z konkretami i liczbami, zero pustych buzzwordów
+- polskie znaki z ogonkami, zero długich myślników
