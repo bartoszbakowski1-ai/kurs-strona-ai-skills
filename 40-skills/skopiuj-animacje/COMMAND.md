@@ -29,7 +29,7 @@ Powiedz uczestnikowi 1-2 zdaniami co znalazłeś. Wybierz ścieżkę (od najleps
 - **SVG animowane (SMIL/CSS)** -> SVG jest w DOM, skopiuj markup 1:1.
 - **Lottie** (`<lottie-player>` albo plik .json/.lottie w Network) -> znajdź URL, pobierz do `public/`, osadź `@lottiefiles/dotlottie-react`. Cudza własność -> ostrzeż i zaproponuj darmowy odpowiednik z LottieFiles.
 - **Wideo w tle / GIF / WebP** -> znajdź URL pliku, jeśli wolno - pobierz do `public/` i osadź. Cudza własność -> ostrzeż.
-- **GSAP / Framer Motion / inna biblioteka JS** -> kodu nie da się skopiować 1:1 (zminifikowany). ODTWÓRZ efekt: obejrzyj zachowanie (scroll, hover, timing), nazwij efekt, napisz własny równoważny kod. Powiedz wprost, że to odtworzenie, nie kopia. W tym kursie używaj biblioteki `motion` (patrz skill `animacje-premium`).
+- **GSAP / Framer Motion / inna biblioteka JS** -> kodu nie da się skopiować 1:1 (zminifikowany). ODTWÓRZ efekt: obejrzyj zachowanie (scroll, hover, timing), nazwij efekt, napisz własny równoważny kod. Powiedz wprost, że to odtworzenie, nie kopia. W tym kursie używaj biblioteki `motion` (import `motion/react`, `npm install motion`) - subtelny ruch, tylko transform + opacity, reveal raz przy wejściu w viewport.
 - **Wygląda jak znany gotowy komponent** (świecące belki, karty 3D, meteory, aurora, marquee) -> zaproponuj gotowiec z Aceternity UI / Magic UI / React Bits przez `npx shadcn@latest add ...`. Najpewniejsza droga.
 - **Canvas 2D / WebGL / shadery / 3D** -> NIE da się sklonować z linku. Powiedz uczciwie. Zaproponuj obejście: gotowy komponent (`react-three-fiber` + `drei`), scena ze Spline (`@splinetool/react-spline`), albo lekki zamiennik CSS (aurora, pole gwiazd). Ostrzeż o wadze/wydajności na mobile.
 
