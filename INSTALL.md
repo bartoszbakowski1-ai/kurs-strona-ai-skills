@@ -29,11 +29,16 @@ for skill in analityka bezpieczenstwo design karty kontekst lp obrazy oferta san
 done
 ```
 
-## 4. Skopiuj komendę `/strona`
+## 4. Skopiuj komendy `/strona` i `/skopiuj-animacje`
 
 ```bash
 cp /tmp/kurs-strona-ai-skills/40-skills/strona/COMMAND.md .claude/commands/strona.md
+cp /tmp/kurs-strona-ai-skills/40-skills/skopiuj-animacje/COMMAND.md .claude/commands/skopiuj-animacje.md
 ```
+
+Komenda `/skopiuj-animacje <link>` otwiera dowolną stronę w przeglądarce, znajduje
+animację i kopiuje albo odtwarza ją na Twojej stronie. Wymaga jednorazowego
+podłączenia "oczu" (przeglądarki) - instrukcja w `.claude/materialy/30-szablony-md/animacje/PODLACZ-OCZY.md`.
 
 ## 5. Skopiuj materiały kursowe
 
