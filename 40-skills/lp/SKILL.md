@@ -110,6 +110,8 @@ Po większym kroku aktualizuj `PROGRESS.md`, jeśli istnieje. Commituj dopiero p
 
 ## Krok 5 - anti-ai-look i media
 
+Animacje: dla subtelnego ruchu premium użyj gotowego wzorca z `references/animacje-premium.md` (komponenty `Reveal`, `StaggerList`, `WordsReveal`, `ParallaxImage` + dostrojone wartości i twarde reguły). NIE improwizuj animacji od zera. H1 hero = `WordsReveal` (jedyne użycie maski), korzyści/program = `StaggerList`, każda sekcja = `Reveal`. Zakaz ruchu w pętli, pulse/bounce, floating blobs.
+
 Przed końcem sprawdź:
 
 - Czy hero ma konkret, a nie ogólne hasło?

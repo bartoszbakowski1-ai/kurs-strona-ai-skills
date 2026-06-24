@@ -114,6 +114,7 @@ Zasady:
 - Użyj istniejących komponentów i stylów.
 - Nie hardkoduj sekretów.
 - Nie dodawaj wielu wariantów oferty naraz.
+- Animacje: użyj wzorca z `references/animacje-premium.md`, ale w wersji SPOKOJNEJ. Oferta = zwykły `Reveal` na sekcjach, lekki delay na cytacie klienta w "Co zrozumiałem". NIE używaj `WordsReveal` (za sprzedażowe) ani parallaxu. Zero ruchu w pętli.
 - Oznacz braki w treści jako `[do potwierdzenia]`, ale ogranicz je do minimum.
 - Jeśli oferta ma być prywatna, dodaj ostrzeżenie w raporcie: publiczny URL nie jest zabezpieczeniem. Prywatność wymaga ochrony hasłem, auth, ograniczenia dostępu albo świadomego wysłania linku tylko do klienta.
 - Jeśli dodajesz formularz akceptacji, sprawdź walidację serwerową, honeypot, generyczne błędy i brak sekretów w kodzie.
