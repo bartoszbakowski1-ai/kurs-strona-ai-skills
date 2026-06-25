@@ -15,6 +15,7 @@ ROBI:
 - czyści cache i uruchamia lokalny build (`rm -rf .next && npm run build`)
 - naprawia 8 najczęstszych błędów Next.js, które wywalają build
 - przelatuje checklistę anti-AI-look po wygenerowanym kodzie i poprawia flagi
+- sprawdza podstawy SEO przed publikacją: prawdziwe metadane per strona (nie placeholder "Moja strona"), `lang="pl"`, jeden H1, OpenGraph, alty (sitemap/robots/canonical to M7)
 - sprawdza, czy klucze API i sekrety nie wyciekły do gita, `public/` ani `NEXT_PUBLIC_*`
 - sprawdza, czy formularz/API route ma walidację, limity, honeypot i generyczne błędy
 - sprawdza ryzykowne wzorce frontendu, podstawowe nagłówki bezpieczeństwa i podatne zależności
@@ -124,6 +125,29 @@ Przelećcie pliki strony (komponenty sekcji, `globals.css`, treść). Każde "TA
 
 GUARDRAIL na copy: poprawki techniczne (tracking, gradient, layout) robisz sam. Zmiany w TREŚCI (słowa, liczby, hasła) tylko za zgodą uczestnika - to jego marka i jego głos. Pokaż propozycję, poproś o "ok".
 
+### Krok 3.5 - podstawy SEO (brama nr 2.5)
+Strona ma być znaleziona w Google i ładnie wyglądać po wklejeniu linku. Sprawdzasz tu tylko podstawy, które da się sprawdzić PRZED publikacją (reszta - sitemap, robots, canonical, Search Console - to skill `analityka` w M7, bo wymaga już adresu live). Cel: żadna strona nie idzie w świat z placeholderem "Moja strona".
+
+Uruchom:
+
+```bash
+rg -n "export const metadata|title:|description:|openGraph|generateMetadata" src/app 2>/dev/null
+rg -n "Moja strona|Opis strony|lorem|Lorem|TODO|placeholder" src/app 2>/dev/null
+rg -no "<h1" src 2>/dev/null | sort | uniq -c
+rg -n "lang=" src/app/layout.tsx 2>/dev/null
+```
+
+Przelećcie i sprawdźcie. Każde "TAK" w TELL = flaga:
+- [ ] Czy `layout.tsx` albo którakolwiek strona ma jeszcze `title: "Moja strona"` / `description: "Opis strony"` (placeholder z designu)? (TAK = fix blokujący: wpisz prawdziwy tytuł i opis z kontekstu/kart - imię + co robi + dla kogo, opis 1 zdanie ~150 znaków)
+- [ ] Czy każda podstrona ma własne `export const metadata` z unikalnym `title` i `description`? (NIE = fix: dodaj per podstrona, np. "Oferta - [imię]", "O mnie - [imię]". Bez tego wszystkie podstrony mają ten sam tytuł w Google)
+- [ ] Czy `<html lang="pl">` jest w `layout.tsx`? (NIE = fix: ustaw `lang="pl"`)
+- [ ] Czy strona główna ma dokładnie jeden `<h1>` (nie zero, nie pięć)? (NIE = fix: jeden główny nagłówek na stronę)
+- [ ] Czy jest `openGraph` w metadanych (tytuł, opis, `images` - miniatura przy wklejeniu linku na social/messenger)? (NIE = fix: dodaj blok `openGraph` w `layout.tsx`, obrazek choćby tymczasowy w `public/og.png` 1200x630)
+- [ ] Czy zdjęcia mają `alt` (sprawdził już skill `obrazy`, ale potwierdź)? (NIE = fix: dopisz polskie alty)
+- [ ] Czy istnieją `src/app/sitemap.ts` i `src/app/robots.ts`? (NIE = to NORMALNE przed M7 - NIE blokuj. Powiedz uczestnikowi: "Mapę strony dla Google (sitemap, robots, canonical) dołożymy w module M7 po publikacji, bo potrzebuje już Twojego adresu. Zapisuję to jako następny krok.")
+
+Werdykt SEO: placeholder "Moja strona" albo brak metadanych per strona = nie pushujemy, naprawiamy. Brak sitemap/robots przed deployem nie blokuje (to M7). Po naprawie zapisz w `PROGRESS.md`: "SEO podstawy OK, sitemap/canonical -> M7".
+
 ### Krok 4 - brama bezpieczeństwa (brama nr 3)
 Nie robimy pentestu korporacyjnego. Robimy kursowy safety check: czy przed pushem nie ma typowych dziur w stronie Next.js.
 
@@ -195,8 +219,8 @@ CSP jest ważne, ale nie dodawaj go w ciemno. Content Security Policy potrafi za
 `npm audit` z HIGH/CRITICAL w zależności runtime = napraw przed pushem. Jeśli wynik dotyczy wyłącznie dev-toolingu i nie ma prostego fixa, opisz ryzyko po ludzku i zapisz w `PROGRESS.md`.
 
 ### Krok 5 - werdykt i zapis stanu
-1. Jeśli build zielony I checklista czysta (max 1 flaga) I brama bezpieczeństwa nie ma czerwonych flag - powiedz jasno:
-   "Gotowe. Strona się buduje, wygląda dobrze i nie widzę typowych wycieków ani dziur przed publikacją. Możesz pushować na GitHub - to uruchomi deploy na Vercel."
+1. Jeśli build zielony I checklista anti-ai-look czysta (max 1 flaga) I podstawy SEO OK (brak placeholdera "Moja strona", metadane per strona, lang pl, jeden H1, OpenGraph) I brama bezpieczeństwa nie ma czerwonych flag - powiedz jasno:
+   "Gotowe. Strona się buduje, wygląda dobrze, ma podstawy SEO i nie widzę typowych wycieków ani dziur przed publikacją. Możesz pushować na GitHub - to uruchomi deploy na Vercel. Mapę strony dla Google (sitemap, canonical) dołożymy w M7 po publikacji."
    Podaj gotową komendę commita (token-economy: checkpoint po review):
 
 ```bash
@@ -219,7 +243,7 @@ Gdy "Build Failed" pojawił się dopiero na Vercel, a lokalnie było zielono: po
 
 ## Ważne
 
-- Kolejność jest święta: najpierw build (Krok 1-2), potem wygląd (Krok 3), potem bezpieczeństwo (Krok 4). Nie przeskakuj.
+- Kolejność jest święta: najpierw build (Krok 1-2), potem wygląd (Krok 3), potem podstawy SEO (Krok 3.5), potem bezpieczeństwo (Krok 4). Nie przeskakuj.
 - Nie pushujemy, dopóki build nie jest zielony. To twarda brama.
 - Naprawiaj minimalnie i tłumacz po ludzku. Uczestnik ma wyjść z poczucia "kontroluję to", nie "magia się dzieje".
 - Lekki tryb: czytaj zmienione pliki + wynik builda, nie całe drzewo repo. Oszczędzasz limit tokenów uczestnika.

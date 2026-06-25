@@ -79,6 +79,8 @@ const fontHeading = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
+  // PLACEHOLDER - skill zbuduj-strone (M5) podmieni na prawdziwy tytul i opis z kart/kontekstu
+  // + doda openGraph. NIE zostawiaj "Moja strona" na produkcji - sprawdz-kod to zablokuje.
   title: "Moja strona",
   description: "Opis strony",
 };
