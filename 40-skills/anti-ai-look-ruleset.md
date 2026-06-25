@@ -132,15 +132,70 @@ Skill przebiega po wygenerowanym kodzie/stronie i odpowiada TAK/NIE. Każde "TAK
 - [ ] Czy nagłówki feature są wszystkie tej samej długości (2-3 słowa)? (TAK = fix)
 - [ ] Czy copy ma polskie znaki i zero em-dash? (NIE = fix)
 
-**Scoring (za Krebsem):** policz flagi. 0-1 = czysto, 2-3 = lekki AI-slop (popraw), 4+ = ciężki AI-slop (przerób sekcje). Próg akceptacji kursu: max 1 flaga.
+**Ruch / animacje**
+- [ ] Czy strona jest całkowicie statyczna (sekcje bez żadnego reveal, nic nie wjeżdża przy scrollu)? (TAK = fix: martwa strona czyta się jak szablon AI - owiń sekcje w `Reveal`)
+- [ ] Czy jest ruch w pętli (`animate-pulse`/`animate-bounce`, floating blob, animowany gradient w tle)? (TAK = fix)
+- [ ] Czy import animacji idzie z `framer-motion` zamiast `motion/react`? (TAK = fix)
+- [ ] Czy jest więcej niż jeden mocny akcent WOW na stronę? (TAK = fix: zostaw jeden)
+- [ ] Czy brak `<MotionConfig reducedMotion="user">` (dostępność)? (NIE = fix)
+
+**Scoring (za Krebsem):** policz flagi (typografia + layout + kolor + copy + ruch). 0-1 = czysto, 2-3 = lekki AI-slop (popraw), 4+ = ciężki AI-slop (przerób sekcje). Próg akceptacji kursu: max 1 flaga.
 
 ---
 
-## 5. Jak to wpiąć w kurs
+## 5. PREMIUM CRAFT - co DODAĆ, żeby wyglądało jak projekt, nie szablon
 
-- **M3 / Karta Wizualna** - ruleset z sekcji 3 (NAKAZANE) staje się inputem Karty: kursant definiuje font pairing (display+body), jeden akcent brandowy zamiast gradientu, min. liczbę realnych zdjęć i ton copy. Karta = kontekst doklejany do każdego prompta, żeby AI nie szło w defaulty.
-- **M4 / skill design** - sekcje 2 (ZAKAZANE) i 3 (NAKAZANE) lądują do system-promptu skilla budującego stronę, jako twarde reguły generowania (model dostaje listę czego nie robić + co robić zamiast).
-- **M5 / skill sprawdz-kod** - checklista z sekcji 4 to gotowe kryteria review: skill po wygenerowaniu strony przelata TAK/NIE, liczy flagi, zwraca raport i auto-fix dla flag. Egzekwujemy progiem "max 1 flaga" przed deployem - to brama jakości kursu.
+Sekcje 2-4 mówią, czego NIE robić. Ale stronę można przejść przez wszystkie zakazy i nadal być nijaką, bo nic jej nie wyróżnia. Brak AI-tellów to nie to samo co dobry design. To jest lista pozytywnych ruchów - tego, co świadomie DODAJESZ, żeby strona czytała się jak robota agencji, a nie domyślny output. Cel: każdy z tych elementów świadomie zaprojektowany przynajmniej raz na stronie.
+
+**1. Warstwa ruchu (najmocniejsza dźwignia "premium vs szablon").** Statyczna strona = płaska = AI. Subtelny reveal sekcji przy wejściu w viewport + JEDEN mocniejszy akcent na całą stronę robi 80% wrażenia premium. Pełny system: `40-skills/zbuduj-strone/animacje.md` (biblioteka `motion`, klocki `Reveal`/`StaggerList`, akcent WOW, mikro-interakcje). Reguła: subtelność, nie cyrk - jeden spokojny reveal wszędzie, jeden mocny moment raz.
+
+**2. Hierarchia i skala typografii z napięciem.** Nie trzy rozmiary tekstu po sąsiedzku. Duży kontrast: hero `text-5xl`-`text-7xl`, nagłówek sekcji `text-3xl`-`text-4xl`, body `text-base`-`text-lg`, podpis `text-sm`. Skok robi rytm. Monospace na liczbach/cenach/statach dla tekstury. Jeden "manifest" zdaniem większym niż reszta = punkt skupienia.
+
+**3. Głębia zamiast płaskich ramek.** Karty i sekcje dostają warstwę: subtelny cień wielopoziomowy (nie domyślny `shadow-sm` wszędzie), delikatny gradient tła sekcji ton-w-ton (nie tęcza), linia/separator o niskim kontraście, czasem nakładające się elementy (zdjęcie wchodzące na sąsiednią sekcję). Płaskie białe karty z `border` = sygnał szablonu.
+
+**4. Edytorialny rytm i asymetria.** Naprzemiennie obraz-lewo/tekst-prawo, kolumny 7/5 lub 8/4 zamiast 50/50, jedna sekcja celowo off-center, szeroki margines z jednej strony. Hojny whitespace między sekcjami (`py-24`+). Strona ma "oddychać" i mieć kierunek czytania, nie być siatką równych boxów.
+
+**5. Stany interakcji (hover/focus/active), nie martwy interfejs.** Przyciski, linki, karty klikalne reagują: mikro-podniesienie, podkreślenie wjeżdżające, zmiana tła o jeden ton. Spójnie w całej stronie. Brak stanów = wrażenie makiety, nie produktu. Tylko tam, gdzie naprawdę klikalne.
+
+**6. Jeden element-sygnatura na stronę.** Coś, co zapamiętujesz: nietypowy układ hero, autorski znak graficzny, jedno duże zdjęcie pełnoekranowe, charakterystyczny akcent koloru w jednym miejscu, jeden mocny cytat-manifest. Strona bez ani jednego "swojego" momentu jest wymienna z każdą inną.
+
+**7. Realne, kadrowane media (nie ikony-zapychacze).** Prawdziwe zdjęcia osoby/pracy/efektu, dobrze skadrowane, spójne kolorystycznie (jeden filtr/temperatura). 3 to bramka, 5-7 to jakość na dłuższej stronie. Zdjęcie z twarzą i konkretem bije dziesięć ikon Lucide w kółkach.
+
+**8. Konkret w treści jako element designu.** Liczby, nazwy, daty, krótkie cytaty klientów rozbijają ścianę tekstu i budują wiarygodność. "39 newsletterów", "od 2997 zł", "7 dni" - to też wizualne kotwice, nie tylko copy.
+
+Mini-test premium: przejrzyj gotową stronę i policz, ile z tych 8 elementów jest świadomie obecnych. 0-2 = poprawny szablon bez charakteru (dodaj craft). 3-5 = strona wygląda jak marka. 6-8 = poziom agencji.
+
+---
+
+## 6. Dobre referencje (wzorzec jakości dla AI i dla uczestnika)
+
+Konkretna referencja działa lepiej niż "zrób nowocześnie i czysto" - AI dostaje wzorzec zamiast zgadywać, a uczestnik ma pasek jakości przed oczami. Zasada: bierzemy POZIOM RZEMIOSŁA (typografia, ruch, oddech, głębia), a kolory i fonty zawsze swoje, z Karty Wizualnej. Nie kopiujemy układu 1:1.
+
+Gdzie szukać wzorców (kategorie, nie konkretne marki do podrobienia):
+- **Galerie dobrego rzemiosła:** Godly (godly.website), Awwwards (Sites of the Day), Land-book, Httpster, Minimal.gallery, One Page Love. Tu widać, jak wygląda strona zaprojektowana, nie wygenerowana.
+- **Komponenty premium gotowe do użycia:** Aceternity UI, Magic UI, React Bits - efekty WOW, które instalujesz, zamiast pisać słaby zamiennik ręcznie.
+- **Animacje/ikony na wolnej licencji:** LottieFiles (free), Rive Community.
+- **3D bez ciężaru:** Spline (`@splinetool/react-spline`).
+
+Jak rozmawiać z AI o referencji (wzór dla uczestnika, do skopiowania):
+
+```
+Zbuduj sekcje [nazwa] na poziomie rzemiosla jak [referencja - link albo nazwa].
+Bierz z niej JAKOSC: typografie z napieciem, oddech, subtelny ruch, glebie.
+Uzyj WYLACZNIE moich kolorow i fontow ze zmiennych globals.css. Nie kopiuj jej ukladu 1:1.
+Trzymaj reguly anti-ai-look. Sekcje owin w Reveal.
+```
+
+Gdy uczestnik wskaże konkretną stronę z efektem, który mu się podoba -> komenda `/skopiuj-animacje <link>` odtworzy ten efekt na jego stronie, przepuszczając przez reguły subtelności (sekcja 5, punkt 1).
+
+---
+
+## 7. Jak to wpiąć w kurs
+
+- **M3 / Karta Wizualna** - ruleset z sekcji 3 (NAKAZANE) i 5 (PREMIUM CRAFT) staje się inputem Karty: kursant definiuje font pairing (display+body), jeden akcent brandowy zamiast gradientu, min. liczbę realnych zdjęć, ton copy i 1-3 referencje jakości (sekcja 6). Karta = kontekst doklejany do każdego prompta, żeby AI nie szło w defaulty.
+- **M4 / skill design** - sekcje 2 (ZAKAZANE) i 3 (NAKAZANE) lądują do system-promptu skilla budującego stronę jako twarde reguły. Tu też skill `design` zakłada warstwę ruchu (sekcja 5, punkt 1): paczka `motion`, `<MotionConfig reducedMotion="user">`, komponenty `Reveal`/`StaggerList` - fundament premium, zanim powstaną sekcje.
+- **M5 / skill zbuduj-strone** - nakłada ruch na sekcje (owija w `Reveal`, listy w `StaggerList`, jeden akcent WOW) i egzekwuje sekcje 5-6. Pełne wzorce ruchu: `40-skills/zbuduj-strone/animacje.md`.
+- **M5 / skill sprawdz-kod** - checklista z sekcji 4 (z blokiem "Ruch / animacje") to gotowe kryteria review: skill po wygenerowaniu strony przelata TAK/NIE, liczy flagi, zwraca raport i auto-fix dla flag. Egzekwujemy progiem "max 1 flaga" przed deployem - to brama jakości kursu.
 
 Plik gotowy do zapisania jako `anti-ai-look.md` w katalogu skilla (`~/.claude/skills/` lub w pakiecie kursu `~/Downloads/kurs-strona-ai-v2/`).
 

@@ -33,6 +33,13 @@ Powiedz uczestnikowi 1-2 zdaniami co znalazłeś. Wybierz ścieżkę (od najleps
 - **Wygląda jak znany gotowy komponent** (świecące belki, karty 3D, meteory, aurora, marquee) -> zaproponuj gotowiec z Aceternity UI / Magic UI / React Bits przez `npx shadcn@latest add ...`. Najpewniejsza droga.
 - **Canvas 2D / WebGL / shadery / 3D** -> NIE da się sklonować z linku. Powiedz uczciwie. Zaproponuj obejście: gotowy komponent (`react-three-fiber` + `drei`), scena ze Spline (`@splinetool/react-spline`), albo lekki zamiennik CSS (aurora, pole gwiazd). Ostrzeż o wadze/wydajności na mobile.
 
+## Krok 2.5 - Filtr smaku (zanim wstawisz - WAŻNE)
+Nie kopiuj na ślepo. Uczestnik mógł wskazać stronę, która sama jest AI-slopem albo ma efekt, który na jego stronie będzie tani. Przepuść efekt przez te same reguły premium co reszta kursu (pełne w `40-skills/zbuduj-strone/animacje.md`):
+- ZAKAZ przeniesienia: ruch w pętli (pulsowanie, bounce, floating blob, animowany gradient w tle), spring-bounce na dużych blokach, fly-in z daleka, licznik-cyrk, parallax na czytanym tekście, cokolwiek opóźniającego odczyt treści lub klik CTA, import `framer-motion` (używaj `motion/react`).
+- Efekt łamie te reguły -> NIE przenoś go 1:1. Powiedz uczestnikowi wprost po ludzku: "Ten efekt fajnie wygląda u nich, ale na Twojej stronie zadziała tanio / spowolni ją / sam jest w stylu AI. Dam Ci subtelniejszą wersję, która robi to samo wrażenie premium." i odtwórz utemperowaną wersję (transform/opacity, raz przy wejściu w viewport, `reducedMotion` zostaje).
+- Pamiętaj o limicie: max JEDEN mocny akcent na całą stronę. Jeśli strona uczestnika ma już akcent WOW, ten nowy efekt zostaje delikatny (zwykły Reveal), nie drugi WOW.
+- Cel: nie wierna kopia za wszelką cenę, tylko jeden autorski moment, który podnosi stronę. Wierność oryginałowi ustępuje smakowi i wydajności.
+
 ## Krok 3 - Wstaw na stronę (Next.js)
 - Animacje "żywe" (Lottie, Rive, GSAP, motion, Canvas, WebGL) -> `'use client'`, a WebGL/3D dodatkowo `dynamic(() => import(...), { ssr: false })`.
 - CSS Modules: `@keyframes` muszą być w tym samym module albo globalne.

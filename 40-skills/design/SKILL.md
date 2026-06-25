@@ -15,6 +15,7 @@ ROBI:
 - czyta `karty/karta-wizualna.md` i wyciąga: paleta kolorów, font nagłówkowy + body, nastrój, referencje
 - ustawia zmienne CSS (design tokens) w `src/app/globals.css`
 - konfiguruje 2 fonty przez `next/font/google` w `src/app/layout.tsx`
+- zakłada warstwę ruchu (fundament): instaluje `motion`, owija layout w `<MotionConfig reducedMotion="user">`, tworzy raz komponenty `Reveal` i `StaggerList` w `src/components/motion/`
 - tworzy plik reguły designu `karty/design-decyzje.md` (co dalej ma być respektowane)
 - wbudowuje reguły anti-ai-look (z pliku `anti-ai-look.md` obok tego skilla) w kontekst projektu
 - aktualizuje `PROGRESS.md`
@@ -160,11 +161,81 @@ p, li {
 
 4. Po zapisaniu powiedz uczestnikowi po ludzku: od teraz cała strona-system (wszystkie podstrony) bierze kolory i fonty z jednego miejsca, więc zmiana koloru marki to będzie jedna linijka, a nie szukanie po całej stronie.
 
+### Krok 3.5 - warstwa ruchu (fundament animacji)
+Statyczna, plaska strona czyta sie jak szablon AI - nawet jak kolory i fonty sa dobre. Subtelny ruch przy wejsciu sekcji w viewport daje efekt premium agencji. Fundament zakladasz TERAZ (raz, tanio), a skill `zbuduj-strone` bedzie go tylko NAKLADAL na sekcje (owijanie = jedna linia, bez dodatkowego kosztu tokenow). Zasada nadrzedna: subtelnosc. Jeden spokojny reveal wszedzie + max jeden mocniejszy akcent na cala strone. Nadmiar ruchu = tanio.
+
+1. Zainstaluj bibliotekę ruchu (`motion`, nastepca framer-motion - lzejszy, import `motion/react`):
+
+```bash
+npm install motion
+```
+
+2. Owin tresc aplikacji w `<MotionConfig reducedMotion="user">` w `src/app/layout.tsx`. To dostepnosc: kto ma w systemie wlaczone "ogranicz ruch", dostaje czyste opacity bez przesuniec. Zaimportuj `MotionConfig` z `motion/react` i opakuj `{children}`:
+
+```tsx
+import { MotionConfig } from "motion/react";
+// ...w <body>, opakuj tresc:
+<body className={`${fontBody.variable} ${fontHeading.variable} antialiased`}>
+  <MotionConfig reducedMotion="user">{children}</MotionConfig>
+</body>
+```
+
+3. Utworz raz dwa komponenty-klocki ruchu w `src/components/motion/`. Wartosci sa premium i dobrane - nie zmieniaj ich bez powodu.
+
+Plik `src/components/motion/Reveal.tsx` (fade-up raz przy wejsciu w viewport, do KAZDEJ sekcji):
+
+```tsx
+"use client";
+import { motion } from "motion/react";
+
+type Props = { children: React.ReactNode; delay?: number; className?: string };
+
+export function Reveal({ children, delay = 0, className }: Props) {
+  return (
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.35, margin: "-80px" }}
+      transition={{ duration: 0.6, ease: [0.17, 0.55, 0.55, 1], delay }}
+    >
+      {children}
+    </motion.div>
+  );
+}
+```
+
+Plik `src/components/motion/StaggerList.tsx` (kaskada elementow listy: korzysci, program, FAQ):
+
+```tsx
+"use client";
+import { motion } from "motion/react";
+
+const list = { hidden: {}, show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } } };
+const item = {
+  hidden: { opacity: 0, y: 16 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.17, 0.55, 0.55, 1] } },
+};
+
+export function StaggerList({ children, className }: { children: React.ReactNode[]; className?: string }) {
+  return (
+    <motion.ul className={className} variants={list} initial="hidden" whileInView="show" viewport={{ once: true, amount: 0.3 }}>
+      {children.map((c, i) => (<motion.li key={i} variants={item}>{c}</motion.li>))}
+    </motion.ul>
+  );
+}
+```
+
+4. Powiedz uczestnikowi 1 zdaniem po ludzku: "Zalozylem warstwe ruchu - przy budowie sekcje beda delikatnie wjezdzac, gdy pojawiaja sie na ekranie. To ten detal, ktory odroznia strone premium od plaskiego szablonu. Pelny zestaw mocniejszych efektow (jeden akcent WOW na strone) jest gotowy w skillu budujacym."
+
+Pelne reguly ruchu i mocniejsze efekty (WordsReveal, parallax, gotowce z bibliotek, mikro-interakcje) sa w pliku `40-skills/zbuduj-strone/animacje.md` - tego pliku NIE czytasz tutaj, otworzy go skill `zbuduj-strone`, gdy bedzie nakladal ruch na sekcje.
+
 ### Krok 4 - wbuduj reguły anti-ai-look
 1. Przeczytaj plik `anti-ai-look.md` leżący obok tego skilla (w tym samym folderze). To skondensowana lista ZAKAZANE / NAKAZANE plus szybka checklista.
 2. Zapisz plik `karty/design-decyzje.md` - to będzie kontekst doklejany przy każdej budowie sekcji. Wpisz tam:
    - tokeny, które właśnie ustawiłeś (kolory, fonty, radius) - krótko
    - 1-3 referencje z Karty Wizualnej ("tak ma wyglądać jakość")
+   - warstwa ruchu gotowa: `Reveal` i `StaggerList` w `src/components/motion/`, `<MotionConfig reducedMotion="user">` w layout - skill `zbuduj-strone` owija nimi sekcje (jeden akcent WOW na całą stronę, reszta to spokojny reveal)
    - skopiowane z `anti-ai-look.md` najważniejsze ZAKAZANE i NAKAZANE (żeby skill zbuduj-strone miał to lokalnie i nie musiał za każdym razem ładować całego rulesetu)
 3. Powiedz uczestnikowi jednym zdaniem: te reguły sprawiają, że strona nie wpadnie w typowe "to jest robione AI" (fioletowe gradienty, identyczne karty, nagłówki capslockiem). Pełna lista zakazów i nakazów jest w `anti-ai-look.md` - nie musisz jej czytać, skill zbuduj-strone będzie jej pilnował za Ciebie.
 
@@ -187,11 +258,11 @@ Naglowki z text-balance, prawdziwe zdjecia tam gdzie sa.
 1. Sprawdź `git status`. Zacommituj efekt jako checkpoint:
 
 ```
-git add -A && git commit -m "design: tokeny CSS + fonty + reguly anti-ai-look"
+git add -A && git commit -m "design: tokeny CSS + fonty + warstwa ruchu + reguly anti-ai-look"
 ```
 
-2. Zaktualizuj `PROGRESS.md` (jeśli nie istnieje - utwórz): dopisz, że design tokens i fonty są ustawione, wpisz w sekcji "Decyzje" kolory i fonty, ustaw następny krok na "M5 budowa sekcji (skill zbuduj-strone)".
-3. Zamknij 2 zdaniami: design system gotowy i wspólny dla wszystkich podstron, kolory i fonty żyją w jednym miejscu, strona ma wbudowane zabezpieczenie przed wyglądem AI. Następny krok to skill `zbuduj-strone`, który zbuduje system etapami - stronę główną i podstrony, sekcja po sekcji z Twoich kart.
+2. Zaktualizuj `PROGRESS.md` (jeśli nie istnieje - utwórz): dopisz, że design tokens, fonty i warstwa ruchu (motion) są ustawione, wpisz w sekcji "Decyzje" kolory i fonty, ustaw następny krok na "M5 budowa sekcji (skill zbuduj-strone)".
+3. Zamknij 2 zdaniami: design system gotowy i wspólny dla wszystkich podstron, kolory, fonty i warstwa ruchu żyją w jednym miejscu, strona ma wbudowane zabezpieczenie przed wyglądem AI. Następny krok to skill `zbuduj-strone`, który zbuduje system etapami - stronę główną i podstrony, sekcja po sekcji z Twoich kart, nakładając na nie subtelny ruch.
 
 ## Guardrails (twarde)
 - Nie nadpisuj `layout.tsx` ani `globals.css` w ciemno, jeśli mają już treść marki - najpierw pokaż różnicę i zapytaj o "tak".

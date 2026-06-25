@@ -111,7 +111,16 @@ Przelećcie pliki strony (komponenty sekcji, `globals.css`, treść). Każde "TA
 - [ ] Nagłówki feature wszystkie tej samej długości (2-3 słowa)? (TAK = fix: zróżnicuj, opisuj efekt nie ficzer)
 - [ ] Copy ma polskie znaki i zero długiego myślnika? (NIE = fix: popraw)
 
-**Scoring:** policz flagi. 0-1 = czysto, idziemy dalej. 2-3 = lekki AI-slop, popraw flagi. 4+ = przerób sekcję. Próg kursu: max 1 flaga przed pushem.
+**Ruch / animacje** (warstwa motion - pełne reguły w `40-skills/zbuduj-strone/animacje.md`)
+- [ ] Strona jest całkowicie statyczna, sekcje nie mają `Reveal` (martwa, płaska)? (TAK = fix blokujący: owiń sekcje w `Reveal` z `@/components/motion`, listy w `StaggerList`. Strona bez ruchu czyta się jak szablon AI)
+- [ ] Jest import z `framer-motion` zamiast `motion/react`? (TAK = fix: podmień import na `motion/react`)
+- [ ] Jest ruch w pętli: `animate-pulse`/`animate-bounce`, floating blob, animowany gradient w tle? (TAK = fix: usuń, ruch tylko raz przy wejściu w viewport)
+- [ ] Reveal/`whileInView` bez `once: true` (re-trigger przy scrollu)? (TAK = fix: dodaj `viewport={{ once: true }}`)
+- [ ] Brak `<MotionConfig reducedMotion="user">` w `layout.tsx`? (TAK = fix: owiń `{children}` - to dostępność)
+- [ ] Więcej niż JEDEN mocny akcent WOW (WordsReveal/parallax/efekt z biblioteki) na stronę? (TAK = fix: zostaw jeden, najmocniejszy)
+- [ ] CTA albo treść hero ukryte/opóźnione przez animację (nie widać od pierwszej klatki)? (TAK = fix: CTA i nagłówek hero stabilne i klikalne od razu)
+
+**Scoring:** policz flagi (typografia + layout + kolor + copy + ruch). 0-1 = czysto, idziemy dalej. 2-3 = lekki AI-slop, popraw flagi. 4+ = przerób sekcję. Próg kursu: max 1 flaga przed pushem.
 
 GUARDRAIL na copy: poprawki techniczne (tracking, gradient, layout) robisz sam. Zmiany w TREŚCI (słowa, liczby, hasła) tylko za zgodą uczestnika - to jego marka i jego głos. Pokaż propozycję, poproś o "ok".
 

@@ -55,6 +55,13 @@ Copy:
 - Nagłówki feature różnej długości, opisują efekt nie ficzer.
 - Polskie znaki z ogonkami, zero em-dash, ton ludzki, formy m/ż gdzie pasuje.
 
+Ruch (warstwa motion - zakłada ją skill design, nakłada zbuduj-strone):
+- Każda sekcja owinięta w `Reveal` (subtelny fade-up raz przy wejściu w viewport), listy w `StaggerList`. Statyczna strona = płaska = AI.
+- Tylko transform/opacity, `viewport once`, `<MotionConfig reducedMotion="user">` w layout. Zero pętli (pulse/bounce/floating blob). Max JEDEN akcent WOW na stronę. Import `motion/react`, nigdy `framer-motion`.
+
+Premium craft (co DODAĆ, nie tylko czego unikać - pełne w `../anti-ai-look-ruleset.md` sekcja 5):
+- Warstwa ruchu, kontrast skali typografii, głębia zamiast płaskich ramek, edytorialna asymetria, stany hover, jeden element-sygnatura, realne kadrowane media, konkret w treści. Brak AI-tellów to nie to samo co dobry design.
+
 ## SZYBKA CHECKLISTA (wpisz do design-decyzje.md jako bramka)
 
 Strona przechodzi, jeśli na te pytania odpowiedź brzmi dobrze:
@@ -66,5 +73,6 @@ Strona przechodzi, jeśli na te pytania odpowiedź brzmi dobrze:
 6. Wszystkie kolory idą ze zmiennych CSS, zero hardkodu? (ma być TAK)
 7. Copy ma min. jedną konkretną liczbę/nazwę i zero em-dash? (ma być TAK)
 8. Layout ma oddech i odrobinę asymetrii, nie wszystko wycentrowane? (ma być TAK)
+9. Sekcje mają warstwę ruchu (Reveal), nie są martwe i statyczne, i nie ma ruchu w pętli? (ma być TAK)
 
 Próg akceptacji kursu: max 1 odpowiedź "nie". Więcej = przeróbka sekcji. Pełna checklista TAK/NIE i scoring są w `../anti-ai-look-ruleset.md` (sekcja 4) - tego pilnuje skill `sprawdz-kod` przed deployem.

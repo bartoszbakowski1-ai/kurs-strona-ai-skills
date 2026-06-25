@@ -20,12 +20,13 @@ ROBI:
 - dodaje shadcn/ui TYLKO z listy: button, card, input, accordion, navigation-menu, sheet
 - przygotowuje strukturę pod treść dynamiczną z mapy (blog, realizacje, opinie): podstrony i szablony wpisów, ze statyczną treścią na start - samo podłączenie CMS robi skill `sanity` (M8)
 - buduje działający formularz kontaktowy przez Resend + API route (szczegóły w pliku `formularz.md` obok)
+- nakłada warstwę ruchu (motion) na sekcje: owija je w `Reveal` / `StaggerList`, dodaje premium mikro-interakcje na CTA i karty klikalne, max JEDEN akcent WOW na całą stronę (klocki zrobił skill `design`; pełne wzorce w `animacje.md` obok)
 - egzekwuje reguły anti-ai-look przy każdej sekcji
 - wznawia budowę po limicie tokenów na podstawie `PROGRESS.md`
 
 NIE ROBI:
 - nie tworzy projektu od zera ani nie robi `create-next-app` (to robi `/strona` w starcie / M1)
-- nie ustawia design tokens ani fontów (to skill `design`, M4) - tylko ich UŻYWA
+- nie ustawia design tokens, fontów ani fundamentu ruchu (paczka `motion`, `MotionConfig`, komponenty `Reveal`/`StaggerList` - to skill `design`, M4) - tylko ich UŻYWA i nakłada na sekcje
 - nie generuje zdjęć (to skill `obrazy`, M4) - tylko wstawia te, które są, albo prosi o realne foto
 - nie robi pełnego review/buildu na koniec (to skill `sprawdz-kod`)
 - nie pushuje na GitHub, nie deployuje, nie rusza domeny (to lekcja M6)
@@ -145,6 +146,7 @@ Cykl jednej sekcji:
 1. **Powiedz, którą sekcję robisz** i co ona ma osiągnąć (1 zdanie). Np. "Robię hero - to pierwsze, co widzi odwiedzający, ma jasno powiedzieć co oferujesz i poprowadzić do [główne CTA]."
 2. **Zbierz tylko brakującą treść biznesową.** Najpierw szukaj w kartach/kontekście. Czego naprawdę brakuje - dopytaj o JEDNO naraz, prostym językiem (np. "Jaki jeden główny nagłówek ma być na górze? Jak nie wiesz, zaproponuję 2 wersje na bazie Twojej oferty."). Konkretne liczby (lata doświadczenia, liczba klientów) wyciągaj z kontekstu - to one robią copy wiarygodnym.
 3. **Zbuduj sekcję jako mały, czytelny komponent** w `src/components/sections/` (np. `Hero.tsx`, `Oferta.tsx`), wepnij do `page.tsx`. Użyj bloków shadcn z listy + Tailwind. Trzymaj reguły anti-ai-look (niżej). Bloki referencyjne sekcji masz w pliku `sekcje.md` obok - otwórz go tylko, jeśli potrzebujesz wzorca układu konkretnej sekcji (oszczędzasz tokeny).
+   - **Nałóż ruch od razu (warstwa ruchu z `design`):** owin treść sekcji w `<Reveal>` z `@/components/motion/Reveal` (sąsiednie elementy rozsuwaj `delay={0.08}`, `delay={0.16}`), listy ("co dostajesz", program, FAQ) w `<StaggerList>`. CTA i karty klikalne dostają premium mikro-interakcję (`hover:-translate-y-0.5 transition-transform`), nie glow. To jedna-dwie linie na sekcję - tania warstwa, która odróżnia stronę premium od płaskiego szablonu. Pełne wzorce i akcent WOW: krok 3.5 i plik `animacje.md`.
 4. **Sprawdź sekcję pod kątem anti-ai-look** od razu (mini-checklista niżej). Poprawki techniczne (tracking, gradient, identyczne karty, brak `text-balance`) robisz sam. Zmiany w TREŚCI tylko za zgodą uczestnika.
 5. **Commit** (checkpoint) + **nadpisz PROGRESS.md** (przesuń sekcję do "Ukończone", ustaw następną jako "W trakcie"):
 
@@ -155,6 +157,17 @@ git add -A && git commit -m "sekcja: hero"
 6. **Zapytaj, czy jedziemy dalej, czy przerwa.** Przypomnij za każdym razem: "Limit tokenów to normalne. Gdy się skończy, wracasz i piszesz `/strona wznów` - od tego miejsca, nic nie tracisz."
 
 GUARDRAIL kolejności: nie zaczynaj następnej sekcji bez commita poprzedniej.
+
+### Krok 3.5 - akcent WOW (jeden na całą stronę)
+Spokojny `Reveal` na każdej sekcji nakładasz już w pętli (punkt 3 wyżej). Teraz, gdy strona główna ma sekcje rdzenia, dokładasz JEDEN mocniejszy moment - to on robi efekt "premium agencja", a nie kolejny szablon. Tylko jeden na całą stronę, najlepiej na hero strony głównej. Pięć efektów = cyrk i wolna strona.
+
+**Otwórz plik `animacje.md` obok tego skilla DOPIERO tutaj** (oszczędzasz tokeny) - ma gotowy kod i pełne reguły. Wybierz JEDNĄ opcję pasującą do marki z Karty Wizualnej:
+1. `WordsReveal` - maskowane słowa wjeżdżające od dołu na samym H1 hero (sygnatura premium, kod w `animacje.md`).
+2. `ParallaxImage` - subtelny parallax 6% na zdjęciu hero (nie na tekście).
+3. Gotowy efekt z biblioteki (aurora, świecące belki, marquee) przez `npx shadcn@latest add ...` z Magic UI / Aceternity / React Bits - sprawdź, czy nie wnosi fioletowego gradientu (jak tak, podmień na akcent z tokenów).
+4. **Uczestnik wskazał konkretną stronę, której efekt mu się podoba** -> użyj komendy `/skopiuj-animacje <link>`. Otworzy stronę, rozpozna efekt i odtworzy go najbliżej oryginału, przepuszczając przez te same reguły subtelności. To najlepsza droga na jeden autorski akcent.
+
+Trzymaj twarde reguły ruchu (sekcja "Anti-ai-look" niżej, pełne w `animacje.md`): tylko transform/opacity, `viewport once`, reduced-motion zostaje, CTA klikalne od pierwszej klatki, zero pętli. Po dołożeniu akcentu: commit ("ruch: akcent hero") + PROGRESS.md.
 
 ### Krok 4 - formularz kontaktowy (sekcja-rdzeń, Resend)
 Formularz to nie dodatek - strona ma zbierać kontakty. To działający formularz przez Resend i API route, bez n8n, bez Formspree.
@@ -203,7 +216,11 @@ NAKAZ:
 - konkretne liczby/nazwy/daty w copy (z kontekstu uczestnika)
 - wszystkie kolory przez zmienne CSS z `globals.css`, zero hardkodów w komponentach
 
-Mini-checklista po sekcji (każde "TAK" w ZAKAZ = popraw od razu): jest `tracking-tight`? jest eyebrow CAPSEM? brak `text-balance`? fioletowy gradient? gradient text? identyczne karty z tym samym hover? wszystko wycentrowane? emoji jako ikona? buzzword? długi myślnik? Jeśli więcej niż 1 flaga - przeróbka sekcji, zanim zacommitujesz.
+RUCH (warstwa motion - pełne reguły w `animacje.md`):
+- ZAKAZ: import z `framer-motion` (ma być `motion/react`); ruch w pętli (pulse/bounce/floating blob/animowany gradient); reveal bez `once: true`; spring-bounce/rotacja/fly-in z daleka na dużych blokach; więcej niż JEDEN akcent WOW na stronę; animacja opóźniająca odczyt treści lub klik CTA.
+- NAKAZ: sekcja owinięta w `Reveal`, listy w `StaggerList`; tylko transform/opacity/filter; `<MotionConfig reducedMotion="user">` zostaje w layout; premium mikro-interakcja na CTA (`hover:-translate-y-0.5`), nie glow/scale.
+
+Mini-checklista po sekcji (każde "TAK" w ZAKAZ = popraw od razu): jest `tracking-tight`? jest eyebrow CAPSEM? brak `text-balance`? fioletowy gradient? gradient text? identyczne karty z tym samym hover? wszystko wycentrowane? emoji jako ikona? buzzword? długi myślnik? sekcja bez `Reveal` (martwa, statyczna)? ruch w pętli / import z `framer-motion`? Jeśli więcej niż 1 flaga - przeróbka sekcji, zanim zacommitujesz.
 
 ## Guardrails (twarde)
 - Jedna sekcja naraz, commit po każdej, PROGRESS.md po każdej. Bez wyjątków - to ratuje uczestnika przed stratą pracy przy limicie.
