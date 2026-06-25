@@ -15,6 +15,7 @@ ROBI:
 - czyści cache i uruchamia lokalny build (`rm -rf .next && npm run build`)
 - naprawia 8 najczęstszych błędów Next.js, które wywalają build
 - przelatuje checklistę anti-AI-look po wygenerowanym kodzie i poprawia flagi
+- sprawdza polskie znaki (ogonki) w całej widocznej treści - wyłapuje "polski ASCII" bez ogonków ("wiecej", "uslugi", "sie") i poprawia na poprawną pisownię
 - sprawdza podstawy SEO przed publikacją: prawdziwe metadane per strona (nie placeholder "Moja strona"), `lang="pl"`, jeden H1, OpenGraph, alty (sitemap/robots/canonical to M7)
 - sprawdza, czy klucze API i sekrety nie wyciekły do gita, `public/` ani `NEXT_PUBLIC_*`
 - sprawdza, czy formularz/API route ma walidację, limity, honeypot i generyczne błędy
@@ -112,6 +113,20 @@ Przelećcie pliki strony (komponenty sekcji, `globals.css`, treść). Każde "TA
 - [ ] Min. jedna konkretna liczba/nazwa/data w copy? (NIE = fix: zapytaj uczestnika o liczbę, np. ile lat doświadczenia, ilu klientów)
 - [ ] Nagłówki feature wszystkie tej samej długości (2-3 słowa)? (TAK = fix: zróżnicuj, opisuj efekt nie ficzer)
 - [ ] Copy ma polskie znaki i zero długiego myślnika? (NIE = fix: popraw)
+
+**Polskie znaki (ogonki) - osobny, ważny check**
+Cała WIDOCZNA treść (nagłówki, akapity, przyciski, alty, metadane title/description, FAQ) MUSI mieć polskie ogonki (ą ć ę ł ń ó ś ź ż) w UTF-8. Bardzo częsty błąd: AI pisze "polskim ASCII" bez ogonków ("wiecej", "uslugi", "sie") - dla polskiego odbiorcy wygląda to niechlujnie i tanio. ASCII jest OK tylko w nazwach zmiennych, klas i plików, nigdy w tekście dla użytkownika.
+
+Uruchom (wyłapuje słowa, które po polsku ZAWSZE mają ogonek, zapisane w wersji ASCII):
+
+```bash
+rg -win --glob 'src/**/*.{tsx,ts,jsx,js,mdx,md}' "sie|wiecej|juz|takze|moze|mozesz|mozliwosc|mozliwosci|bedzie|bedziesz|jakosc|wartosc|wspolprac\w*|doswiadcz\w*|uslug\w*|dziekuj\w*|prosze|sprawdz|wyslij|strone|strona|pieniadz\w*|klientow|rozwiazani\w*|czesc|wlasci\w*|zaczni\w*|cwiczeni\w*|dolacz|nastepny|pozadan\w*" src 2>/dev/null
+rg -c "[ąćęłńóśźż]" --glob 'src/**/*.tsx' src 2>/dev/null | head
+```
+
+Interpretacja:
+- Każde trafienie pierwszej komendy, które jest w WIDOCZNEJ treści (tekst w JSX, string nagłówka/przycisku, `alt`, `title`, `description`) = fix: przepisz słowo z ogonkami (wiecej -> więcej, uslugi -> usługi, sie -> się). Trafienie w nazwie zmiennej/klasy/pliku (np. `useState`, `className`) zostaw - tam ASCII jest poprawne.
+- Druga komenda pokazuje, ile ogonków jest w plikach strony. Jeśli na polskiej stronie wychodzi 0 albo prawie 0 - ogonki zostały zjedzone w całej treści, to fix blokujący.
 
 **Ruch / animacje** (warstwa motion - pełne reguły w `40-skills/zbuduj-strone/animacje.md`)
 - [ ] Strona jest całkowicie statyczna, sekcje nie mają `Reveal` (martwa, płaska)? (TAK = fix blokujący: owiń sekcje w `Reveal` z `@/components/motion`, listy w `StaggerList`. Strona bez ruchu czyta się jak szablon AI)

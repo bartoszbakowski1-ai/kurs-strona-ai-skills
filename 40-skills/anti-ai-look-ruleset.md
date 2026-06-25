@@ -132,7 +132,8 @@ Skill przebiega po wygenerowanym kodzie/stronie i odpowiada TAK/NIE. Każde "TAK
 - [ ] Czy są buzzwordy (Elevate/Unlock/Supercharge/all-in-one/seamless...)? (TAK = fix)
 - [ ] Czy jest min. jedna konkretna liczba/nazwa/data w copy? (NIE = fix)
 - [ ] Czy nagłówki feature są wszystkie tej samej długości (2-3 słowa)? (TAK = fix)
-- [ ] Czy copy ma polskie znaki i zero em-dash? (NIE = fix)
+- [ ] Czy cała widoczna treść ma polskie ogonki (ą ć ę ł ń ó ś ź ż), nie "polski ASCII" bez ogonków ("wiecej", "uslugi", "sie")? (NIE = fix: przepisz z ogonkami. ASCII tylko w nazwach zmiennych/klas/plików). Konkretny grep w skillu `sprawdz-kod`.
+- [ ] Czy copy ma zero em-dash i en-dash? (NIE = fix: krótki "-")
 
 **Ruch / animacje**
 - [ ] Czy strona jest całkowicie statyczna (sekcje bez żadnego reveal, nic nie wjeżdża przy scrollu)? (TAK = fix: martwa strona czyta się jak szablon AI - owiń sekcje w `Reveal`)
