@@ -71,6 +71,7 @@ Cel: zebrać KONKRET, z którego skill `zbuduj-strone` zrobi design tokens (zmie
 Wywiad etapami:
 1. **Nastrój w 3 słowach** - poproś o 3 przymiotniki opisujące, jak strona ma działać na odbiorcę (np. "ciepła, spokojna, ekspercka" albo "energiczna, śmiała, bezpośrednia"). To napędza całą resztę.
 2. **Kolory marki** - zapytaj, czy uczestnik MA już kolory (z logo, z Instagrama, z wizytówek). Jeśli tak - poproś o wartości (mogą być nazwą koloru albo kodem HEX, np. "ciemna zieleń, około #14532d"). Jeśli NIE ma - na bazie nastroju zaproponuj jedną gotową paletę: tło, kolor tekstu, JEDEN kolor akcentu (do przycisków i wyróżnień). Zasada anti-ai-look: jeden akcent brandowy, NIE tęczowy gradient, NIE fiolet/niebieski w stylu generycznego AI.
+   Rozdziel TŁO od AKCENTU - to najczęstszy błąd "wybrałam kolory a wygląda źle". Gdy uczestnik podaje mocny kolor marki, zapytaj wprost po ludzku: "Ten kolor damy na duże tło całej strony, czy tylko na przyciski i ważne miejsca?". Domyślnie: mocny kolor marki = akcent (przyciski, linki, podkreślenia), a tło = jasny spokojny neutral (biel/off-white/kremowy). Jeśli uczestnik chce nasycony kolor jako tło - ostrzeż jednym zdaniem: "Mocny kolor na całym tle zwykle męczy oczy i wygląda tanio. Lepiej tło jasne, a kolor marki na przyciskach - zgoda?". W karcie zapisz osobno kolor TŁA i kolor AKCENTU.
 3. **Jasno czy ciemno** - czy strona ma jasne tło czy ciemne. Domyślnie rekomenduj jasne, chyba że nastrój i marka mówią inaczej (dark hero z neonem to tell AI - unikamy go jako domyślnego).
 4. **Charakter typografii** - zapytaj o charakter nagłówków: bardziej elegancki/redakcyjny czy nowoczesny/bezpośredni. NIE pytaj o konkretne nazwy fontów - to TY dobierasz parę. Zapisz w karcie konkretną parę z next/font/google WYŁĄCZNIE z dozwolonej listy z pełnym latin-ext (polskie ogonki działają): nagłówki Sora / Space Grotesk / Manrope / Plus Jakarta Sans / Bricolage Grotesque, body Inter lub Manrope. Przykłady doboru: elegancki/redakcyjny -> nagłówki Plus Jakarta Sans + body Inter; nowoczesny/bezpośredni -> nagłówki Sora lub Space Grotesk + body Inter; ciepły -> nagłówki Bricolage Grotesque + body Inter. NIGDY nie wpisuj fontu spoza tej listy (np. Fraunces, Playfair nie mają pełnego latin-ext). Zawsze 2 fonty, nigdy jeden na wszystko.
 5. **Zdjęcia i media** - to kluczowe dla anti-ai-look. Zapytaj wprost, jakie PRAWDZIWE zdjęcia lub media uczestnik ma albo może zrobić: portret/twarz, zdjęcia z pracy/warsztatów, zdjęcia produktu, screeny, krótkie video. Ustal minimum 3 realne zdjęcia/media jako bramkę, a dla dłuższej strony cel 5-7. Zaznacz w karcie, że plastikowe AI-ilustracje są zakazane - tymczasowo placeholder, docelowo realne foto/media (tym zajmie się skill `obrazy`).
@@ -81,8 +82,11 @@ Wywiad etapami:
    - Ustal, co jest TŁEM/wizualem hero: prawdziwe zdjęcie uczestnika, zdjęcie z pracy, video, czy mocny układ typograficzny. Hero strony głównej domyślnie zajmuje cały pierwszy ekran (pełna wysokość) - zapisz to w karcie.
    - **Jeśli uczestnik nie wie, czego chce - NIE zostawiaj go z pustką.** Zaproponuj 2-3 konkretne kierunki hero do wyboru, np.: (A) duże zdjęcie portretowe na całe tło + jedno zdanie i przycisk na wierzchu; (B) układ dzielony: po lewej mocny nagłówek i CTA, po prawej zdjęcie z pracy; (C) minimalistyczny, mocna typografia na czystym tle marki + jedno zdjęcie pod spodem. Opisz każdy 1 zdaniem po ludzku i poproś, żeby wybrał(a) jeden albo wskazał(a), co mu/jej bliżej.
    - **Upewnij się, że to faktycznie jest to, czego chce.** Zanim zapiszesz, streść wybrany kierunek hero w 2 zdaniach i zapytaj wprost: "Tak ma wyglądać Twój pierwszy ekran? Jak coś jest nie tak, mów teraz - to najważniejszy element." Zapisz dopiero po potwierdzeniu. Przy budowie (M5) skill `zbuduj-strone` zrobi hero jako pierwszą sekcję i pokaże ją do oceny, ewentualnie w 2-3 wariantach.
-7. **Referencje (reszta strony)** - poproś o 2-3 konkretne strony, które się uczestnikowi podobają poza samym hero (linki). Jeśli nie ma - zaproponuj kierunek słowny, ale dopytaj o konkret ("podaj choć jedną stronę, która Ci się podoba, obojętnie z jakiej branży"). Zapisz CO konkretnie się podoba w każdej referencji (układ, kolory, zdjęcia, typografia), nie samą nazwę.
+7. **Referencje rozbite per element - ale to TY je rozbierasz, nie uczestnik.** Sam link jest bezużyteczny, charakter siedzi w jednym-dwóch elementach. Poproś o 2-3 strony, które się podobają, i dla każdej zadaj MAKSYMALNIE 2 pytania po ludzku: "Co najbardziej rzuca Ci się w oczy na tej stronie?" oraz "Co byś u siebie chciał(a), a czego na pewno nie?". Z odpowiedzi TY sam dekodujesz układ, kolory, typografię, zdjęcia i zapisujesz - nie zrzucaj na uczestnika nazw technicznych (nie pytaj "czcionka szeryfowa czy bezszeryfowa", tylko najwyżej "litery ozdobne czy proste").
+   Jeśli uczestnik wrzuca kilka różnych stron, NIE miksuj wszystkiego - wskaż JEDNĄ wiodącą referencję na hero i maksymalnie jedną-dwie na resztę, nadmiar zapisz jako "na później". Więcej rozmywa kierunek.
+   **Zapytaj też o ANTY-przykład:** "Pokaż albo opisz stronę, która Cię odrzuca". Lista "czego NIE chcę" (nie korpo, nie ciemne, nie sztuczne uśmiechy ze stocku) jest twardsza niż lista marzeń. Zapisz ją w karcie.
 8. **Spójność systemu** - przypomnij sobie, że to nie jeden landing, tylko system z wielu podstron. Wizual ma być wspólny dla całości: jedna nawigacja, jedna stopka, jeden zestaw komponentów (przyciski, karty, nagłówki podstron, szablon wpisu bloga, szablon case study). NIE pytasz o to uczestnika - to decyzja techniczna. Zapisujesz ją w karcie jako wytyczną dla skilli design i zbuduj-strone: design system ma być spójny przez wszystkie podstrony.
+9. **Readback na koniec - odbij całość własnymi słowami, raz.** Zanim zapiszesz kartę, streść zrozumienie w 3-5 prostych zdaniach i poczekaj na "tak". Po ludzku, np.: "Tło jasne kremowe, nagłówki duże i cienkie, jeden kolor - koralowy - tylko na przyciskach, zdjęcia prawdziwe z Twojej pracy, mało animacji. Tak ma być?". To wyłapuje rozjazd, zanim kosztuje godziny budowy. Zapisz dopiero po potwierdzeniu.
 
 Zapisz `karty/karta-wizualna.md`. Użyj DOKŁADNIE tej struktury, bo z niej powstają design tokens i design system:
 
@@ -92,10 +96,12 @@ Zapisz `karty/karta-wizualna.md`. Użyj DOKŁADNIE tej struktury, bo z niej pows
 ## Nastrój
 [3 słowa] - [1 zdanie rozwinięcia]
 
-## Paleta (design tokens)
-- Tło: [opis] [#HEX]
+## Paleta (design tokens) - rozdziel tło od akcentu
+> Wypełnia AI na podstawie rozmowy, nie uczestnik. Uczestnik tylko potwierdza.
+- Tło dominujące (jasny neutral, większość strony): [opis] [#HEX]
+- Kolor pomocniczy (sekcje/karty, jeśli jest): [opis] [#HEX]
+- Akcent (przyciski, linki, wyróżnienia - NIE tło): [opis] [#HEX]
 - Tekst główny: [opis] [#HEX]
-- Akcent (przyciski, wyróżnienia): [opis] [#HEX]
 - Tryb: jasny / ciemny
 
 ## Typografia (next/font/google)
@@ -118,6 +124,15 @@ Zapisz `karty/karta-wizualna.md`. Użyj DOKŁADNIE tej struktury, bo z niej pows
 ## Referencje (reszta strony, 2-3)
 1. [link] - podoba się: [co konkretnie]
 2. [link] - podoba się: [co konkretnie]
+
+## Inspiracje per sekcja (referencja -> moja sekcja)
+> Wypełnia AI. Dla hero + 2-3 kluczowych sekcji: co konkretnie bierzemy z której referencji.
+- Hero: [link] -> bierzemy: [układ / typografia / kolor / zdjęcie - konkretnie]
+- [Sekcja, np. Oferta]: [link] -> bierzemy: [co konkretnie]
+- [Sekcja, np. Galeria/realizacje]: [link] -> bierzemy: [co konkretnie]
+
+## Czego NIE chcę (anty-przykłady)
+- [np. nie korporacyjne, nie ciemne tło, nie sztuczne uśmiechy ze stocku]
 
 ## Design system (spójny przez wszystkie podstrony)
 - Wspólna nawigacja i stopka na każdej podstronie

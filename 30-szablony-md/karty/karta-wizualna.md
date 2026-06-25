@@ -19,12 +19,14 @@ Przykłady:
 
 ## Paleta (design tokens)
 
-Jeśli masz kolory marki, wpisz je tutaj. Jeśli nie masz, poproś Claude o propozycje na bazie nastroju.
+> To wypełnia Claude na podstawie rozmowy, nie Ty. Ty tylko potwierdzasz słowem "tak".
 
-- Tło:
+Jeden mocny kolor marki idzie na PRZYCISKI i ważne miejsca, a NIE na całe tło. Tło ma być jasne i spokojne, inaczej strona męczy oczy.
+
+- Tło dominujące (jasny neutral):
+- Kolor pomocniczy (jeśli jest):
+- Akcent (przyciski, wyróżnienia - nie tło):
 - Tekst główny:
-- Akcent (przyciski, wyróżnienia):
-- Kolor pomocniczy:
 - Tryb: jasny / ciemny
 
 Zasada: jeden mocny akcent brandowy. Bez tęczowego tekstu i bez fioletowo-niebieskich gradientów jako domyślnego stylu AI.
@@ -79,6 +81,20 @@ Podaj 2-3 strony albo marki, których styl Ci się podoba (reszta strony, nie sa
    - Podoba mi się:
 3. Link / marka:
    - Podoba mi się:
+
+## Inspiracje per sekcja
+
+> Wypełnia Claude. Pokazujesz 2-3 strony, które Ci się podobają, mówisz co rzuca Ci się w oczy, a Claude rozpisuje, co z której bierzemy do której sekcji Twojej strony.
+
+- Hero (pierwszy ekran):
+- Druga sekcja:
+- Trzecia sekcja:
+
+## Czego NIE chcę
+
+> Jedna-dwie strony albo opisy tego, co Cię odrzuca. To pomaga bardziej niż lista marzeń.
+
+-
 
 ## Reguły anti-ai-look
 

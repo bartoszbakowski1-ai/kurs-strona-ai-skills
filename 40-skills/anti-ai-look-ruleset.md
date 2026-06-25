@@ -60,6 +60,8 @@ Duplikaty/wzmocnienia: #1+#15 (CAPS labels), #2+#3 (typografia nagłówków raze
 - ZERO bento-grid "bo modnie", jak nie wynika z treści.
 
 **Kolor i obrazy**
+- ZERO koloru marki/akcentu jako GŁÓWNE TŁO strony albo tło większości sekcji. Nasycony kolor marki (maślany, koral, zieleń) zalewający stronę = najczęstszy błąd "wybrałam kolory a wygląda źle". Kolor marki idzie WYŁĄCZNIE na akcenty.
+- Proporcja 60/30/10 (twarda): ~60% tło neutralne (biel / off-white / kremowy bardzo jasny), ~30% kolor strukturalny (sekcje, karty, ramki), ~10% AKCENT marki (CTA, linki, podkreślenia, ikony). Akcent traci moc, gdy jest wszędzie - nigdy na dużych powierzchniach ani jako tło sekcji.
 - ZERO fioletowo-niebieskich gradientów (`violet→blue`, `purple→indigo`, cyan→violet, pink→orange). Żaden "VibeCode Purple"/lavender jako akcent.
 - ZERO gradient text na headingach (`bg-clip-text text-transparent`).
 - ZERO strony bez prawdziwych zdjęć. Nie zastępuj fotografii ikonami/blobami/glassmorphism.
@@ -91,6 +93,7 @@ Duplikaty/wzmocnienia: #1+#15 (CAPS labels), #2+#3 (typografia nagłówków raze
 
 **Kolor i obrazy**
 - Paleta z Karty Wizualnej (Bartek: tło #0b0b0d, złoto #D4A017). Jeden akcent brandowy, NIE tęczowy gradient. Jak gradient, to subtelny ton-w-ton albo off-brand stop, nie violet→blue.
+- Tło domyślnie spokojny neutral (jasny), nawet gdy uczestnik "kocha" intensywny kolor - intensywny kolor kanalizuj w 10% (przyciski/podkreślenia/ikony), tło trzymaj ciche. Jeden akcent, nie trzy.
 - Kolor semantyczny przez CSS vars: `--color-accent`, `--color-action`, nie dekoracyjne gradienty.
 - Realne fotografie > ikony. Jak ikony, to spójny jeden zestaw + własny akcent, nie domyślny Lucide-w-kółku.
 
@@ -121,6 +124,7 @@ Skill przebiega po wygenerowanym kodzie/stronie i odpowiada TAK/NIE. Każde "TAK
 - [ ] Czy jest realny whitespace (`py-20`+ między sekcjami)? (NIE = fix)
 
 **Kolor i obrazy**
+- [ ] Czy kolor akcentu/marki jest użyty jako dominujące TŁO strony albo tło większości sekcji (zamiast neutralnego jasnego tła)? (TAK = fix blokujący: tło na neutral, kolor marki tylko na akcenty ~10%)
 - [ ] Czy jest gradient violet/purple→blue/indigo (lub cyan→violet, pink→orange)? (TAK = fix)
 - [ ] Czy jest gradient text (`bg-clip-text text-transparent`) na headingu? (TAK = fix)
 - [ ] Czy na stronie są min. 3 prawdziwe zdjęcia/media, a na dłuższej stronie docelowo 5-7 (nie ikona/svg/AI-illustration)? (0-2 = fix blokujący, 3-4 = minimum, 5+ = dobrze)

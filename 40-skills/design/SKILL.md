@@ -118,6 +118,7 @@ To ustawia bazowe zmienne i `@theme inline` w `src/app/globals.css` zgodnie z Ta
 
 @theme inline {
   --color-background: var(--background);
+  --color-surface: var(--surface);
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
@@ -129,13 +130,14 @@ To ustawia bazowe zmienne i `@theme inline` w `src/app/globals.css` zgodnie z Ta
 }
 
 :root {
-  /* KOLORY - z Karty Wizualnej. Jeden akcent marki, NIE gradient teczowy. */
-  --background: #0b0b0d;        /* tlo */
-  --foreground: #f4efe5;        /* tekst */
-  --accent: #d4a017;            /* JEDEN kolor marki */
-  --accent-foreground: #0b0b0d; /* tekst na akcencie */
+  /* 60/30/10 wg anti-ai-look-ruleset. Akcent NIGDY jako tlo strony. */
+  --background: #faf7f2;        /* TLO dominujace ~60% - jasny neutral, NIE kolor marki */
+  --surface: #f0ece4;           /* kolor strukturalny ~30% - sekcje/karty */
+  --foreground: #1a1a1a;        /* tekst */
+  --accent: #d4a017;            /* AKCENT ~10% - przyciski/linki/wyroznienia, NIE tlo */
+  --accent-foreground: #1a1a1a; /* tekst na akcencie */
   --muted: #6b6b70;             /* tekst drugorzedny */
-  --border: #232327;           /* linie, ramki */
+  --border: #e0d9cd;            /* linie, ramki */
 
   /* PROMIEN - jedna spojna wartosc, NIE rounded-2xl wszedzie na sile */
   --radius: 0.75rem;
@@ -160,6 +162,13 @@ p, li {
   text-wrap: pretty;           /* ladne zawijanie akapitow */
 }
 ```
+
+**Ściąga interpretacji dla AI (NIE pytania do zadania uczestnikowi).** Gdy uczestnik użyje mglistego słowa, zastosuj rozstrzygnięte domyślne z poniższej listy i ustaw je RAZ w tokenach. Dopytuj po ludzku TYLKO wtedy, gdy uczestnik sam zgłosi, że coś jest nie tak ("te rogi mi się nie podobają") - nie otwieraj dialogu o "radius" z własnej inicjatywy.
+- "flow / miękko / przyjazne" -> umiarkowany radius (0.5-0.75rem). NIE automatycznie duże zaokrąglenia.
+- "ostro / nowocześnie / minimalistycznie" -> radius 0-0.25rem, kwadratowe rogi, zdjęcia pełnoszerokie bez ramki.
+- "premium / spokojnie" -> cieńszy font nagłówków, dużo oddechu, mało ozdób.
+- "energicznie / pewnie" -> grubszy font nagłówków, mocny kontrast skali.
+- "zdjęcia bez obramowania / większe / efekt infinity" -> pełnoszerokie kadry, radius 0, object-cover, zero ramki.
 
 4. Po zapisaniu powiedz uczestnikowi po ludzku: od teraz cała strona-system (wszystkie podstrony) bierze kolory i fonty z jednego miejsca, więc zmiana koloru marki to będzie jedna linijka, a nie szukanie po całej stronie.
 
@@ -236,7 +245,7 @@ Pelne reguly ruchu i mocniejsze efekty (WordsReveal, parallax, gotowce z bibliot
 1. Przeczytaj plik `anti-ai-look.md` leżący obok tego skilla (w tym samym folderze). To skondensowana lista ZAKAZANE / NAKAZANE plus szybka checklista.
 2. Zapisz plik `karty/design-decyzje.md` - to będzie kontekst doklejany przy każdej budowie sekcji. Wpisz tam:
    - tokeny, które właśnie ustawiłeś (kolory, fonty, radius) - krótko
-   - 1-3 referencje z Karty Wizualnej ("tak ma wyglądać jakość")
+   - **Przenieś inspiracje z Karty Wizualnej do `design-decyzje.md` jako konkret per sekcja (NIE ogólny "pasek jakości").** Skopiuj 1:1 sekcje "Inspiracje per sekcja" i "Czego NIE chcę" z `karta-wizualna.md`. Dla każdej referencji zapisz, CO z niej bierzemy i DO KTÓREJ sekcji (np. "hero: układ dzielony tekst-lewo/foto-prawo z [link]"; "galeria: pełnoekranowe kadry bez ramki z [link]"). Dzięki temu `zbuduj-strone` ma inspiracje lokalnie w jednym skondensowanym pliku i NIE musi czytać całej Karty Wizualnej (token-economy). Gdy karta i `design-decyzje.md` mówią co innego - źródłem jest karta, tu ją tylko wiernie przepisujesz, nie streszczasz.
    - warstwa ruchu gotowa: `Reveal` i `StaggerList` w `src/components/motion/`, `<MotionConfig reducedMotion="user">` w layout - skill `zbuduj-strone` owija nimi sekcje (jeden akcent WOW na całą stronę, reszta to spokojny reveal)
    - skopiowane z `anti-ai-look.md` najważniejsze ZAKAZANE i NAKAZANE (żeby skill zbuduj-strone miał to lokalnie i nie musiał za każdym razem ładować całego rulesetu)
 3. Powiedz uczestnikowi jednym zdaniem: te reguły sprawiają, że strona nie wpadnie w typowe "to jest robione AI" (fioletowe gradienty, identyczne karty, nagłówki capslockiem). Pełna lista zakazów i nakazów jest w `anti-ai-look.md` - nie musisz jej czytać, skill zbuduj-strone będzie jej pilnował za Ciebie.

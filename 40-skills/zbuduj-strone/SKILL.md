@@ -113,6 +113,16 @@ git status --short
 git add -A && git commit -m "checkpoint przed budowa"
 ```
 
+5. **Tryb pracy (solo / grupowy).** Sprawdź, czy istnieje `kontekst/tryb.md`. Jeśli zawiera `grupowy` - jesteś na warsztacie na żywo: trzymaj golden path (jeden układ hero dla wszystkich, stała kolejność sekcji i skilli, bez custom/poziomych hero, bez przestawiania kolejności dla branży wizualnej), NIE prowadź wywiadu inspiracji (czytasz gotową kartę z pracy domowej), NIE sugeruj next-skilla sam, a etapy zamyka prowadzący (time-box), nie akceptacja uczestnika. Jeśli pliku brak albo `solo` - pełne prowadzenie 1:1 jak niżej.
+
+6. **Miękka brama mediów (tylko solo; w grupie media sprawdza prowadzący 48h wcześniej).** Sprawdź, czy są zdjęcia uczestnika:
+
+```bash
+ls public/images/ 2>/dev/null && echo "---" && find public/images -type f 2>/dev/null | wc -l
+```
+
+Jeśli pusto albo <3 plików - powiedz po ludzku: "Strona ożyje dopiero ze zdjęciami. Możemy zacząć na placeholderach i podmienić, ale przygotuj 2-3 portrety + kilka z pracy w `public/images/` równolegle." NIE blokuj twardo - buduj na placeholderach, tylko uprzedź świadomie, zamiast odkrywać brak w połowie budowy.
+
 ### Krok 1 - wczytaj fundament (raz na sesję)
 1. Przeczytaj raz, na początku: `kontekst/profil.md`, `kontekst/persona.md` (język klienta, fakty, liczby), `karty/karta-strategiczna.md` (cel systemu + lejek + oferta), `karty/karta-architektury-tresci.md` (MAPA systemu: jakie podstrony, nawigacja, sekcje per podstrona, co dynamiczne, etapy budowy), `karty/design-decyzje.md` (tokeny + reguły anti-ai-look skondensowane przez skill `design`).
 2. Wypisz uczestnikowi krótko, po ludzku, co odczytałeś: mapa podstron, które są w rdzeniu (etap 1), główne CTA i lejek, lista sekcji strony głównej. To plan budowy systemu. Niczego jeszcze nie buduj.
@@ -143,15 +153,21 @@ Powiedz po ludzku: "Mamy ramę całego systemu - menu łączące podstrony, kont
 ### Krok 3 - buduj sekcje i podstrony po jednej (pętla token-economy)
 Budujesz system etapami z mapy (Karta Architektury). Zaczynasz od rdzenia (etap 1: strona główna, potem kontakt, potem 1-2 kluczowe podstrony), kolejne podstrony dokładasz w następnych etapach. W obrębie każdej podstrony idziesz SEKCJA PO SEKCJI tym samym cyklem. Domyślna kolejność sekcji strony głównej, jeśli karta nie mówi inaczej: **hero -> dla kogo/problem -> skrót oferty -> dowody/opinie -> skrót o mnie -> CTA główne.** Na podstronach (oferta, o mnie, blog, realizacje, kontakt) zestaw sekcji bierzesz z Karty Architektury. Każda podstrona dostaje WŁASNE `export const metadata` z unikalnym `title` i `description` (np. `title: "Oferta - [imię]"`) - bez tego wszystkie podstrony mają w Google ten sam tytuł co strona główna. Po skończonej podstronie: commit + PROGRESS.md, zapytaj czy jedziemy z następną podstroną, czy przerwa.
 
-**HERO strony głównej - sekcja-sygnatura, traktuj ją inaczej niż resztę.** To pierwszy ekran i jedyne miejsce, po którym uczestnik sam oceni "czy moja strona wygląda dobrze", a potem oceniają go jego klienci. Słaby hero = cała strona wygląda jak AI, choćby reszta była dobra. Dlatego:
+**HERO strony głównej - sekcja-sygnatura, traktuj ją inaczej niż resztę.** To ~80% wrażenia z całej strony - powiedz to uczestnikowi wprost: "Popracujmy najpierw tylko nad hero, aż będzie naprawdę dobre. Reszta pójdzie szybko, gdy góra gra." To pierwszy ekran i jedyne miejsce, po którym uczestnik sam oceni "czy moja strona wygląda dobrze", a potem oceniają go jego klienci. Słaby hero = cała strona wygląda jak AI, choćby reszta była dobra. Dlatego:
 - Buduj hero z sekcji "Hero strony głównej" Karty Wizualnej (kierunek/układ, przekaz, CTA, wizual, inspiracje - potwierdzone w M3). Jeśli tej sekcji w karcie brak albo jest pusta - NIE buduj z domysłu. Dopytaj uczestnika: pokaż 1-3 strony, których pierwszy ekran Ci się podoba, albo wybierz z 2-3 kierunków, które zaproponuję (A: duże zdjęcie na całe tło + jedno zdanie i CTA; B: układ dzielony tekst+zdjęcie; C: mocna typografia na czystym tle). Dopiero potem buduj.
 - Hero domyślnie zajmuje CAŁY pierwszy ekran: `min-h-[85vh]` do `min-h-screen`, realny wizual (zdjęcie/video na tło albo obok), jedno mocne zdanie, jedno CTA widoczne i klikalne od pierwszej klatki. NIGDY sam wycentrowany tekst na gradiencie.
 - **Po zbudowaniu hero POKAŻ go do oceny, zanim ruszysz dalej.** Uruchom podgląd (dev server / Preview), zrób screenshot albo poproś uczestnika, żeby spojrzał, i zapytaj wprost: "Tak ma wyglądać Twój pierwszy ekran? To najważniejszy element - jak coś jest nie tak, poprawiamy teraz." Jeśli uczestnik się waha albo nie wie - zbuduj 2-3 warianty hero (różny układ/wizual, ten sam przekaz) i daj wybrać. Reszta strony rusza dopiero, gdy hero jest zaakceptowany. To jedyna sekcja, którą domykasz wizualnie z uczestnikiem, nie tylko technicznie.
+- **Przy nietypowym układzie hero** (poziomy scroll, slajdowanie, parallax): ZANIM zbudujesz, przegadaj wizję w 2-3 zdaniach (jak ma działać, co na telefonie) i OBOWIĄZKOWO sprawdź wariant mobilny - na telefonie poziomy scroll bywa niezrozumiały i użytkownik wychodzi. Gdy mobile nie jest oczywisty, daj prostszy układ na telefon. (Na warsztacie grupowym: patrz reguła trybu w Kroku 0 - custom hero idzie do pracy własnej.)
+
+**Branża wizualna (fotograf, filmowiec, artysta).** Jeśli profil/persona wskazuje branżę mocno wizualną: zdjęcia są treścią, nie ozdobą - galerie wyżej, mniej tekstu, większe kadry. W trybie SOLO możesz uruchomić `obrazy` przed szkieletem. W trybie GRUPOWYM zostaje golden path (ta sama kolejność co reszta), zmieniasz tylko PROPORCJE (więcej zdjęć, mniej copy), nie kolejność sekcji.
+
+**Opinie/dowody - import z Google.** Gdy uczestnik ma opinie w wizytówce Google, nie każ ich przepisywać surowo. Poproś o link do profilu albo o wklejenie opinii, a Ty sformatujesz je w sekcję dowodów z atrybucją (imię, data, ocena).
 
 Cykl jednej sekcji:
 1. **Powiedz, którą sekcję robisz** i co ona ma osiągnąć (1 zdanie). Np. "Robię hero - to pierwsze, co widzi odwiedzający, ma jasno powiedzieć co oferujesz i poprowadzić do [główne CTA]."
 2. **Zbierz tylko brakującą treść biznesową.** Najpierw szukaj w kartach/kontekście. Czego naprawdę brakuje - dopytaj o JEDNO naraz, prostym językiem (np. "Jaki jeden główny nagłówek ma być na górze? Jak nie wiesz, zaproponuję 2 wersje na bazie Twojej oferty."). Konkretne liczby (lata doświadczenia, liczba klientów) wyciągaj z kontekstu - to one robią copy wiarygodnym.
-3. **Zbuduj sekcję jako mały, czytelny komponent** w `src/components/sections/` (np. `Hero.tsx`, `Oferta.tsx`), wepnij do `page.tsx`. Użyj bloków shadcn z listy + Tailwind. Trzymaj reguły anti-ai-look (niżej). Bloki referencyjne sekcji masz w pliku `sekcje.md` obok - otwórz go tylko, jeśli potrzebujesz wzorca układu konkretnej sekcji (oszczędzasz tokeny).
+2.5. **Readback przed budową - TYLKO dla sekcji z wskazaną inspiracją albo wizualnie nietypowej** (nie dla stopki, FAQ, prostego CTA - tam buduj i pokaż). Odbij w 1-2 zdaniach: "Tak to widzę: układ [X], styl jak referencja [Y], zdjęcia jako [Z]. Buduję?". Poczekaj na "tak". To zatrzymuje generyk, bo AI domyślnie buduje ultra-generyczne sekcje, inaczej niż inspiracje. Gdy uczestnik użyje mglistego słowa ("bardziej flow", "nowocześnie"), zastosuj rozstrzygnięte domyślne ze ściągi w `design` - NIE przepytuj go z definicji.
+3. **Zbuduj sekcję jako mały, czytelny komponent** w `src/components/sections/` (np. `Hero.tsx`, `Oferta.tsx`), wepnij do `page.tsx`. Użyj bloków shadcn z listy + Tailwind. Trzymaj reguły anti-ai-look (niżej). Najpierw sprawdź w `design-decyzje.md` sekcję "Inspiracje per sekcja" - jeśli dla tej sekcji jest wskazana referencja, buduj WG NIEJ (układ, typografia, kolor, zdjęcia - to, co zapisano "bierzemy"), z JEDNEJ wiodącej referencji, nie z głowy i nie miksując kilku. Gdy uczestnik wskazał konkretną sekcję na stronie-inspiracji, możesz użyć `/skopiuj-animacje <link>` albo odtworzyć jej układ wg tokenów uczestnika. Pisz widoczną treść (nagłówki, przyciski, akapity, alty) OD RAZU z polskimi ogonkami w UTF-8 - nie odkładaj ogonków na `sprawdz-kod`, bo poprawki mnożą się iteracyjnie. Wzorce układów częstych sekcji masz w sekcji "Wzorce sekcji" niżej w tym pliku.
    - **Nałóż ruch od razu (warstwa ruchu z `design`):** owin treść sekcji w `<Reveal>` z `@/components/motion/Reveal` (sąsiednie elementy rozsuwaj `delay={0.08}`, `delay={0.16}`), listy ("co dostajesz", program, FAQ) w `<StaggerList>`. CTA i karty klikalne dostają premium mikro-interakcję (`hover:-translate-y-0.5 transition-transform`), nie glow. To jedna-dwie linie na sekcję - tania warstwa, która odróżnia stronę premium od płaskiego szablonu. Pełne wzorce i akcent WOW: krok 3.5 i plik `animacje.md`.
 4. **Sprawdź sekcję pod kątem anti-ai-look** od razu (mini-checklista niżej). Poprawki techniczne (tracking, gradient, identyczne karty, brak `text-balance`) robisz sam. Zmiany w TREŚCI tylko za zgodą uczestnika.
 5. **Commit** (checkpoint) + **nadpisz PROGRESS.md** (przesuń sekcję do "Ukończone", ustaw następną jako "W trakcie"):
@@ -161,6 +177,7 @@ git add -A && git commit -m "sekcja: hero"
 ```
 
 6. **Zapytaj, czy jedziemy dalej, czy przerwa.** Przypomnij za każdym razem: "Limit tokenów to normalne. Gdy się skończy, wracasz i piszesz `/strona wznów` - od tego miejsca, nic nie tracisz."
+   W trybie SOLO: po sekcji proaktywnie zaproponuj następny ruch (np. "dorzuciłbym zdjęcia skillem `obrazy`" albo "przepuśćmy to przez `sprawdz-kod`"). W trybie GRUPOWYM (patrz reguła trybu w Kroku 0): NIE sugeruj następnego skilla z własnej inicjatywy - sekwencją steruje prowadzący na głos dla całej grupy.
 
 GUARDRAIL kolejności: nie zaczynaj następnej sekcji bez commita poprzedniej.
 
@@ -228,6 +245,10 @@ RUCH (warstwa motion - pełne reguły w `animacje.md`):
 - NAKAZ: sekcja owinięta w `Reveal`, listy w `StaggerList`; tylko transform/opacity/filter; `<MotionConfig reducedMotion="user">` zostaje w layout; premium mikro-interakcja na CTA (`hover:-translate-y-0.5`), nie glow/scale.
 
 Mini-checklista po sekcji (każde "TAK" w ZAKAZ = popraw od razu): jest `tracking-tight`? jest eyebrow CAPSEM? brak `text-balance`? fioletowy gradient? gradient text? identyczne karty z tym samym hover? wszystko wycentrowane? emoji jako ikona? buzzword? długi myślnik? sekcja bez `Reveal` (martwa, statyczna)? ruch w pętli / import z `framer-motion`? Jeśli więcej niż 1 flaga - przeróbka sekcji, zanim zacommitujesz.
+
+## Wzorce sekcji (układy częstych sekcji - inline, do tego odsyła Krok 3)
+Otwórz, gdy potrzebujesz wzorca układu konkretnej sekcji. Pierwszeństwo ma zawsze inspiracja z `design-decyzje.md`; te wzorce to fallback, gdy karta nie wskazuje referencji.
+- Sekcja LICZB/statystyk (np. "12 lat / 200 klientów / 39 wydań"): cyfra DOMINUJĄCA i duża (`text-5xl`+, ewentualnie wyszarzona w tle jako kotwica), opis WĄSKI pod cyfrą (`max-w-[20ch]`), nie szeroki tekst na środku. Monospace na cyfrach dla tekstury. To powtarzalny słaby punkt AI - cyfry wychodzą za małe, teksty za szerokie.
 
 ## Guardrails (twarde)
 - Jedna sekcja naraz, commit po każdej, PROGRESS.md po każdej. Bez wyjątków - to ratuje uczestnika przed stratą pracy przy limicie.

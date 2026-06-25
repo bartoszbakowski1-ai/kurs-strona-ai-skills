@@ -36,6 +36,13 @@ mkdir -p public/images
 4. Przeczytaj `kontekst/profil.md` (kto to jest, branża) i `karty/karta-wizualna.md` jeśli istnieją - stąd weźmiesz nastrój i minimalną liczbę zdjęć. Jeśli kart nie ma, kieruj się rulesetem: min. 3 realne zdjęcia/media jako bramka, docelowo 5-7 na dłuższej stronie.
 
 ### Krok 1 - mapa miejsc na zdjęcia
+0. **Najpierw przejrzyj i wyselekcjonuj folder** (zanim cokolwiek wstawisz):
+
+```bash
+ls -la public/images/ 2>/dev/null
+```
+
+   Pokaż uczestnikowi listę plików i poproś o oznaczenie: które idą NA stronę i do jakiego miejsca (hero, o mnie, galeria), a które pominąć. NIE wciągaj automatycznie czego popadnie - stąd biorą się wpadki (prywatne selfie, przypadkowy "domek na wsi" niewiadomego pochodzenia). Jeśli widzisz zdjęcie prywatne / z osobą trzecią / niepasujące - zapytaj wprost, zanim użyjesz.
 1. Przejrzyj komponenty sekcji w `src/` i zrób listę miejsc, które wołają o zdjęcie. Domyślnie:
    - **Hero** - jedno mocne zdjęcie (najlepiej twarz uczestnika lub jego praca). To pierwsze, co widzi odwiedzający.
    - **O mnie / autor** - zdjęcie portretowe uczestnika.
@@ -43,6 +50,9 @@ mkdir -p public/images
    - **Opinie** - zdjęcia klientów (za zgodą) albo neutralne, prawdziwe portrety z banku.
 2. Pokaż uczestnikowi tę listę prostym językiem ("strona prosi o zdjęcia w X miejscach"). Zaznacz, że 3 prawdziwe zdjęcia to minimum, a 5-7 realnych mediów daje dużo bardziej ludzki efekt na dłuższej stronie.
 3. Idź miejsce po miejscu. Dla każdego najpierw pytaj o zdjęcie uczestnika (źródło 1), dopiero potem proponuj bank (źródło 2).
+
+### Krok 1.5 - drugie przejście: znajdź PUSTE sloty na zdjęcia
+Gdy strona ma już sekcje, przeskanuj zbudowane komponenty pod kątem oczywistych slotów bez zdjęcia (karty usług, galeria, dowody, sekcja "co robię" z ikonami zamiast foto). Np. trzy usługi "dron / sesja / montaż" wołają o 3 zdjęcia, nie ikony. Wypisz uczestnikowi konkretnie: "tu brakuje 3 zdjęć do usług, tu zdjęcia w galerii". Nie licz tylko "czy są min. 3" - wskaż GDZIE strukturalnie brakuje.
 
 ### Krok 2 - zdjęcia uczestnika (źródło 1, preferowane)
 1. Poproś o jedno zdjęcie naraz, konkretnie pod dane miejsce ("wgraj proszę swoje zdjęcie portretowe do folderu `public/images/`").
