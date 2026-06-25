@@ -1,6 +1,6 @@
 ---
 name: strona
-description: Komenda-dyrygent całego kursu "Stwórz stronę z AI". Uruchom, gdy uczestnik wpisze /strona (z trybem lub bez). Tryby - /strona wznow (czyta PROGRESS.md i kontynuuje budowę po przerwie lub po wyczerpaniu limitu tokenów), /strona status (pokazuje postęp i co dalej), /strona nowa-podstrona (dodaje spójną podstronę używając kart designu i kontekstu). Samo /strona bez trybu - rozpoznaj stan projektu i podpowiedz najbliższy krok. Komenda NIE buduje sama od zera - kieruje uczestnika do właściwego skilla (kontekst, karty, design, obrazy, zbuduj-strone, sprawdz-kod, bezpieczenstwo, sanity) zamiast wolnej rozmowy.
+description: Komenda-dyrygent całego kursu "Stwórz stronę z AI". Uruchom, gdy uczestnik wpisze /strona (z trybem lub bez). Tryby - /strona wznow (czyta PROGRESS.md i kontynuuje budowę po przerwie lub po wyczerpaniu limitu tokenów), /strona status (pokazuje postęp i co dalej), /strona nowa-podstrona (dodaje spójną podstronę używając kart designu i kontekstu), /strona popraw (ulepsza istniejącą, już zbudowaną stronę do najnowszej wersji kursu: dokłada warstwę ruchu, przerabia hero na pełnoekranowy z inspiracji, nakłada animacje, sprawdza polskie znaki i SEO). Samo /strona bez trybu - rozpoznaj stan projektu i podpowiedz najbliższy krok. Komenda NIE buduje sama od zera - kieruje uczestnika do właściwego skilla (kontekst, karty, design, obrazy, zbuduj-strone, sprawdz-kod, bezpieczenstwo, sanity) zamiast wolnej rozmowy.
 ---
 
 # Komenda: /strona
@@ -53,6 +53,7 @@ Naczelna zasada: UNIWERSALNOŚĆ (u każdego ma wyjść tak samo) i BEZPIECZEŃS
    - `wznow` -> sekcja A
    - `status` -> sekcja B
    - `nowa-podstrona` (lub "nowa podstrona", nazwa strony) -> sekcja C
+   - `popraw` (lub "ulepsz", "popraw strone", "odswiez") -> sekcja E (upgrade istniejącej strony do najnowszej wersji kursu)
    - puste / coś innego -> sekcja D (rozpoznanie najbliższego kroku)
 2. Zanim cokolwiek zrobisz, samodiagnoza (komendy do odczytu, nieinwazyjne):
    ```bash
@@ -142,6 +143,19 @@ Cel: uczestnik nie wie, co dalej. Ty wiesz, bo czytasz pliki.
    ```
    Utwórz `PROGRESS.md` (szablon w token-economy) i `.env.local` z placeholderem, dopisz `.env.local` do `.gitignore`. Potem skieruj do skilla `design`.
 3. Po wskazaniu kroku - nie rób dwóch rzeczy naraz. Jeden ruch, potem aktualizacja `PROGRESS.md` i pytanie, czy jedziemy dalej.
+
+---
+
+### Sekcja E - /strona popraw (upgrade istniejącej strony do najnowszej wersji kursu)
+Cel: uczestnik ma już zbudowaną stronę, która wygląda trochę generycznie (sprzed aktualizacji skilli). Podnosisz ją do nowego standardu: warstwa ruchu, pełnoekranowy hero z jego inspiracji, animacje na sekcjach, polskie znaki i SEO. NIE budujesz od zera, NIE zmieniasz jego treści, kolorów ani fontów. Pracujesz małymi krokami, commit po każdym (token-economy), uczestnik może przerwać i wrócić przez `/strona wznow`.
+
+1. **Warunek wejścia.** Sprawdź, że jest projekt (`package.json`) i zbudowana strona (`src/app/page.tsx` z sekcjami / `src/components`). Jeśli strony jeszcze nie ma - to nie ten tryb, skieruj do normalnej budowy (sekcja D / skill `zbuduj-strone`). Jeśli `git status` brudny - zrób checkpoint: `git add -A && git commit -m "checkpoint przed poprawa"`.
+2. **Powiedz po ludzku, co zrobimy** (i że jego praca jest bezpieczna): "Podniosę Twoją stronę do nowej wersji w 4 krokach: dołożę delikatny ruch, przerobię pierwszy ekran na pełnoekranowy z Twoich inspiracji, nałożę animacje na sekcje i sprawdzę polskie znaki oraz SEO. Twoje teksty, kolory i zdjęcia zostają. Robimy po kawałku, po każdym zapisuję postęp."
+3. **Krok 1 - warstwa ruchu (fundament).** Sprawdź, czy istnieje `src/components/motion/Reveal.tsx` i `motion` w `package.json`. Jeśli NIE - dołóż fundament wg skilla `design` (Krok 3.5): `npm install motion`, owiń `{children}` w `layout.tsx` w `<MotionConfig reducedMotion="user">`, utwórz `Reveal` i `StaggerList` w `src/components/motion/`. Commit: `git add -A && git commit -m "popraw: warstwa ruchu"`. PROGRESS.md.
+4. **Krok 2 - hero (najważniejsze).** Przeczytaj w `karty/karta-wizualna.md` sekcję "Hero strony głównej". Jeśli jest wypełniona - buduj z niej. Jeśli pusta albo jej brak - przeprowadź mini-wywiad hero (wg skilla `karty`/`zbuduj-strone`): poproś o 1-3 strony, których pierwszy ekran się podoba, albo podaj 2-3 kierunki do wyboru. Przebuduj hero na pełnoekranowy (`min-h-[85vh]`-`min-h-screen`), mocny wizual, jedno zdanie + CTA. **Pokaż na podglądzie i zbierz akceptację**, 2-3 warianty jeśli się waha. Reszta strony bez zmian. Commit: `git add -A && git commit -m "popraw: hero pelnoekranowy"`. PROGRESS.md.
+5. **Krok 3 - animacje na istniejące sekcje.** Owiń istniejące sekcje w `<Reveal>` (listy w `<StaggerList>`), dodaj premium mikro-interakcję na CTA (`hover:-translate-y-0.5`). Subtelnie, jeden akcent WOW na całość (pełne reguły: `zbuduj-strone/animacje.md`). Commit: `git add -A && git commit -m "popraw: animacje sekcji"`. PROGRESS.md.
+6. **Krok 4 - jakość (uruchom skill `sprawdz-kod`).** Build + anti-ai-look + polskie znaki (ogonki) + podstawy SEO (metadane per strona, OpenGraph). Napraw flagi (treść tylko za zgodą uczestnika). Commit.
+7. Po KAŻDYM kroku zapytaj, czy jedziemy dalej, czy przerwa. Przypomnij: "Limit to normalne, wracasz przez `/strona wznow`, nic nie tracisz." Guardrail: treści, kolorów i fontów nie zmieniasz bez pytania; akcji nieodwracalnej nie robisz bez jawnego "tak".
 
 ---
 
