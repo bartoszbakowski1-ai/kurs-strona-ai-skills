@@ -36,12 +36,12 @@ Cel: ustalić, co cały system ma osiągnąć dla biznesu uczestnika i jaki leje
 Wywiad etapami (2-3 pytania naraz):
 1. **Cel systemu** - co ma się stać dzięki tej stronie w skali biznesu. Jedno zdanie. Jeśli nie wie, podaj opcje: stały dopływ zapytań na rozmowę / sprzedaż produktu cyfrowego / budowa listy mailowej / autorytet i widoczność w temacie.
 2. **Główna akcja + akcje wspierające (lejek)** - jedna główna konwersja (np. "Umów rozmowę", "Kup", "Zapisz się"), do której prowadzi cały system, PLUS akcje wspierające na podstronach (pobierz lead magnet, zapis na newsletter, przeczytaj case study). Na pojedynczej podstronie pada jedno dominujące CTA, ale system jako całość ma lejek, nie jeden przycisk. Ustal dokładne teksty przycisków.
-3. **Rola każdej podstrony** - krótko, co robi każda część systemu: strona główna konwertuje, oferta sprzedaje, blog/wiedza buduje autorytet i SEO, realizacje/case studies dowodzą, lead magnet zbiera maile, kontakt domyka. Bazę bierzesz z celu i z architektury (Krok 2), tu zapisujesz intencję.
+3. **Rola każdej podstrony + co ma przekazać (branding)** - krótko, co robi każda część systemu: strona główna konwertuje, oferta sprzedaje, blog/wiedza buduje autorytet i SEO, realizacje/case studies dowodzą, lead magnet zbiera maile, kontakt domyka. Bazę bierzesz z celu i z architektury (Krok 2), tu zapisujesz intencję. Dla każdej KLUCZOWEJ podstrony dopytaj dodatkowo: "co chcesz, żeby odwiedzający POCZUŁ i ZAPAMIĘTAŁ po tej podstronie?" (np. o-mnie: "że jestem człowiekiem, nie korporacją"; oferta: "że to się zwróci i jest bezpieczne"). To przekaz brandingowy, nie tylko funkcja - on potem napędza, jak ta podstrona ma wyglądać. Jeśli uczestnik nie wie, podaj 2-3 opcje uczucia do wyboru.
 4. **Transformacja** - z jakiego punktu A do jakiego punktu B prowadzisz klienta. Użyj języka persony z M1.
 5. **Oferta w systemie** - co sprzedajemy i gdzie to żyje (osobna podstrona oferty czy sekcja na home). Czy są ceny, czy "na rozmowie".
 6. **Dowody** - czym budujemy zaufanie: opinie, liczby, logo, realizacje. Zaznacz, które są dynamiczne (kolekcja w CMS: opinie, case studies) - to wraca w Karcie Architektury. Jeśli nie ma jeszcze opinii - zaplanuj placeholder do uzupełnienia.
 
-Zapisz `karty/karta-strategiczna.md` z sekcjami: Cel systemu, Główna akcja i akcje wspierające (lejek), Rola każdej podstrony, Transformacja, Oferta w systemie, Dowody i zaufanie, Czego system NIE ma robić. Pokaż krótko do akceptacji.
+Zapisz `karty/karta-strategiczna.md` z sekcjami: Cel systemu, Główna akcja i akcje wspierające (lejek), Rola i przekaz każdej podstrony (co robi + co ma poczuć odwiedzający), Transformacja, Oferta w systemie, Dowody i zaufanie, Czego system NIE ma robić. Pokaż krótko do akceptacji.
 
 ## Krok 2 - KARTA ARCHITEKTURY TREŚCI (mapa systemu: strona główna + podstrony)
 
@@ -65,6 +65,8 @@ Zapisz `karty/karta-architektury-tresci.md` z sekcjami: Mapa systemu (lista pods
 ## Krok 3 - KARTA WIZUALNA (jak ma wyglądać) - najważniejsza dla anti-ai-look
 
 Cel: zebrać KONKRET, z którego skill `zbuduj-strone` zrobi design tokens (zmienne CSS) i którego pilnuje skill `sprawdz-kod`. Wymuszaj konkret, nie przyjmuj "nowocześnie i czysto".
+
+**Zasada nadrzędna tego wywiadu: prowadź go INSPIRACJAMI, nie pytaniami o abstrakcje.** Uczestnik prawie nigdy nie umie opisać słowami, jak ma wyglądać jego strona - ale od razu pozna to, gdy zobaczy. Dlatego na każdym kroku proś o konkretne przykłady i linki ("pokaż mi stronę, która Ci się podoba"), a gdy uczestnik nie ma albo nie wie - pokaż 2-3 konkretne kierunki do wyboru i poproś, żeby wskazał, co mu bliżej. Po wybraniu KAŻDORAZOWO potwierdź ("dobrze rozumiem, że chcesz X?"). Budujesz wygląd RAZEM z uczestnikiem, na jego inspiracjach i z jego potwierdzeniem - nigdy w domyśle i nigdy słowem "zaufaj mi". To jego marka i to on (a potem jego klienci) ocenią efekt.
 
 Wywiad etapami:
 1. **Nastrój w 3 słowach** - poproś o 3 przymiotniki opisujące, jak strona ma działać na odbiorcę (np. "ciepła, spokojna, ekspercka" albo "energiczna, śmiała, bezpośrednia"). To napędza całą resztę.
