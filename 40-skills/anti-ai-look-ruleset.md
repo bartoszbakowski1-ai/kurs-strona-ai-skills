@@ -55,6 +55,7 @@ Duplikaty/wzmocnienia: #1+#15 (CAPS labels), #2+#3 (typografia nagłówków raze
 - ZERO 3 (lub 4/6) identycznych kart w gridzie z **tym samym** hover na każdej.
 - ZERO `rounded-2xl border shadow-sm` jako domyślny "każdy box". Nie ten sam radius+padding wszędzie.
 - ZERO wszystko `text-center mx-auto`. Nie centruj całej strony.
+- ZERO hero strony głównej jako sam wycentrowany nagłówek + podtytuł + przycisk na pustym albo gradientowym tle, niski na pół ekranu. To najczęstszy hero AI-slop.
 - ZERO domyślnej sekwencji hero→3 features→testimoniale→CTA bez przerwania jej własną sekcją.
 - ZERO bento-grid "bo modnie", jak nie wynika z treści.
 
@@ -82,6 +83,7 @@ Duplikaty/wzmocnienia: #1+#15 (CAPS labels), #2+#3 (typografia nagłówków raze
 - Własny font pairing z Karty Wizualnej: osobny display-font na headingi + czytelny body-font (np. Satoshi 300 headingi + Inter body - zgodnie z brandem Bartka). Monospace na liczby/ceny/staty dla tekstury.
 
 **Layout**
+- HERO strony głównej (najważniejszy ekran): pełny pierwszy ekran (`min-h-[85vh]` do `min-h-screen`), z mocnym wizualem (realne zdjęcie/video na tło albo obok tekstu, albo jeden autorski element typograficzny) + jedno mocne zdanie + jedno CTA. Buduj go z sekcji "Hero strony głównej" Karty Wizualnej (inspiracje, układ, przekaz potwierdzone z uczestnikiem). To miejsce, po którym ocenia się całą stronę - tu craft ma być najwyższy. NIE sam wycentrowany tekst na gradiencie.
 - Asymetria i oddech: choć jedna sekcja off-center, kontent czasem 7/5 albo 8/4 kolumny zamiast 50/50. Hojny whitespace (sekcje `py-24`+).
 - Różnicuj karty: różne rozmiary (jedna szeroka + dwie węższe), różny content, różny hover albo hover tylko tam gdzie klikalne. Łam grid: pierwsza karta `col-span-2`.
 - Rytm pionowy: różne wysokości sekcji, naprzemiennie obraz-lewo/tekst-prawo i odwrotnie.

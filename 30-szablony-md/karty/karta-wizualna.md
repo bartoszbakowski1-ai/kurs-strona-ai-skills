@@ -53,13 +53,25 @@ Wypisz minimum 3 prawdziwe zdjęcia/media, które masz albo możesz zrobić. Dla
 - Krótkie video / nagranie / screen produktu:
 - Inne:
 
-Hero:
+## Hero strony głównej (NAJWAŻNIEJSZE - pierwszy ekran)
 
-> 
+To pierwsza rzecz, którą zobaczy odwiedzający, i miejsce, po którym Ty i Twoi klienci ocenicie, czy strona wygląda dobrze. Poświęć temu najwięcej uwagi. Nie wpisuj "nowocześnie i czysto".
+
+Pokaż Claude 1-3 strony, których HERO (sam pierwszy ekran) Ci się podoba, i napisz, co konkretnie chcesz z nich wziąć.
+
+- Strony, których pierwszy ekran mi się podoba (linki):
+  1. Link - podoba mi się w hero:
+  2. Link - podoba mi się w hero:
+- Jak ma wyglądać mój hero (układ): duże zdjęcie na całe tło / tekst z lewej + zdjęcie z prawej / mocna typografia na czystym tle / inny:
+- Jedno zdanie, które ma się pojawić na górze (dla kogo + jaka zmiana):
+- Główny przycisk (dokładny tekst):
+- Co jest tłem/wizualem hero (zdjęcie, video, element):
+
+> Jeśli nie wiesz, czego chcesz - napisz to Claude, a dostaniesz 2-3 gotowe kierunki hero do wyboru. Hero domyślnie zajmuje cały pierwszy ekran (pełną wysokość).
 
 ## Referencje
 
-Podaj 2-3 strony albo marki, których styl Ci się podoba. Najważniejsze: napisz, co konkretnie chcesz z tego wziąć.
+Podaj 2-3 strony albo marki, których styl Ci się podoba (reszta strony, nie sam hero). Najważniejsze: napisz, co konkretnie chcesz z tego wziąć.
 
 1. Link / marka:
    - Podoba mi się:

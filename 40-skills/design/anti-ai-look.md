@@ -39,6 +39,7 @@ Typografia:
 - Para fontów z dozwolonej listy (latin-ext, polskie ogonki): nagłówki Sora / Space Grotesk / Manrope / Plus Jakarta Sans / Bricolage Grotesque, body Inter / Manrope. Osobny display na nagłówki + czytelny body. Monospace tylko na liczby/ceny/staty (bez polskich znaków) dla tekstury.
 
 Layout:
+- HERO strony głównej: pełny pierwszy ekran (`min-h-[85vh]`-`min-h-screen`), mocny wizual (realne zdjęcie/video albo autorski układ typograficzny) + jedno zdanie + jedno CTA. Buduj z sekcji "Hero strony głównej" Karty Wizualnej. NIE sam wycentrowany tekst na gradiencie - to po hero ocenia się całą stronę.
 - Asymetria i oddech: min. jedna sekcja off-center, kolumny czasem 7/5 albo 8/4 zamiast 50/50. Sekcje `py-24`+.
 - Różnicuj karty: różne rozmiary (jedna szeroka + dwie węższe), różny content, hover tylko tam gdzie klikalne. Łam grid (`col-span-2` na pierwszej).
 - Rytm pionowy: naprzemiennie obraz-lewo/tekst-prawo i odwrotnie.

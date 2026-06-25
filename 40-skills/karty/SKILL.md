@@ -72,8 +72,15 @@ Wywiad etapami:
 3. **Jasno czy ciemno** - czy strona ma jasne tło czy ciemne. Domyślnie rekomenduj jasne, chyba że nastrój i marka mówią inaczej (dark hero z neonem to tell AI - unikamy go jako domyślnego).
 4. **Charakter typografii** - zapytaj o charakter nagłówków: bardziej elegancki/redakcyjny czy nowoczesny/bezpośredni. NIE pytaj o konkretne nazwy fontów - to TY dobierasz parę. Zapisz w karcie konkretną parę z next/font/google WYŁĄCZNIE z dozwolonej listy z pełnym latin-ext (polskie ogonki działają): nagłówki Sora / Space Grotesk / Manrope / Plus Jakarta Sans / Bricolage Grotesque, body Inter lub Manrope. Przykłady doboru: elegancki/redakcyjny -> nagłówki Plus Jakarta Sans + body Inter; nowoczesny/bezpośredni -> nagłówki Sora lub Space Grotesk + body Inter; ciepły -> nagłówki Bricolage Grotesque + body Inter. NIGDY nie wpisuj fontu spoza tej listy (np. Fraunces, Playfair nie mają pełnego latin-ext). Zawsze 2 fonty, nigdy jeden na wszystko.
 5. **Zdjęcia i media** - to kluczowe dla anti-ai-look. Zapytaj wprost, jakie PRAWDZIWE zdjęcia lub media uczestnik ma albo może zrobić: portret/twarz, zdjęcia z pracy/warsztatów, zdjęcia produktu, screeny, krótkie video. Ustal minimum 3 realne zdjęcia/media jako bramkę, a dla dłuższej strony cel 5-7. Zaznacz w karcie, że plastikowe AI-ilustracje są zakazane - tymczasowo placeholder, docelowo realne foto/media (tym zajmie się skill `obrazy`).
-6. **Referencje** - poproś o 2-3 konkretne strony, które się uczestnikowi podobają (linki). Jeśli nie ma - zaproponuj kierunek słowny, ale dopytaj o konkret ("podaj choć jedną stronę, która Ci się podoba, obojętnie z jakiej branży"). Zapisz CO konkretnie się podoba w każdej referencji (układ, kolory, zdjęcia, typografia), nie samą nazwę.
-7. **Spójność systemu** - przypomnij sobie, że to nie jeden landing, tylko system z wielu podstron. Wizual ma być wspólny dla całości: jedna nawigacja, jedna stopka, jeden zestaw komponentów (przyciski, karty, nagłówki podstron, szablon wpisu bloga, szablon case study). NIE pytasz o to uczestnika - to decyzja techniczna. Zapisujesz ją w karcie jako wytyczną dla skilli design i zbuduj-strone: design system ma być spójny przez wszystkie podstrony.
+6. **HERO strony głównej - to NAJWAŻNIEJSZA decyzja wizualna w całym wywiadzie. Poświęć jej najwięcej czasu.** Hero to pierwsze, co widzi odwiedzający, i jedyne miejsce, po którym uczestnik sam oceni "czy moja strona wygląda dobrze", a potem po nim oceniają go jego klienci. Jeśli hero jest słaby, cała strona wygląda jak AI - nieważne jak dobra jest reszta. Nie przyjmuj tu ogólników. Dociśnij:
+   - Zapytaj WPROST: "Pokaż mi 1-3 strony, których HERO (pierwszy ekran) Ci się podoba tak, że chciał(a)byś coś podobnego u siebie. Wklej linki." To nie to samo co ogólne referencje - chodzi konkretnie o pierwszy ekran.
+   - Dla każdej wskazanej strony dopytaj, CO dokładnie się podoba w jej hero: duże zdjęcie na całe tło czy układ tekst-z-lewej-zdjęcie-z-prawej? Jedno mocne zdanie czy więcej? Spokojnie i elegancko czy odważnie i z rozmachem? Jest tam ruch/video? Wybadaj to, nie zgaduj.
+   - Ustal JEDNO zdanie, które ma paść w hero (główny przekaz: dla kogo + jaka zmiana), i JEDNĄ akcję (główne CTA). To z Karty Strategicznej, ale tu doprecyzuj brzmienie.
+   - Ustal, co jest TŁEM/wizualem hero: prawdziwe zdjęcie uczestnika, zdjęcie z pracy, video, czy mocny układ typograficzny. Hero strony głównej domyślnie zajmuje cały pierwszy ekran (pełna wysokość) - zapisz to w karcie.
+   - **Jeśli uczestnik nie wie, czego chce - NIE zostawiaj go z pustką.** Zaproponuj 2-3 konkretne kierunki hero do wyboru, np.: (A) duże zdjęcie portretowe na całe tło + jedno zdanie i przycisk na wierzchu; (B) układ dzielony: po lewej mocny nagłówek i CTA, po prawej zdjęcie z pracy; (C) minimalistyczny, mocna typografia na czystym tle marki + jedno zdjęcie pod spodem. Opisz każdy 1 zdaniem po ludzku i poproś, żeby wybrał(a) jeden albo wskazał(a), co mu/jej bliżej.
+   - **Upewnij się, że to faktycznie jest to, czego chce.** Zanim zapiszesz, streść wybrany kierunek hero w 2 zdaniach i zapytaj wprost: "Tak ma wyglądać Twój pierwszy ekran? Jak coś jest nie tak, mów teraz - to najważniejszy element." Zapisz dopiero po potwierdzeniu. Przy budowie (M5) skill `zbuduj-strone` zrobi hero jako pierwszą sekcję i pokaże ją do oceny, ewentualnie w 2-3 wariantach.
+7. **Referencje (reszta strony)** - poproś o 2-3 konkretne strony, które się uczestnikowi podobają poza samym hero (linki). Jeśli nie ma - zaproponuj kierunek słowny, ale dopytaj o konkret ("podaj choć jedną stronę, która Ci się podoba, obojętnie z jakiej branży"). Zapisz CO konkretnie się podoba w każdej referencji (układ, kolory, zdjęcia, typografia), nie samą nazwę.
+8. **Spójność systemu** - przypomnij sobie, że to nie jeden landing, tylko system z wielu podstron. Wizual ma być wspólny dla całości: jedna nawigacja, jedna stopka, jeden zestaw komponentów (przyciski, karty, nagłówki podstron, szablon wpisu bloga, szablon case study). NIE pytasz o to uczestnika - to decyzja techniczna. Zapisujesz ją w karcie jako wytyczną dla skilli design i zbuduj-strone: design system ma być spójny przez wszystkie podstrony.
 
 Zapisz `karty/karta-wizualna.md`. Użyj DOKŁADNIE tej struktury, bo z niej powstają design tokens i design system:
 
@@ -96,9 +103,17 @@ Zapisz `karty/karta-wizualna.md`. Użyj DOKŁADNIE tej struktury, bo z niej pows
 
 ## Zdjęcia i media (realne, NIE plastikowe AI)
 - [lista minimum 3 konkretnych zdjęć/mediów, docelowo 5-7 na dłuższej stronie]
-- Hero: [jakie zdjęcie tu idzie]
 
-## Referencje (2-3)
+## Hero strony głównej (NAJWAŻNIEJSZA sekcja - pierwszy ekran)
+- Kierunek/układ: [duże zdjęcie na całe tło / układ dzielony tekst+zdjęcie / mocna typografia na czystym tle / inny - opis 1 zdaniem]
+- Wysokość: pełny ekran (domyślnie) / niższy [uzasadnienie, jeśli niższy]
+- Główny przekaz (jedno zdanie): [dla kogo + jaka zmiana]
+- Główne CTA (przycisk): [dokładny tekst]
+- Wizual hero: [konkretne zdjęcie/video/element]
+- Inspiracje hero (linki, CO konkretnie z nich brać): [1-3 linki + co się podoba w ich pierwszym ekranie]
+- Potwierdzone przez uczestnika: tak
+
+## Referencje (reszta strony, 2-3)
 1. [link] - podoba się: [co konkretnie]
 2. [link] - podoba się: [co konkretnie]
 

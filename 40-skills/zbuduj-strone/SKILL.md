@@ -143,6 +143,11 @@ Powiedz po ludzku: "Mamy ramę całego systemu - menu łączące podstrony, kont
 ### Krok 3 - buduj sekcje i podstrony po jednej (pętla token-economy)
 Budujesz system etapami z mapy (Karta Architektury). Zaczynasz od rdzenia (etap 1: strona główna, potem kontakt, potem 1-2 kluczowe podstrony), kolejne podstrony dokładasz w następnych etapach. W obrębie każdej podstrony idziesz SEKCJA PO SEKCJI tym samym cyklem. Domyślna kolejność sekcji strony głównej, jeśli karta nie mówi inaczej: **hero -> dla kogo/problem -> skrót oferty -> dowody/opinie -> skrót o mnie -> CTA główne.** Na podstronach (oferta, o mnie, blog, realizacje, kontakt) zestaw sekcji bierzesz z Karty Architektury. Każda podstrona dostaje WŁASNE `export const metadata` z unikalnym `title` i `description` (np. `title: "Oferta - [imię]"`) - bez tego wszystkie podstrony mają w Google ten sam tytuł co strona główna. Po skończonej podstronie: commit + PROGRESS.md, zapytaj czy jedziemy z następną podstroną, czy przerwa.
 
+**HERO strony głównej - sekcja-sygnatura, traktuj ją inaczej niż resztę.** To pierwszy ekran i jedyne miejsce, po którym uczestnik sam oceni "czy moja strona wygląda dobrze", a potem oceniają go jego klienci. Słaby hero = cała strona wygląda jak AI, choćby reszta była dobra. Dlatego:
+- Buduj hero z sekcji "Hero strony głównej" Karty Wizualnej (kierunek/układ, przekaz, CTA, wizual, inspiracje - potwierdzone w M3). Jeśli tej sekcji w karcie brak albo jest pusta - NIE buduj z domysłu. Dopytaj uczestnika: pokaż 1-3 strony, których pierwszy ekran Ci się podoba, albo wybierz z 2-3 kierunków, które zaproponuję (A: duże zdjęcie na całe tło + jedno zdanie i CTA; B: układ dzielony tekst+zdjęcie; C: mocna typografia na czystym tle). Dopiero potem buduj.
+- Hero domyślnie zajmuje CAŁY pierwszy ekran: `min-h-[85vh]` do `min-h-screen`, realny wizual (zdjęcie/video na tło albo obok), jedno mocne zdanie, jedno CTA widoczne i klikalne od pierwszej klatki. NIGDY sam wycentrowany tekst na gradiencie.
+- **Po zbudowaniu hero POKAŻ go do oceny, zanim ruszysz dalej.** Uruchom podgląd (dev server / Preview), zrób screenshot albo poproś uczestnika, żeby spojrzał, i zapytaj wprost: "Tak ma wyglądać Twój pierwszy ekran? To najważniejszy element - jak coś jest nie tak, poprawiamy teraz." Jeśli uczestnik się waha albo nie wie - zbuduj 2-3 warianty hero (różny układ/wizual, ten sam przekaz) i daj wybrać. Reszta strony rusza dopiero, gdy hero jest zaakceptowany. To jedyna sekcja, którą domykasz wizualnie z uczestnikiem, nie tylko technicznie.
+
 Cykl jednej sekcji:
 1. **Powiedz, którą sekcję robisz** i co ona ma osiągnąć (1 zdanie). Np. "Robię hero - to pierwsze, co widzi odwiedzający, ma jasno powiedzieć co oferujesz i poprowadzić do [główne CTA]."
 2. **Zbierz tylko brakującą treść biznesową.** Najpierw szukaj w kartach/kontekście. Czego naprawdę brakuje - dopytaj o JEDNO naraz, prostym językiem (np. "Jaki jeden główny nagłówek ma być na górze? Jak nie wiesz, zaproponuję 2 wersje na bazie Twojej oferty."). Konkretne liczby (lata doświadczenia, liczba klientów) wyciągaj z kontekstu - to one robią copy wiarygodnym.
@@ -208,6 +213,7 @@ ZAKAZ:
 - długi myślnik i en-dash w jakimkolwiek tekście (copy, alt, aria) - tylko krótki "-"
 
 NAKAZ:
+- HERO strony głównej: pełny pierwszy ekran (`min-h-[85vh]`-`min-h-screen`), mocny wizual + jedno zdanie + jedno CTA, z briefu hero w Karcie Wizualnej. Nie sam tekst na gradiencie. Pokazany uczestnikowi do akceptacji.
 - `text-balance` na nagłówkach, `text-pretty` na akapitach, sensowny `max-w-[ch]` (nagłówki ~18-24ch, body ~60-72ch)
 - własny font pairing z Karty Wizualnej (osobny font nagłówkowy + Inter body)
 - jeden akcent brandowy z tokenów, nie tęcza

@@ -93,6 +93,7 @@ Przelećcie pliki strony (komponenty sekcji, `globals.css`, treść). Każde "TA
 - [ ] W tekście / alt / aria jest długi myślnik albo en-dash? (TAK = fix: zamień na krótki "-")
 
 **Layout**
+- [ ] Hero strony głównej jest niski (poniżej pół ekranu) albo to sam wycentrowany tekst + przycisk na pustym/gradientowym tle, bez realnego wizualu? (TAK = fix blokujący: to najważniejszy ekran. Pełny pierwszy ekran `min-h-[85vh]`-`min-h-screen`, realny wizual (zdjęcie/video/autorski układ), jedno zdanie + CTA. Wróć do sekcji "Hero strony głównej" Karty Wizualnej)
 - [ ] Grid 3/4/6 identycznych kart z jednym `hover:` na wszystkich? (TAK = fix: zróżnicuj - inny rozmiar pierwszej karty albo hover tylko tam, gdzie klikalne)
 - [ ] Wszystkie boxy mają ten sam `rounded-2xl border shadow-sm`? (TAK = fix: zróżnicuj radius/padding)
 - [ ] Cała strona `text-center mx-auto` (zero asymetrii)? (TAK = fix: choć jedna sekcja off-center, układ 7/5 lub 8/4 zamiast wszystko na środku)
